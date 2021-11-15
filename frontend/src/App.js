@@ -1,9 +1,30 @@
-function App() {
+import React from "react";
+import ReactDOM from 'react-dom'
+import { BrowserRouter, Route } from "react-router-dom";
+
+// 
+import HomeScreen from "./components/HomeScreen";
+import RegisterScreen from "./components/RegisterScreen";
+
+const App = () => {
+
   return (
-    <div>
-      <h1>Hello world for front end </h1>
-    </div>
+    <>
+      <BrowserRouter>
+
+        <Route path="/" exact={true}>
+          <HomeScreen />
+        </Route>
+
+        <Route path="/register" exact={true}>
+          <RegisterScreen />
+        </Route>
+
+      </BrowserRouter>
+    </>
   );
+
 }
+
 
 export default App;
