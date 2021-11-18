@@ -1,12 +1,12 @@
 import "./navigation.css";
 
 // import bootstrap
-import "bootstrap/dist/css/bootstrap.css";
+//import "bootstrap/dist/css/bootstrap.css";
 
 
 const Navigation = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light navbar-color">
       <div className="container-fluid">
         <a className="navbar-brand" href="/">Recipee</a>
 
