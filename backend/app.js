@@ -14,6 +14,7 @@ const bodyParser = require("body-parser");
 
 // require mongoose
 const mongoose = require("mongoose");
+mongoose.connect('(YOUR MONGODB URL)/Recipeee');
 
 
 
@@ -39,6 +40,10 @@ app.get("/", (req, res) => {
 })
 
 
+
+require('./controllers/recipe-service-db')(app);
+require('./controllers/author-service-db')(app);
+require('./controllers/user-service-db')(app);
 
 
 app.listen(PORT, () => {
