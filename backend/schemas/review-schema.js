@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
-const review_schema = mongoose.Schema({
+const review_schema = new mongoose.Schema({
     RecipeId: String,
     AuthorId: String,
-    Rating: String,
+    Rating: Number,
     Review: String,
     DateSubmitted: Date,
     DateModified: Date,

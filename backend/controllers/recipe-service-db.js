@@ -1,4 +1,4 @@
-const recipe_dao = require('../models/recipe-dao');
+const recipe_dao = require('../models/dao/recipe-dao');
 
 module.exports = (app) => {
 

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const admin_schema = mongoose.Schema({
+const admin_schema = new mongoose.Schema({
     Username: String,
     Name: String,
     Password: String,

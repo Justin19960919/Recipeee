@@ -1,4 +1,4 @@
-const author_dao = require('../models/author-dao');
+const author_dao = require('../models/dao/author-dao');
 
 module.exports = (app) => {
 

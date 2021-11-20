@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const star_schema = mongoose.Schema({
+const star_schema = new mongoose.Schema({
     RecipeId: String,
     Username: String
 }, {collection: "stars"});
