@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const like_schema = mongoose.Schema({
+const like_schema = new mongoose.Schema({
     RecipeId: String,
     Username: String
 }, {collection: "likes"});
