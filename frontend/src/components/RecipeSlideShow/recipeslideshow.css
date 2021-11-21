@@ -1,0 +1,11 @@
+.base{
+    background-color: #ece8be;
+}
+.slides{
+    border-radius: 1rem;
+    height: 30rem;
+    margin: 2rem;
+}
+h5,p{
+    color:#f1f1f1;
+}

@@ -1,0 +1,27 @@
+.footer{
+    background-color: #406343;
+    color:#f8f8f8;
+    padding: 2rem 10% 2rem 10%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "left right";
+}
+.left-container{
+    grid-area: left;
+}
+.right-container{
+    grid-area: right;
+}
+svg{
+    margin: 0 0.5rem;
+}
+ul,li{
+    list-style-type: none;
+    text-align:right;
+}
+li a{
+    color: #ffffff;
+}
+li a:hover{
+    color: #e7e7e7;
+}
