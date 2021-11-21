@@ -1,0 +1,16 @@
+.container{
+    display: flex;
+}
+.comment-container{
+    width: 50%;
+    padding: 2rem;
+    
+}
+.comment-container .title,.comment{
+    color: #406343;
+}
+.review-image{
+    border-radius: 1rem;
+    width: 50%;
+    height: 50%;
+}

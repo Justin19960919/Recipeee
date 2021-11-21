@@ -4,8 +4,11 @@ import { Link } from "react-router-dom";
 // components
 import Navigation from "../Navigation";
 import RecipeSlideShow from '../RecipeSlideShow';
+import Card from '../Card';
+import Review from '../Review';
 import ReachOutForm from "../ReachOutForm";
 import Footer from "../Footer";
+
 
 // style sheets
 import "./homeScreen.css";
@@ -28,6 +31,8 @@ const HomeScreen = () => {
     <>
       <Navigation />
       <RecipeSlideShow />
+      <Card />
+      <Review />
       <ReachOutForm />
       <Footer />
     </>

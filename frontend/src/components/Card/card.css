@@ -1,0 +1,21 @@
+img{
+    width: 5rem;
+}
+.card{
+    width: 40%;
+    height: auto;
+    border: none;
+    margin: 0 0.5rem;
+    background-color: #F3EFCC;
+}
+.card-footer{
+    border-radius:1rem;
+    
+}
+.card-deck{
+    display: flex;
+    padding: 2rem 5rem;
+}
+.card-title, .card-text{
+    color: #3b3b3b;
+}

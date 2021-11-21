@@ -8,7 +8,7 @@ import "./vendors/bootstrap.min.css";
 import "./vendors/font-awesome/css/all.css";
 import "./App.css";
 
-
+import 'bootstrap/dist/js/bootstrap.js';
 
 // 
 import HomeScreen from "./components/HomeScreen";
