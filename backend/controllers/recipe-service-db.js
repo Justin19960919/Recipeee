@@ -1,5 +1,4 @@
 const recipe_dao = require('../models/dao/recipe-dao');
-const {recipe_model} = require("../models/all_models");
 
 module.exports = (app) => {
 
@@ -61,7 +60,7 @@ module.exports = (app) => {
     app.get('/rest/recipes', findAllRecipes);
     app.get('/rest/recipes/:id', findRecipeById);
     app.get('/rest/recipes/findRecipe/:recipeName', findRecipeByRecipeName);
-    app.get('/rest/recipes/searchRecipe/:recipeName', searchRecipesByName);
+    app.get('/rest/recipes/searchRecipes/:recipeName', searchRecipesByName);
 
     // update
     app.put("/rest/recipes/:id", updateRecipeInfo);
