@@ -1,31 +1,50 @@
 import React, {useEffect, useState} from "react";
-import RecipeDetail from "./RecipeDetail";
+import SearchItem from "./SearchItem";
 import recipeService from "../../services/recipe-services";
 import "./index.css";
 
 
 const RecipeList = () => {
-  const [searchResults, setSearchResults] = useState([]);
-  const [searchInput, setSearchInput] = useState("");
 
-  // useEffect(() =>
-  //     recipeService.searchAllRecipes()
-  //     .then(recipes => setSearchResults(recipes)),
-  //     [])
+  const recommendedRecipes = [
+    {
+      Name: "test-Name",
+      AuthorId: "test-AuthorId",
+      Keywords: ["test1", "test2"],
+      DatePublished: "2021-12-1",
+      Description: "test",
+      ReviewCount: 10
+    },
+    {
+      Name: "test-Name2",
+      AuthorId: "test-Author2Id",
+      Keywords: ["test12", "test22"],
+      DatePublished: "2021-12-1",
+      Description: "test2",
+      ReviewCount: 20
+    }
+  ];
+
+  const [searchResults, setSearchResults] = useState(recommendedRecipes);
+  const [searchInput, setSearchInput] = useState("");
 
   const searchInputHandler = (event) => {
     setSearchInput(event.target.value);
     console.log(searchInput);
   }
 
+  const cleanSearchInput = (input) => {
+    return input.trim();
+  }
+
+
   // search submit handler
   const searchSubmitHandler = () => {
     console.log("Clicked search button, start searching ....");
-    // recipeService.searchRecipeByRecipeName(searchInput)
-    // .catch(err => console.log(err))
-    // .then(recipes => setSearchResults(recipes));
-    // clean input field
-    setSearchInput("");
+    // const cleanedInput = cleanSearchInput(searchInput);
+    console.log(recipeService.searchAllRecipes());
+
+    // setSearchInput("");
   }
 
   return(
@@ -45,15 +64,14 @@ const RecipeList = () => {
           Search
         </button>
         </div>
-        <RecipeDetail/>
-        <RecipeDetail/>
       {
-        searchResults.map(searchResult =>
-            <li key={searchResult._id}>
-              <RecipeDetail
-                  recipe={searchResult}
-              />
-            </li>
+        searchResults.map((searchResult) =>
+            <p style={{"color": "black"}}>{JSON.stringify(searchResult)}</p>
+            // <li key={searchResult._id}>
+            //   <SearchItem
+            //       recipe={searchResult}
+            //   />
+            // </li>
         )
       }
       </div>

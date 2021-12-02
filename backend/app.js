@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 
 // setup
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -18,12 +18,25 @@ mongoose.connect(`${process.env.MONGODB_LOCAL_BASE_URL}/${recipeDB}`);
 
 
 // middleware
-app.use(cors()); // allow cross site
+//app.use(cors()); // allow cross site
+
 app.use(bodyParser.urlencoded({extended: true}));
 //app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 // reference static assets in public folder
 app.use(express.static("./public"));
+
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers",
+
+      "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Methods",
+      "GET, POST, PUT, DELETE, OPTIONS");
+  res.header("Access-Control-Allow-Credentials", "true");
+  next();
+});
 
 
 // routes

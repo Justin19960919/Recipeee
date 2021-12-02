@@ -1,7 +1,7 @@
 import React from "react";
 import "./index.css";
 
-const RecipeDetail = ({recipe}) => {
+const SearchItem = ({recipe}) => {
  return (
   <div className="details-container">
     <img src="/pic/2.jpg"/>
@@ -40,4 +40,4 @@ const RecipeDetail = ({recipe}) => {
 }
 
 
-export default RecipeDetail;
+export default SearchItem;
