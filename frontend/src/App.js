@@ -13,6 +13,7 @@ import 'bootstrap/dist/js/bootstrap.js';
 // 
 import HomeScreen from "./components/HomeScreen";
 import RegisterScreen from "./components/RegisterScreen";
+import SearchScreen from "./components/SearchScreen";
 
 const App = () => {
 
@@ -26,6 +27,10 @@ const App = () => {
 
         <Route path="/register" exact={true}>
           <RegisterScreen />
+        </Route>
+
+        <Route path="/search" exact={true}>
+          <SearchScreen />
         </Route>
 
       </BrowserRouter>

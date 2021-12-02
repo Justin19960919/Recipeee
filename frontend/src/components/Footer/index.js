@@ -28,7 +28,7 @@ const Footer = () => {
                 </svg>
               </a>
               </h6>
-              <h6>@ copyright Receipe team</h6>
+              <h6>@ copyright Recipeee team</h6>
     
           </div>
           <div className="right-container">

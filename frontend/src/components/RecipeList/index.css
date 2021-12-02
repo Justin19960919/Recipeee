@@ -1,0 +1,52 @@
+.search-container{
+    padding: 10% 20%;
+}
+.searchbar{
+    margin: 0 auto 3rem;
+    display: flex;
+}
+.searchButton{
+    margin-left: 1rem;
+}
+.details-container{
+    margin: 1rem auto;
+    padding: 0.4rem 0;
+    display: flex;
+    border-bottom: 1px solid rgb(175, 175, 175);
+}
+.details-container img{
+    width: 8rem;
+    height: 8rem;
+    margin-right: 1rem;
+}
+.details-container h5,span{
+    color: black;
+}
+.content-container{
+    position: relative;
+    left: 1rem;
+    padding:0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 75% 25%;
+    grid-template-rows: repeat(1fr,3);
+    grid-template-areas: "title title"
+    "des date"
+    "author review"
+    ;
+}
+.detail-title{
+    grid-area: title;
+}
+.author{
+    grid-area: author;
+}
+.date{
+    grid-area: date;
+}
+.reviews{
+    grid-area: review;
+}
+.description{
+    grid-area: des;
+}
