@@ -6,7 +6,7 @@ const Navigation = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark navbar-color">
       <div className="container-fluid">
-        <a className="navbar-brand" href="/">Recipee</a>
+        <a className="navbar-brand logo" href="/">Recipee</a>
 {/*  */}
         <button className="navbar-toggler"  data-bs-toggle="collapse" data-bs-target="#navbarText" type="button" aria-controls="navbarText" aria-expanded="false">
           <span className="navbar-toggler-icon"></span>

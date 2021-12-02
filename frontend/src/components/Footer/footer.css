@@ -1,5 +1,5 @@
 .footer{
-    background-color: #406343;
+    background-color: #15643B;
     color:#f8f8f8;
     padding: 2rem 10% 2rem 10%;
     display: grid;
@@ -8,6 +8,9 @@
 }
 .left-container{
     grid-area: left;
+}
+.left-container span{
+    color:#ffffff;
 }
 .right-container{
     grid-area: right;
@@ -24,4 +27,8 @@ li a{
 }
 li a:hover{
     color: #e7e7e7;
+}
+.right-container ul,li{
+    list-style-type: none;
+    text-align:right;
 }

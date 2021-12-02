@@ -2,8 +2,17 @@ import React from "react";
 import "./index.css";
 
 const RecipeDetail = ({recipe}) => {
-  <div className="container">
-    <p>
+  return (
+  <div className="details-container">
+    <img src="/pic/2.jpg"/>
+    <div className="content-container">
+    <h5 className="detail-title">Recipe Name</h5>
+    <span className="descript">brief description</span>
+    <span className="author">By AuthorId</span>
+    <span className="date">09/01/2020</span> 
+    <span className="reviews">  &#9733; 4.9 (2000)</span> 
+    </div>
+    {/* <p>
       {recipe.Name}
     </p>
     <p>
@@ -25,8 +34,9 @@ const RecipeDetail = ({recipe}) => {
     <p>{recipe.Calories}</p>
     <p>{recipe.RecipeInstructions}</p>
     <p>{recipe.LikeNum}</p>
-    <p>{recipe.StarNum}</p>
+    <p>{recipe.StarNum}</p> */}
   </div>
+  )
 }
 
 
