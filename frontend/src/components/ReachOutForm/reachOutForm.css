@@ -1,0 +1,55 @@
+.form-page{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.about-us{
+  padding:6rem 8rem;
+  margin: auto;
+}
+.about-us .about-us-title,.about-us-content{
+  color:black;
+}
+.form{
+  width:70%;
+  margin: 3rem auto;
+  height: auto;
+  border: #15643B 1px solid;
+  border-radius: 1%;
+}
+.contact-form-header{
+  margin-top: 2rem;
+  font-size: 30px;
+  text-align:center;
+  color: #15643B;
+}
+
+.contact-form{
+  width: 70%;
+  margin: 0 auto 1rem;
+  font-family: 'PT Sans', sans-serif;
+}
+
+.contact-form input{
+  padding: 15px;
+  font-size: 20px;
+  border: 1px solid #15643B;
+  margin-top: 0.5rem;
+}
+
+.contact-form textarea{
+  padding: 15px;
+  font-size: 20px;
+  border: 1px solid #15643B;
+  margin-top: 0.5rem;
+}
+
+.submit-button{
+  margin: 10px auto;
+  background-color: #15643B;
+  border-color: #15643B;
+  border-radius: 10px;
+}
+
+.submit-button:hover{
+  background-color: #1a7948;
+}

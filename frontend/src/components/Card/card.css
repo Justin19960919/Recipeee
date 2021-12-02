@@ -5,8 +5,9 @@ img{
     width: 40%;
     height: auto;
     border: none;
-    margin: 0 0.5rem;
-    background-color: #F3EFCC;
+    margin: 0 1rem;
+    background-color: #e8f1b5;
+    /* #e8f1b5 */
 }
 .card-footer{
     border-radius:1rem;

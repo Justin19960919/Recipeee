@@ -30,18 +30,23 @@ const RecipeList = () => {
 
   return(
       <>
+      <div className="search-container">
+        <div className="searchbar">
         <input
+          className="form-control form-control-lg mb-0.5"
           placeholder="Search for recipes"
           value={searchInput}
           onChange={searchInputHandler}
         />
 
         <button
-            className="btn btn-primary rounded-pill"
+            className="btn btn-success rounded-pill searchButton"
             onClick={searchSubmitHandler}>
           Search
         </button>
-
+        </div>
+        <RecipeDetail/>
+        <RecipeDetail/>
       {
         searchResults.map(searchResult =>
             <li key={searchResult._id}>
@@ -51,6 +56,7 @@ const RecipeList = () => {
             </li>
         )
       }
+      </div>
       </>
   )
 }

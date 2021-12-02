@@ -1,16 +1,20 @@
+.review{
+    padding: 0 10rem;
+}
 .container{
     display: flex;
+    margin-bottom: 2rem;
 }
 .comment-container{
     width: 50%;
-    padding: 2rem;
-    
+    padding: 1rem;
+    margin: auto;
 }
 .comment-container .title,.comment{
-    color: #406343;
+    color: black;
 }
 .review-image{
     border-radius: 1rem;
-    width: 50%;
-    height: 50%;
+    width: 40%;
+    height: 40%;
 }
