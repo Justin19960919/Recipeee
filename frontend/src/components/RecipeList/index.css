@@ -50,3 +50,7 @@
 .description{
     grid-area: des;
 }
+
+.black-text{
+    color: black;
+}

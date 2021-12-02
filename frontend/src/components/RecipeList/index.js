@@ -8,20 +8,13 @@ const RecipeList = () => {
 
   const recommendedRecipes = [
     {
-      Name: "test-Name",
-      AuthorId: "test-AuthorId",
-      Keywords: ["test1", "test2"],
-      DatePublished: "2021-12-1",
-      Description: "test",
-      ReviewCount: 10
-    },
-    {
-      Name: "test-Name2",
-      AuthorId: "test-Author2Id",
-      Keywords: ["test12", "test22"],
-      DatePublished: "2021-12-1",
-      Description: "test2",
-      ReviewCount: 20
+      Name: "Low-Fat Berry Blue Frozen Dessert",
+      AuthorId: "1533",
+      Description: "Make and share this Low-Fat Berry Blue Frozen Dessert recipe from Food.com.",
+      DatePublished: "1999-08-09T21:46:00.000Z",
+      LikeNum: 0,
+      StarNum: 0,
+      ReviewCount: 4
     }
   ];
 
@@ -37,14 +30,17 @@ const RecipeList = () => {
     return input.trim();
   }
 
-
   // search submit handler
+  // search all results in db
+  //recipeService.searchAllRecipes().then(results => setSearchResults(results));
   const searchSubmitHandler = () => {
     console.log("Clicked search button, start searching ....");
-    // const cleanedInput = cleanSearchInput(searchInput);
-    console.log(recipeService.searchAllRecipes());
-
-    // setSearchInput("");
+    const cleanedInput = cleanSearchInput(searchInput);
+    if(cleanedInput.length > 0){
+      recipeService.searchRecipeByName(cleanedInput)
+        .then(results => setSearchResults(results));
+    }
+    setSearchInput("");
   }
 
   return(
@@ -64,14 +60,15 @@ const RecipeList = () => {
           Search
         </button>
         </div>
+        <p className="black-text">Total of {searchResults.length} search results found.</p>
+
       {
         searchResults.map((searchResult) =>
-            <p style={{"color": "black"}}>{JSON.stringify(searchResult)}</p>
-            // <li key={searchResult._id}>
-            //   <SearchItem
-            //       recipe={searchResult}
-            //   />
-            // </li>
+            <li key={searchResult._id}>
+              <SearchItem
+                  recipe={searchResult}
+              />
+            </li>
         )
       }
       </div>
