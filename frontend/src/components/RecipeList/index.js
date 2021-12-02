@@ -15,13 +15,17 @@ const RecipeList = () => {
 
   const searchInputHandler = (event) => {
     setSearchInput(event.target.value);
+    console.log(searchInput);
   }
 
   // search submit handler
   const searchSubmitHandler = () => {
-    recipeService.searchRecipeByRecipeName(searchInput)
-    .catch(err => console.log(err))
-    .then(recipes => setSearchResults(recipes));
+    console.log("Clicked search button, start searching ....");
+    // recipeService.searchRecipeByRecipeName(searchInput)
+    // .catch(err => console.log(err))
+    // .then(recipes => setSearchResults(recipes));
+    // clean input field
+    setSearchInput("");
   }
 
   return(

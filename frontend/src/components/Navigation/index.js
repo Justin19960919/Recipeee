@@ -35,7 +35,6 @@ const Navigation = () => {
             </li>
 
             <li className="nav-item ">
-              {/*<a className="nav-link active" aria-current="page" href="/register">Register</a>*/}
               <Link to="/register" className="nav-link active" aria-current="page">
                 Register
               </Link>

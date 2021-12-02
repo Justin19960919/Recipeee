@@ -2,7 +2,7 @@ import React from "react";
 import "./index.css";
 
 const RecipeDetail = ({recipe}) => {
-  return (
+ return (
   <div className="details-container">
     <img src="/pic/2.jpg"/>
     <div className="content-container">
