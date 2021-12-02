@@ -21,6 +21,22 @@ module.exports.searchRecipesByName = (name) => {
     return recipe_model.find({Name : {$regex : name}});
 }
 
+module.exports.searchRecipesByKeyword = (keyword) => {
+    return recipe_model.find({Keywords : { $all: [keyword] }});
+}
+
+module.exports.searchRecipesByAuthorId = (authorId) => {
+    return recipe_model.find({AuthorId : authorId});
+}
+
+module.exports.searchTopRecipesByLike = (number) => {
+    return recipe_model.find().sort({LikeNum: 1}).limit(number);
+}
+
+module.exports.searchTopRecipesByStar = (number) => {
+    return recipe_model.find().sort({StarNum: 1}).limit(number);
+}
+
 // UPDATE
 module.exports.updateRecipeInfo = (recipeID, recipe) => {
     console.log(`recipe id is: ${recipeID}, updated recipe info: ${recipe}`);

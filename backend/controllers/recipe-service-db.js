@@ -34,6 +34,26 @@ module.exports = (app) => {
         recipe_dao.searchRecipesByName(recipeName)
             .then(recipes => res.status(200).json(recipes));
     }
+    const searchRecipesByKeyword = (req, res) => {
+        const keyword = req.params.keyword;
+        recipe_dao.searchRecipesByKeyword(keyword)
+            .then(recipes => res.status(200).json(recipes));
+    }
+    const searchRecipesByAuthorId = (req, res) => {
+        const authorId = req.params.authorId;
+        recipe_dao.searchRecipesByAuthorId(authorId)
+            .then(recipes => res.status(200).json(recipes));
+    }
+    const searchTopRecipesByLike = (req, res) => {
+        const number = req.params.number;
+        recipe_dao.searchTopRecipesByLike(number)
+            .then(recipes => res.status(200).json(recipes));
+    }
+    const searchTopRecipesByStar = (req, res) => {
+        const number = req.params.number;
+        recipe_dao.searchTopRecipesByStar(number)
+            .then(recipes => res.status(200).json(recipes));
+    }
 
     // update
     const updateRecipeInfo = (req, res) => {
@@ -61,6 +81,10 @@ module.exports = (app) => {
     app.get('/rest/recipes/:id', findRecipeById);
     app.get('/rest/recipes/findRecipe/:recipeName', findRecipeByRecipeName);
     app.get('/rest/recipes/searchRecipes/:recipeName', searchRecipesByName);
+    app.get('/rest/recipes/searchRecipes/:keyword', searchRecipesByKeyword);
+    app.get('/rest/recipes/searchRecipes/:authorId', searchRecipesByAuthorId);
+    app.get('/rest/recipes/searchRecipes/:number', searchTopRecipesByLike);
+    app.get('/rest/recipes/searchRecipes/:number', searchTopRecipesByStar);
 
     // update
     app.put("/rest/recipes/:id", updateRecipeInfo);
