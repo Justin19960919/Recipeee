@@ -16,6 +16,7 @@ import RegisterScreen from "./components/RegisterScreen";
 import LoginScreen from "./components/LoginScreen";
 import SearchScreen from "./components/SearchScreen";
 
+
 const App = () => {
 
   return (
@@ -25,11 +26,9 @@ const App = () => {
         <Route path="/" exact={true}>
           <HomeScreen />
         </Route>
-
         <Route path="/register" exact={true}>
           <RegisterScreen />
         </Route>
-
         <Route path="/login" exact={true}>
           <LoginScreen />
         </Route>

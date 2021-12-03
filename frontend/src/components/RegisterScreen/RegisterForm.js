@@ -1,20 +1,21 @@
 import React from "react";
 import {useState} from "react";
 import {Link} from "react-router-dom";
-
-
+import {useHistory} from "react-router-dom";
+import '../../index.css'
+import {API_URL} from "../consts";
 
 const RegisterForm = () => {
     const [user, setUser] =useState({});
+    const history= useHistory();
     const register = () =>
-        fetch("https://localhost:4000/api/register",{
+        fetch(`${API_URL}/register`,{
             method: 'POST',
             body: JSON.stringify(user),
             headers:{
             'content-type': 'application/json',
             }
-        }).then(response => response.json())
-            .then(actualUser =>setUser(actualUser));
+        }).then(status => history.push('/profile'));
 
     return(
         <>
@@ -23,25 +24,30 @@ const RegisterForm = () => {
             <br/>
             <br/>
                 <div className="mt-20">
-                <input onChange={(e)=>setUser({...user,username:e.target.value})}
+                <input
+                    value={user.username}
+                    onChange={(e)=>setUser({...user,username:e.target.value})}
                        placeholder="Username"
-                       className="form-control override-bs"/></div>
+                       className="form-control"/></div>
 
-                <input onChange={(e)=>setUser({...user,password:e.target.value})}
+                <input
+                    value={user.password}
+                    onChange={(e)=>setUser({...user,password:e.target.value})}
                     placeholder="Password"
-                       className="form-control override-bs mt-4"/>
+                    type="password"
+                       className="form-control  mt-4"/>
 
                 <input defaultValue={user.email}
                     placeholder="E-mail address"
-                       className="form-control override-bs mt-4 "/>
+                       className="form-control mt-4 "/>
 
                 <button onClick={register}
-                    className="btn btn-primary override-bs mt-4">
-                    Sign up
+                    className="btn btn-primary override mt-4">
+                    Register
                 </button>
 
             <div className='text-secondary mt-4'>Have an account? <span className="float-end ">
-                <Link to="/login" className={`wd-font-color`} > Sign in</Link></span></div>
+                <Link to="/login" className={`wd-font-color`} > Login</Link></span></div>
 
 
         </>
