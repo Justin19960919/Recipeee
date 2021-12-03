@@ -1,14 +1,14 @@
 import React from "react";
-import RegisterForm from "./RegisterForm";
+import LoginForm from "./LoginForm";
 
-const RegisterScreen = () => {
+const LoginScreen = () => {
     return(
         <>
             <div className="row mt-2">
                 <div className="col-4">
                 </div>
                 <div className="col-4">
-                    <RegisterForm/>
+                    <LoginForm/>
                 </div>
                 <div className="col-4">
                 </div>
@@ -17,4 +17,4 @@ const RegisterScreen = () => {
     )
 }
 
-export default RegisterScreen;
+export default LoginScreen;
