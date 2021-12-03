@@ -1,5 +1,7 @@
-import React, {useState} from "react";
+import React from "react";
+import {Link}  from "react-router-dom";
 import "./index.css";
+
 
 const SearchItem = ({recipe}) => {
 
@@ -7,17 +9,19 @@ const SearchItem = ({recipe}) => {
     return date.split("T")[0];
   }
 
-  const [editAction, setEditAction] = useState(false);
-  const [deleteAction, setDeleteAction] = useState(false);
-
   return (
     <div className="details-container">
       <img src="/pic/2.jpg"/>
 
       <div className="content-container">
-        <h5 className="detail-title">
+
+        <Link
+            className="detail-title"
+            to={`/recipe-detail/${recipe._id}`}
+        >
           {recipe.Name}
-        </h5>
+        </Link>
+
         <span className="descript">{recipe.Description}</span>
         <span className="author">{recipe.AuthorId}</span>
         <span className="date">{formatDate(recipe.DatePublished)}</span>

@@ -37,6 +37,7 @@
 }
 .detail-title{
     grid-area: title;
+    color: black;
 }
 .author{
     grid-area: author;

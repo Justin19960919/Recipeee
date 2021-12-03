@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import SearchItem from "./SearchItem";
 import recipeService from "../../services/recipe-services";
 import "./index.css";
+import RecipeDetail from "../RecipeDetail";
 
 
 const RecipeList = () => {
