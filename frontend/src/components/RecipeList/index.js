@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from "react";
+import {useHistory, useParams} from "react-router-dom";
+
 import SearchItem from "./SearchItem";
 import recipeService from "../../services/recipe-services";
 import "./index.css";
@@ -7,20 +9,11 @@ import RecipeDetail from "../RecipeDetail";
 
 const RecipeList = () => {
 
-  const recommendedRecipes = [
-    {
-      Name: "Low-Fat Berry Blue Frozen Dessert",
-      AuthorId: "1533",
-      Description: "Make and share this Low-Fat Berry Blue Frozen Dessert recipe from Food.com.",
-      DatePublished: "1999-08-09T21:46:00.000Z",
-      LikeNum: 0,
-      StarNum: 0,
-      ReviewCount: 4
-    }
-  ];
-
-  const [searchResults, setSearchResults] = useState(recommendedRecipes);
-  const [searchInput, setSearchInput] = useState("");
+  const params = useParams();
+  const history = useHistory();
+  const [searchResults, setSearchResults] = useState([]);
+  const defaultSearch = params.searchInput || "Dessert";
+  const [searchInput, setSearchInput] = useState(defaultSearch);
 
   const searchInputHandler = (event) => {
     setSearchInput(event.target.value);
@@ -32,17 +25,17 @@ const RecipeList = () => {
   }
 
   // search submit handler
-  // search all results in db
-  //recipeService.searchAllRecipes().then(results => setSearchResults(results));
   const searchSubmitHandler = () => {
-    console.log("Clicked search button, start searching ....");
     const cleanedInput = cleanSearchInput(searchInput);
     if(cleanedInput.length > 0){
+      history.push(`/recipe-search/${searchInput}`);
       recipeService.searchRecipeByName(cleanedInput)
         .then(results => setSearchResults(results));
     }
-    setSearchInput("");
   }
+
+  // render once, when we first get into the page
+  useEffect(searchSubmitHandler, []);
 
   return(
       <>
@@ -63,6 +56,7 @@ const RecipeList = () => {
         </div>
         <p className="black-text">Total of {searchResults.length} search results found.</p>
 
+        {console.log(searchResults)}
       {
         searchResults.map((searchResult) =>
             <li key={searchResult._id}>

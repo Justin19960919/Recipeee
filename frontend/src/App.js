@@ -31,7 +31,7 @@ const App = () => {
           <RegisterScreen />
         </Route>
 
-        <Route path="/recipe-search" exact={true}>
+        <Route path="/recipe-search/:searchInput">
           <SearchScreen />
         </Route>
   

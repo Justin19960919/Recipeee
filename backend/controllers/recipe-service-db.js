@@ -1,4 +1,5 @@
 const recipe_dao = require('../models/dao/recipe-dao');
+const {recipe_model} = require("../models/all_models");
 
 module.exports = (app) => {
 
@@ -30,14 +31,16 @@ module.exports = (app) => {
             .then(recipe => res.status(200).json(recipe));
     }
 
-
+    //
     const searchRecipesByName = (req, res) => {
-        console.log("received get request for search...");
+        // console.log("received get request for search...");
         const recipeName = req.params.recipeName;
         recipe_dao.searchRecipesByName(recipeName)
-            .then(recipes =>
+            .then(recipes => {
                 res.status(200).json(recipes)
+                }
             );
+
     }
 
     const searchRecipesByKeyword = (req, res) => {
