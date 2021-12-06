@@ -6,16 +6,11 @@ import "./index.css";
 
 
 const RecipeDetail = () => {
-  ///// Helper functions ///////
-  const formatDate = (date) => {
-    return date.split("T")[0];
-  }
-
   // fetch parameters using this function
   // params.id
   const params = useParams();
   const curRecipeId = params.id;
-  
+
   ////////// Recipe Detail ///////////
   const [recipeDetail, setRecipeDetail] = useState({});
   const [recipeReviews, setRecipeReviews] = useState([]);
@@ -37,8 +32,16 @@ const RecipeDetail = () => {
   useEffect(getRecipeReviews, []);
 
   // implement when user is created, need to do checks also
-  const submitCommentHandler = () => {
+  const submitReviewHandler = () => {
     console.log("Leaving review!");
+  }
+
+  const updateReviewHandler = () => {
+    console.log("updating review!");
+  }
+
+  const deleteReviewHandler = () => {
+    console.log("delete review!");
   }
 
   return(
@@ -67,7 +70,7 @@ const RecipeDetail = () => {
             }
         />
         <button
-          onClick = {submitCommentHandler}
+          onClick = {submitReviewHandler}
         >
           Submit
         </button>
@@ -75,6 +78,7 @@ const RecipeDetail = () => {
         {
           recipeReviews.map(review =>
             <div>
+              <p>{review._id}</p>
               <p>{review.AuthorId}</p>
               <p>{review.UserId}</p>
               <p>{review.Rating}</p>
