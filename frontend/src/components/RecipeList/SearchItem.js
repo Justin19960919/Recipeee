@@ -15,26 +15,25 @@ const SearchItem = ({recipe}) => {
       <img src="/pic/2.jpg"/>
 
       <div className="content-container">
-        <h5 className="detail-title">
-          {recipe.Name}
-        </h5>
-        <span className="descript">{recipe.Description}</span>
-        <span className="author">{recipe.AuthorId}</span>
-        <span className="date">{formatDate(recipe.DatePublished)}</span>
-
+        <h5 className="detail-title">{recipe.Name}</h5>
+        <h6 className="descript">{recipe.Description}</h6>
+        <span className="author">by {recipe.AuthorId}</span><br/>
+        
+        <span className="date">{formatDate(recipe.DatePublished)}</span><br/>
+        <div className="details-icon">
         <span>
           <i className="fas fa-star"></i>
           {recipe.StarNum}
         </span>
-          <span>
+        <span>
           <i className="fas fa-thumbs-up"></i>
           {recipe.LikeNum}
         </span>
-
         <span>
           <i className="fas fa-comment-alt"></i>
           {recipe.ReviewCount}
         </span>
+        </div>
       </div>
     </div>
   )

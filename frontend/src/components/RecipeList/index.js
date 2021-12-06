@@ -47,18 +47,18 @@ const RecipeList = () => {
       <>
       <div className="search-container">
         <div className="searchbar">
-        <input
-          className="form-control form-control-lg mb-0.5"
-          placeholder="Search for recipes"
-          value={searchInput}
-          onChange={searchInputHandler}
-        />
+          <input
+            className="form-control form-control-lg mb-0.5"
+            placeholder="Search for recipes"
+            value={searchInput}
+            onChange={searchInputHandler}
+          />
 
-        <button
-            className="btn btn-success rounded-pill searchButton"
-            onClick={searchSubmitHandler}>
-          Search
-        </button>
+          <button
+              className="btn btn-success rounded-pill searchButton"
+              onClick={searchSubmitHandler}>
+            Search
+          </button>
         </div>
         <p className="black-text">Total of {searchResults.length} search results found.</p>
 
