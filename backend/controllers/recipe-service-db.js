@@ -1,4 +1,5 @@
 const recipe_dao = require('../models/dao/recipe-dao');
+const {recipe_model} = require("../models/all_models");
 
 module.exports = (app) => {
 
@@ -12,13 +13,15 @@ module.exports = (app) => {
     // read
     const findAllRecipes = (req, res) => {
         recipe_dao.findAllRecipes()
-            .then(recipes => res.json(recipes));
+            .then(recipes =>
+               res.json(recipes)
+            );
     }
 
     const findRecipeById = (req, res) => {
         const recipeId = req.params.id;
         recipe_dao.findRecipeById(recipeId)
-            .then(recipes => res.json(recipes));
+            .then(recipe => res.json(recipe));
     }
 
 
@@ -28,12 +31,17 @@ module.exports = (app) => {
             .then(recipe => res.status(200).json(recipe));
     }
 
-
+    //
     const searchRecipesByName = (req, res) => {
         const recipeName = req.params.recipeName;
         recipe_dao.searchRecipesByName(recipeName)
-            .then(recipes => res.status(200).json(recipes));
+            .then(recipes => {
+                res.status(200).json(recipes)
+                }
+            );
+
     }
+
     const searchRecipesByKeyword = (req, res) => {
         const keyword = req.params.keyword;
         recipe_dao.searchRecipesByKeyword(keyword)
@@ -81,10 +89,10 @@ module.exports = (app) => {
     app.get('/rest/recipes/:id', findRecipeById);
     app.get('/rest/recipes/findRecipe/:recipeName', findRecipeByRecipeName);
     app.get('/rest/recipes/searchRecipes/:recipeName', searchRecipesByName);
-    app.get('/rest/recipes/searchRecipes/:keyword', searchRecipesByKeyword);
-    app.get('/rest/recipes/searchRecipes/:authorId', searchRecipesByAuthorId);
-    app.get('/rest/recipes/searchRecipes/:number', searchTopRecipesByLike);
-    app.get('/rest/recipes/searchRecipes/:number', searchTopRecipesByStar);
+    app.get('/rest/recipes/searchRecipesByKeyword/:keyword', searchRecipesByKeyword);
+    app.get('/rest/recipes/searchRecipesByAuthor/:authorId', searchRecipesByAuthorId);
+    app.get('/rest/recipes/searchTopRecipesByLikes/:number', searchTopRecipesByLike);
+    app.get('/rest/recipes/searchTopRecipesByStars/:number', searchTopRecipesByStar);
 
     // update
     app.put("/rest/recipes/:id", updateRecipeInfo);

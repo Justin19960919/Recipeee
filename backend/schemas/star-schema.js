@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
 const star_schema = new mongoose.Schema({
-    RecipeId: String,
+    _id: String,
+    RecipeId: Number,
     Username: String
 }, {collection: "stars"});
 

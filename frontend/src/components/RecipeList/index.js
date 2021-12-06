@@ -1,32 +1,41 @@
 import React, {useEffect, useState} from "react";
-import RecipeDetail from "./RecipeDetail";
+import {useHistory, useParams} from "react-router-dom";
+
+import SearchItem from "./SearchItem";
 import recipeService from "../../services/recipe-services";
 import "./index.css";
+import RecipeDetail from "../RecipeDetail";
 
 
 const RecipeList = () => {
-  const [searchResults, setSearchResults] = useState([]);
-  const [searchInput, setSearchInput] = useState("");
 
-  // useEffect(() =>
-  //     recipeService.searchAllRecipes()
-  //     .then(recipes => setSearchResults(recipes)),
-  //     [])
+  const params = useParams();
+  const history = useHistory();
+  const [searchResults, setSearchResults] = useState([]);
+  const defaultSearch = params.searchInput || "Dessert";
+  const [searchInput, setSearchInput] = useState(defaultSearch);
 
   const searchInputHandler = (event) => {
     setSearchInput(event.target.value);
     console.log(searchInput);
   }
 
+  const cleanSearchInput = (input) => {
+    return input.trim();
+  }
+
   // search submit handler
   const searchSubmitHandler = () => {
-    console.log("Clicked search button, start searching ....");
-    // recipeService.searchRecipeByRecipeName(searchInput)
-    // .catch(err => console.log(err))
-    // .then(recipes => setSearchResults(recipes));
-    // clean input field
-    setSearchInput("");
+    const cleanedInput = cleanSearchInput(searchInput);
+    if(cleanedInput.length > 0){
+      history.push(`/recipe-search/${searchInput}`);
+      recipeService.searchRecipeByName(cleanedInput)
+        .then(results => setSearchResults(results));
+    }
   }
+
+  // render once, when we first get into the page
+  useEffect(searchSubmitHandler, []);
 
   return(
       <>
@@ -45,12 +54,13 @@ const RecipeList = () => {
           Search
         </button>
         </div>
-        <RecipeDetail/>
-        <RecipeDetail/>
+        <p className="black-text">Total of {searchResults.length} search results found.</p>
+
+        {console.log(searchResults)}
       {
-        searchResults.map(searchResult =>
+        searchResults.map((searchResult) =>
             <li key={searchResult._id}>
-              <RecipeDetail
+              <SearchItem
                   recipe={searchResult}
               />
             </li>

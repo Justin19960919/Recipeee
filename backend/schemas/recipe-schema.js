@@ -1,13 +1,14 @@
 const mongoose = require('mongoose');
 
 const recipe_schema = new mongoose.Schema({
+    _id: Number,
     Name: {
         type: String,
         required: [true, 'must provide recipe name'],
         trim: true,
         maxLength: 50
     },
-    AuthorId: String,
+    AuthorId: Number,
     Keywords: {
         type: Array,
         default: []

@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
 const recomm_schema = new mongoose.Schema({
-    RecipeIds: [String],
+    _id: String,
+    RecipeIds: [Number],
     Type: {type: String, defaultValue: 'Default'}
 }, {collection: "recommendations"});
 

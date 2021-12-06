@@ -20,7 +20,7 @@ const Navigation = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/search" className="nav-link">
+              <Link to="/recipe-search/:searchInput" className="nav-link">
                 Search
               </Link>
             </li>
