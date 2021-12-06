@@ -12,7 +12,9 @@ module.exports = (app) => {
     // read
     const findAllRecipes = (req, res) => {
         recipe_dao.findAllRecipes()
-            .then(recipes => res.json(recipes));
+            .then(recipes =>
+               res.json(recipes)
+            );
     }
 
     const findRecipeById = (req, res) => {
@@ -30,10 +32,14 @@ module.exports = (app) => {
 
 
     const searchRecipesByName = (req, res) => {
+        console.log("received get request for search...");
         const recipeName = req.params.recipeName;
         recipe_dao.searchRecipesByName(recipeName)
-            .then(recipes => res.status(200).json(recipes));
+            .then(recipes =>
+                res.status(200).json(recipes)
+            );
     }
+
     const searchRecipesByKeyword = (req, res) => {
         const keyword = req.params.keyword;
         recipe_dao.searchRecipesByKeyword(keyword)

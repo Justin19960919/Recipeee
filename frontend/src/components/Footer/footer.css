@@ -12,6 +12,9 @@
 .left-container span{
     color:#ffffff;
 }
+.left-container h6{
+    color:#ffffff;
+}
 .right-container{
     grid-area: right;
 }
@@ -24,11 +27,11 @@ ul,li{
 }
 li a{
     color: #ffffff;
+    text-decoration: none;
 }
 li a:hover{
     color: #e7e7e7;
 }
-.right-container ul,li{
-    list-style-type: none;
+.right-container ul ,li{
     text-align:right;
 }

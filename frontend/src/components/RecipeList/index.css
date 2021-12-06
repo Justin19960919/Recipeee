@@ -1,5 +1,6 @@
 .search-container{
     padding: 10% 20%;
+    min-height: 37rem;
 }
 .searchbar{
     margin: 0 auto 3rem;
@@ -15,38 +16,55 @@
     border-bottom: 1px solid rgb(175, 175, 175);
 }
 .details-container img{
-    width: 8rem;
-    height: 8rem;
+    width: 12rem;
+    height: 12rem;
     margin-right: 1rem;
 }
-.details-container h5,span{
+.details-container h5,h6,span{
     color: black;
 }
 .content-container{
-    position: relative;
-    left: 1rem;
     padding:0;
     width: 100%;
-    display: grid;
-    grid-template-columns: 75% 25%;
-    grid-template-rows: repeat(1fr,3);
-    grid-template-areas: "title title"
-    "des date"
-    "author review"
-    ;
 }
 .detail-title{
-    grid-area: title;
+    text-align:left;
+}
+.descript{
+    text-align:left;
 }
 .author{
-    grid-area: author;
+    float: left;
 }
 .date{
-    grid-area: date;
+    float: left;
 }
-.reviews{
-    grid-area: review;
+.fas{
+    margin-left: 0.8rem;
 }
-.description{
-    grid-area: des;
+i{
+    margin-right: 0.2rem;
+}
+.fa-comment-alt{
+    margin-right: 0.2rem;
+    color: aliceblue;
+    text-shadow: 0 0 1px #000;
+}
+.fa-star{
+    color: rgb(252, 193, 0);
+}
+.fa-thumbs-up{
+    color: rgb(7, 180, 248);
+}
+
+@media (max-width: 600px) {
+    .date{
+        display: inline-block;
+    }
+    .details-icon{
+        float: left;
+    }
+    .fa-star{
+        margin-left:0;
+    }
 }
