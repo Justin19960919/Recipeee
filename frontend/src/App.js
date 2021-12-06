@@ -13,8 +13,10 @@ import 'bootstrap/dist/js/bootstrap.js';
 // 
 import HomeScreen from "./components/HomeScreen";
 import RegisterScreen from "./components/RegisterScreen";
+import LoginScreen from "./components/LoginScreen";
 import SearchScreen from "./components/SearchScreen";
 import RecipeDetailScreen from "./components/RecipeDetail";
+
 
 
 const App = () => {
@@ -26,9 +28,11 @@ const App = () => {
         <Route path="/" exact={true}>
           <HomeScreen />
         </Route>
-
         <Route path="/register" exact={true}>
           <RegisterScreen />
+        </Route>
+        <Route path="/login" exact={true}>
+          <LoginScreen />
         </Route>
 
         <Route path="/recipe-search/:searchInput">

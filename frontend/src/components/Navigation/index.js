@@ -1,5 +1,5 @@
 import "./navigation.css";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 const Navigation = () => {
@@ -7,12 +7,12 @@ const Navigation = () => {
     <nav className="navbar navbar-expand-lg navbar-dark navbar-color">
       <div className="container-fluid">
         <a className="navbar-brand logo" href="/">Recipee</a>
-{/*  */}
-        <button className="navbar-toggler"  data-bs-toggle="collapse" data-bs-target="#navbarText" type="button" aria-controls="navbarText" aria-expanded="false">
+        {/*  */}
+        <button className="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarText" type="button" aria-controls="navbarText" aria-expanded="false">
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div className="collapse navbar-collapse" id="navbarText">
+        <div className="collapse navbar-collapse submenu" id="navbarText">
           <ul className="navbar-nav me-auto mb-lg-0">
             <li className="nav-item">
               <Link to="/about" className="nav-link">
@@ -21,7 +21,7 @@ const Navigation = () => {
             </li>
             <li className="nav-item">
               <Link to="/recipe-search/:searchInput" className="nav-link">
-                Search
+                Search <i class="fa fa-search"></i>
               </Link>
             </li>
           </ul>

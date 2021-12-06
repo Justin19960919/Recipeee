@@ -1,13 +1,17 @@
 .form-page{
   display: grid;
   grid-template-columns: 1fr 1fr;
+
 }
 .about-us{
-  padding:6rem 8rem;
+  padding: 5% 15%;
   margin: auto;
 }
 .about-us .about-us-title,.about-us-content{
   color:black;
+}
+.about-us-content{
+  max-height: 15rem;
 }
 .form{
   width:70%;

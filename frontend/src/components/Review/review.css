@@ -1,5 +1,5 @@
 .review{
-    padding: 0 10rem;
+    padding: 0 10%;
 }
 .container{
     display: flex;
@@ -9,6 +9,7 @@
     width: 50%;
     padding: 1rem;
     margin: auto;
+    min-width: 15.8rem;
 }
 .comment-container .title,.comment{
     color: black;
@@ -17,4 +18,16 @@
     border-radius: 1rem;
     width: 40%;
     height: 40%;
+    min-width: 14.5rem;
 }
+.comment{
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+.text-truncate{
+    display: -webkit-box !important;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+  }
