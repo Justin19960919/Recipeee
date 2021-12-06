@@ -14,7 +14,7 @@ import 'bootstrap/dist/js/bootstrap.js';
 import HomeScreen from "./components/HomeScreen";
 import RegisterScreen from "./components/RegisterScreen";
 import SearchScreen from "./components/SearchScreen";
-import RecipeDetail from "./components/RecipeDetail";
+import RecipeDetailScreen from "./components/RecipeDetail";
 
 
 const App = () => {
@@ -36,7 +36,7 @@ const App = () => {
         </Route>
   
         <Route path="/recipe-detail/:id">
-          <RecipeDetail/>
+          <RecipeDetailScreen/>
         </Route>
 
 

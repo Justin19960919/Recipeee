@@ -21,7 +21,7 @@ module.exports = (app) => {
     const findRecipeById = (req, res) => {
         const recipeId = req.params.id;
         recipe_dao.findRecipeById(recipeId)
-            .then(recipes => res.json(recipes));
+            .then(recipe => res.json(recipe));
     }
 
 
@@ -33,7 +33,6 @@ module.exports = (app) => {
 
     //
     const searchRecipesByName = (req, res) => {
-        // console.log("received get request for search...");
         const recipeName = req.params.recipeName;
         recipe_dao.searchRecipesByName(recipeName)
             .then(recipes => {
@@ -90,10 +89,10 @@ module.exports = (app) => {
     app.get('/rest/recipes/:id', findRecipeById);
     app.get('/rest/recipes/findRecipe/:recipeName', findRecipeByRecipeName);
     app.get('/rest/recipes/searchRecipes/:recipeName', searchRecipesByName);
-    app.get('/rest/recipes/searchRecipes/:keyword', searchRecipesByKeyword);
-    app.get('/rest/recipes/searchRecipes/:authorId', searchRecipesByAuthorId);
-    app.get('/rest/recipes/searchRecipes/:number', searchTopRecipesByLike);
-    app.get('/rest/recipes/searchRecipes/:number', searchTopRecipesByStar);
+    app.get('/rest/recipes/searchRecipesByKeyword/:keyword', searchRecipesByKeyword);
+    app.get('/rest/recipes/searchRecipesByAuthor/:authorId', searchRecipesByAuthorId);
+    app.get('/rest/recipes/searchTopRecipesByLikes/:number', searchTopRecipesByLike);
+    app.get('/rest/recipes/searchTopRecipesByStars/:number', searchTopRecipesByStar);
 
     // update
     app.put("/rest/recipes/:id", updateRecipeInfo);

@@ -22,26 +22,26 @@ const searchRecipeByName = (name) =>
 
 
 const searchRecipesByKeyWord = (keyword) =>
-  fetch(`${recipeServiceAPI}/searchRecipes/${keyword}`)
+  fetch(`${recipeServiceAPI}/searchRecipesByKeyword/${keyword}`)
     .then(recipes => recipes.json());
 
 
 
 const searchRecipesByAuthorId = (authorId) =>
-  fetch(`${recipeServiceAPI}/searchRecipes/${authorId}`)
+  fetch(`${recipeServiceAPI}/searchRecipesByAuthor/${authorId}`)
   .then(recipes => recipes.json());
 
 
 
 // top likes
 const searchTopRecipesByLike = (number) =>
-  fetch(`${recipeServiceAPI}/searchRecipes/${number}`)
+  fetch(`${recipeServiceAPI}/searchTopRecipesByLikes/${number}`)
     .then(recipes => recipes.json());
 
 
 // top stars
 const searchTopRecipesByStar = (number) =>
-  fetch(`${recipeServiceAPI}/searchRecipes/${number}`)
+  fetch(`${recipeServiceAPI}/searchTopRecipesByStars/${number}`)
     .then(recipes => recipes.json());
 
 

@@ -20,11 +20,12 @@ module.exports = (app) => {
     const findReviewById = (req, res) => {
         const reviewId = req.params.id;
         review_dao.findReviewById(reviewId)
-            .then(reviews => res.json(reviews));
+            .then(review => res.json(review));
     }
 
     const searchReviewsByAuthorId = (req, res) => {
         const authorId = req.params.authorId;
+        console.log('authorid: ', authorId);
         review_dao.searchReviewsByAuthorId(authorId)
             .then(reviews => res.status(200).json(reviews));
     }
@@ -33,8 +34,10 @@ module.exports = (app) => {
         review_dao.searchReviewsByRecipeId(recipeId)
             .then(reviews => res.status(200).json(reviews));
     }
+    
     const searchReviewsByRating = (req, res) => {
         const rating = req.params.rating;
+        // console.log("rating: ", rating);
         review_dao.searchReviewsByRating(rating)
             .then(reviews => res.status(200).json(reviews));
     }
@@ -63,9 +66,9 @@ module.exports = (app) => {
     // read
     app.get('/rest/reviews', findAllReviews);
     app.get('/rest/reviews/:id', findReviewById);
-    app.get('/rest/reviews/searchReviews/:authorId', searchReviewsByAuthorId);
-    app.get('/rest/reviews/searchReviews/:recipeId', searchReviewsByRecipeId);
-    app.get('/rest/reviews/searchReviews/:rating', searchReviewsByRating);
+    app.get('/rest/reviews/searchReviewsByAuthorId/:authorId', searchReviewsByAuthorId);
+    app.get('/rest/reviews/searchReviewsByRecipeId/:recipeId', searchReviewsByRecipeId);
+    app.get('/rest/reviews/searchReviewsByRating/:rating', searchReviewsByRating);
 
     // update
     app.put("/rest/reviews/:id", updateReviewInfo);

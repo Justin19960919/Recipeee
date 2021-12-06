@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const recipe_schema = require('../schemas/recipe-schema');
 const author_schema = require('../schemas/author-schema');
 const user_schema = require('../schemas/user-schema');
-const review_schema = require('../schemas/user-schema');
+const review_schema = require('../schemas/review-schema');
 
 
 // define models
