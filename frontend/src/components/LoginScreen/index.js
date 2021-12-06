@@ -1,10 +1,8 @@
 import React from "react";
-import RegisterForm from "./RegisterForm";
-
-// import components
+import LoginForm from "./LoginForm";
 import Navigation from "../Navigation";
 
-const RegisterScreen = () => {
+const LoginScreen = () => {
     return(
         <>
             <Navigation/>
@@ -12,13 +10,13 @@ const RegisterScreen = () => {
                 <div className="col-4">
                 </div>
                 <div className="col-4">
-                    <RegisterForm/>
+                    <LoginForm/>
                 </div>
                 <div className="col-4">
                 </div>
             </div>
-            </>
+        </>
     )
 }
 
-export default RegisterScreen;
+export default LoginScreen;

@@ -2,3 +2,10 @@ body{
   background-color: #F8F2F1;
   color: black;
 }
+a{
+  text-decoration: none;
+}
+
+.wd-theme-color{
+  background-color: #15643B;;
+}
