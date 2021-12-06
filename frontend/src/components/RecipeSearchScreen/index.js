@@ -6,11 +6,11 @@ import RecipeList from "../RecipeList";
 import Footer from "../Footer";
 
 // import css
-import "./searchScreen.css";
+import "./index.css";
 
 
 
-const SearchScreen = () => {
+const RecipeSearchScreen = () => {
 
   return(
         <>
@@ -23,5 +23,5 @@ const SearchScreen = () => {
 
 
 
-export default SearchScreen;
+export default RecipeSearchScreen;
 
