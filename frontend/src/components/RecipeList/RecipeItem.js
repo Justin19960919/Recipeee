@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./index.css";
 
-const SearchItem = ({ recipe }) => {
+const RecipeItem = ({ recipe }) => {
 
   const formatDate = (date) => {
     return date.split("T")[0];
@@ -18,13 +18,16 @@ const SearchItem = ({ recipe }) => {
       <img src={getImage(recipe.Images)} alt="recipe-image" />
 
       <div className="content-container">
-        <Link
-          className="detail-title"
-          to={`/recipe-detail/${recipe._id}`}
-        >
-          {recipe.Name}
-        </Link>
-        <h5 className="detail-title">{recipe.Name}</h5>
+
+        <h5 className="detail-title">
+          <Link
+              className="detail-title"
+              to={`/recipe-detail/${recipe._id}`}
+          >
+            {recipe.Name}
+          </Link>
+        </h5>
+
         <h6 className="descript">{recipe.Description}</h6>
         <span className="author">by {recipe.AuthorId}</span><br />
 
@@ -49,4 +52,4 @@ const SearchItem = ({ recipe }) => {
 }
 
 
-export default SearchItem;
+export default RecipeItem;

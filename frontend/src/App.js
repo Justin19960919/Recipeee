@@ -14,9 +14,9 @@ import 'bootstrap/dist/js/bootstrap.js';
 import HomeScreen from "./components/HomeScreen";
 import RegisterScreen from "./components/RegisterScreen";
 import LoginScreen from "./components/LoginScreen";
-import SearchScreen from "./components/SearchScreen";
-import RecipeDetailScreen from "./components/RecipeDetail";
-
+import RecipeSearchScreen from "./components/RecipeSearchScreen";
+import RecipeDetailScreen from "./components/RecipeDetailScreen";
+import UserRecipeScreen from "./components/UserRecipeScreen";
 
 
 const App = () => {
@@ -36,13 +36,16 @@ const App = () => {
         </Route>
 
         <Route path="/recipe-search/:searchInput">
-          <SearchScreen />
-        </Route>
-  
-        <Route path="/recipe-detail/:id">
-          <RecipeDetailScreen/>
+          <RecipeSearchScreen />
         </Route>
 
+        <Route path="/recipe-detail/:id">
+          <RecipeDetailScreen />
+        </Route>
+
+        <Route path="/my-recipes">
+          <UserRecipeScreen />
+        </Route>
 
       </BrowserRouter>
     </>
