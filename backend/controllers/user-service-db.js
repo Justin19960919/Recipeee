@@ -45,23 +45,61 @@ module.exports = (app) => {
         res.sendStatus(200);
     }
 
+    const login = (req, res) => {
+        user_dao.findByUsernameAndPassword(req.body)
+            .then(user => {
+                if(user) {
+                    req.session['profile'] = user;
+                    res.json(user);
+                    return;
+                }
+                res.sendStatus(403);
+            })
+    }
+
+    const register = (req, res) => {
+        console.log(req.body);
+        user_dao.findByUsername(req.body)
+            .then(user => {
+                if(user) {
+                    res.sendStatus(404);
+                    return;
+                }
+                user_dao.createNewUser(req.body)
+                    .then(user => {
+                        req.session['profile'] = user;
+                        res.json(user)
+                    });
+            })
+    }
+
+    const profile = (req, res) =>
+        res.json(req.session['profile']);
+
+    const logout = (req, res) =>
+        res.send(req.session.destroy());
+
 
     /////////// APIS ///////////
 
     //create
-    app.post("/rest/users", createNewUser);
+    app.post("/api/users", createNewUser);
 
     // read
-    app.get('/rest/users', findAllUsers);
-    app.get('/rest/users/:id', findUserById);
-    app.get('/rest/users/findUser/:userName', findUserByUserName);
+    app.get('/api/users', findAllUsers);
+    app.get('/api/users/:id', findUserById);
+    app.get('/api/users/findUser/:userName', findUserByUserName);
 
     // update
-    app.put("/rest/users/:id", updateUserInfo);
+    app.put("/api/users/:id", updateUserInfo);
 
     // delete
-    app.delete("/rest/users/:id", deleteUser);
+    app.delete("/api/users/:id", deleteUser);
 
+    app.post('/api/login', login);
+    app.post('/api/register', register);
+    app.post('/api/profile', profile);
+    app.post('/api/logout', logout);
 };
 
 
