@@ -2,8 +2,7 @@ const {user_model} = require("../all_models.js");
 
 // CREATE
 module.exports.createNewUser = (user) =>
-    user_model.create(user)
-    .catch(err => console.log(err));
+    user_model.create(user);
 
 
 // READ
@@ -27,8 +26,8 @@ module.exports.deleteUser = (id) =>
 
 
 module.exports.findByUsernameAndPassword = ({username, password}) =>
-    user_model.findOne({userName: username, password: password});
+    user_model.findOne({username, password});
 
 
 module.exports.findByUsername = ({username}) =>
-    user_model.findOne({userName: username});
+    user_model.findOne({username});

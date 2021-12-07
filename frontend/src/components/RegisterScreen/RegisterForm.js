@@ -6,16 +6,17 @@ import '../../index.css'
 import {API_URL} from "../consts";
 
 const RegisterForm = () => {
-    const [user, setUser] =useState({});
-    const history= useHistory();
-    const register = () =>
-        fetch(`${API_URL}/register`,{
+    const [user, setUser] = useState({});
+    const history = useHistory();
+    const register = () => {
+        fetch(`${API_URL}/register`, {
             method: 'POST',
             body: JSON.stringify(user),
-            headers:{
-            'content-type': 'application/json',
+            headers: {
+                'content-type': 'application/json',
             }
         }).then(status => history.push('/profile'));
+    }
 
     return(
         <>
@@ -38,8 +39,22 @@ const RegisterForm = () => {
                        className="form-control  mt-4"/>
 
                 <input defaultValue={user.email}
+                    onChange={(e)=>setUser({...user,email:e.target.value})}
                     placeholder="E-mail address"
                        className="form-control mt-4 "/>
+
+                <input defaultValue={user.name}
+                       onChange={(e)=>setUser({...user,name:e.target.value})}
+                       placeholder="First Name"
+                       className="form-control mt-4 "/>
+
+                <select id="type" name="type"
+                        onChange={(e)=>setUser({...user,type:e.target.value})}
+                        className="form-select mt-4 ">
+                    <option value="user">User</option>
+                    <option value="paiduser">Paid User</option>
+                    <option value="admin">Admin</option>
+                </select>
 
                 <button onClick={register}
                     className="btn btn-primary override mt-4">
