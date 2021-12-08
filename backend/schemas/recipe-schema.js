@@ -9,6 +9,7 @@ const recipe_schema = new mongoose.Schema({
         maxLength: 50
     },
     AuthorId: Number,
+    AuthorName: String,
     Keywords: {
         type: Array,
         default: []
