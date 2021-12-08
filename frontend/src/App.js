@@ -17,12 +17,19 @@ import LoginScreen from "./components/LoginScreen";
 import RecipeSearchScreen from "./components/RecipeSearchScreen";
 import RecipeDetailScreen from "./components/RecipeDetailScreen";
 import UserRecipeScreen from "./components/UserRecipeScreen";
-
+import ProfileScreen from "./components/ProfileScreen";
+import PrivacyPolicy from "./components/PrivatePolicyScreen";
+import {Provider} from "react-redux";
+import {combineReducers, createStore} from "redux";
+import profile from "./reducers/profile";
 
 const App = () => {
 
+  const reducers = combineReducers({profile})
+  const store = createStore(reducers);
   return (
     <>
+      <Provider store={store}>
       <BrowserRouter>
 
         <Route path="/" exact={true}>
@@ -34,7 +41,12 @@ const App = () => {
         <Route path="/login" exact={true}>
           <LoginScreen />
         </Route>
-
+        <Route path="/profile" exact={true}>
+        <ProfileScreen/>
+      </Route>
+        <Route path="/privacy">
+          <PrivacyPolicy/>
+        </Route>
         <Route path="/recipe-search/:searchInput">
           <RecipeSearchScreen />
         </Route>
@@ -48,6 +60,7 @@ const App = () => {
         </Route>
 
       </BrowserRouter>
+        </Provider>
     </>
   );
 
