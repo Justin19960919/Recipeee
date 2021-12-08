@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './index.css';
 //import reviewService from "../../services/review-services";
 
 const LeaveReviewForm = ({ setCurReviews }) => {
@@ -12,9 +13,11 @@ const LeaveReviewForm = ({ setCurReviews }) => {
   }
 
   return (
-    <>
+    <div className="leaveReview-container">
+    <h4>Comments</h4>
+    <div className="leaveReview-input-container">
       <input
-        className="form-control form-control-lg mb-0.5"
+        className="form-control form-control-lg"
         placeholder="Leave a comment"
         value={comment}
         onChange={
@@ -22,12 +25,9 @@ const LeaveReviewForm = ({ setCurReviews }) => {
         }
       />
 
-      <button
-        onClick={submitReviewHandler}
-      >
-        Submit
-      </button>
-    </>
+      <button onClick={submitReviewHandler} className="comment-button">Submit</button>
+    </div>
+    </div>
   )
 }
 

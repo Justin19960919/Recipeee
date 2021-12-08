@@ -19,3 +19,8 @@
 .test{
     background-color: aqua;
 }
+@media (max-height:900px){
+    .slides{ 
+        height: auto;
+    }
+}

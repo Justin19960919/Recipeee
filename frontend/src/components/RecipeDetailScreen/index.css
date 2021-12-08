@@ -1,0 +1,106 @@
+.recipeDetail-container h2{
+    color: black;
+    padding: 5%;
+    text-align: center;
+}
+.category-word{
+    text-align: center;
+}
+.category-word span{
+    margin: 0 0.5rem;
+}
+.auther-title{
+    display: flex;
+    padding: 0 20% 0 15%;
+}
+.auther-title .bi-person{
+    color:black;
+    width: 6rem;
+    height: 6rem;
+} 
+.auther-title-detail{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.like-star-container{
+    margin-left: auto;
+    position: relative;
+    top: 1.5rem;
+}
+.like-star-container button{
+    margin: 0 0.2rem;
+    background-color: #f0ae3d;
+    color: #ffffff;
+}
+.like-star-container .bi-star{
+    color:rgb(255, 255, 255);
+    width: 1rem;
+    height: 1rem;
+    padding: 0;
+    margin: 0;
+}
+.recipeDetail-img{
+    margin:3rem auto;
+    display: block;
+    width: 50%;
+    height: auto;
+}
+.recipeDetail-content-container{
+    padding: 0 15%;
+}
+.recipeDetail-content-container h4{
+    color: black;
+    margin: 0.4rem 0;
+}
+.desctription-container p{
+    padding: 1rem 0 0 2rem;
+}
+.ingredient-container ul{
+    margin: 1rem 0;
+}
+.ingredient-container li{
+    text-align: left;
+    width: 30%;
+}
+.ingredient-container span{
+    float: right;
+}
+.instructions-container ul{
+    margin: 1rem 0;
+}
+.instructions-container li{
+    text-align: left;
+    list-style-type: decimal;
+}
+.leaveReview-container{
+    padding: 0 15%;
+}
+.leaveReview-container h4{
+    color:black;
+}
+.leaveReview-input-container{
+    padding: 2% 5%;
+    display: flex;
+}
+.leaveReview-input-container input{
+    margin: 0 1rem;
+}
+.comment-button{
+    color:#ffffff;
+    background-color: #f0ae3d;
+    border: 0;
+    border-radius: 1rem;
+}
+.recipeReview-container{
+    padding: 2rem 15%;
+}
+.reviewer-detail{
+    display: flex;
+    flex-direction: column;
+    margin: 0 1rem;
+}
+.reviewer-detail p{
+    padding: 0;
+    margin: 0;
+}
