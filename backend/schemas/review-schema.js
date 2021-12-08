@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const review_schema = new mongoose.Schema({
     // _id: Number,
     RecipeId: Number,
-    // AuthorId: Number,
+    AuthorId: Number,
     UserId: String,
     Rating: Number,
     Review: String,
