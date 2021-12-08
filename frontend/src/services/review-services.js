@@ -1,4 +1,4 @@
-const reviewServiceAPI = "http://localhost:3001/rest/reviews";
+const reviewServiceAPI = "http://localhost:3001/api/reviews";
 
 
 // read
