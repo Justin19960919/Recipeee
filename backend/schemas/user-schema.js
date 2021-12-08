@@ -8,7 +8,7 @@ const user_schema = new mongoose.Schema({
         trim: true,
         maxlength: 100
     },
-    username: {
+    userName: {
         type: String,
         required: [true, "Please provide user name"],
         trim: true,

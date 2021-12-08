@@ -26,8 +26,8 @@ const RegisterForm = () => {
             <br/>
                 <div className="mt-20">
                 <input
-                    value={user.username}
-                    onChange={(e)=>setUser({...user,username:e.target.value})}
+                    value={user.userName}
+                    onChange={(e)=>setUser({...user,userName:e.target.value})}
                        placeholder="Username"
                        className="form-control"/></div>
 

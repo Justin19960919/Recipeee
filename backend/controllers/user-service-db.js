@@ -25,8 +25,8 @@ module.exports = (app) => {
 
 
     const findUserByUserName = (req, res) => {
-        const username = req.params.username;
-        user_model.findOne({username: username})
+        const userName = req.params.userName;
+        user_model.findOne({userName})
             .then(foundUsr => res.status(200).json(foundUsr));
     }
 
@@ -34,7 +34,7 @@ module.exports = (app) => {
     const updateUserInfo = (req, res) => {
         const userId = req.params.id;
         const userInfo = req.body;
-        user_dao.updateUserInfo(userId, userInfo)
+        user_dao.updateUserInfo(userId, userInfo);
         res.sendStatus(200);
     }
 
@@ -87,7 +87,7 @@ module.exports = (app) => {
     // read
     app.get('/rest/users', findAllUsers);
     app.get('/rest/users/:id', findUserById);
-    app.get('/rest/users/findUser/:username', findUserByUserName);
+    app.get('/rest/users/findUser/:userName', findUserByUserName);
 
     // update
     app.put("/rest/users/:id", updateUserInfo);

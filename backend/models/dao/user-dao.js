@@ -25,9 +25,9 @@ module.exports.deleteUser = (id) =>
     user_model.findByIdAndDelete({_id: id});
 
 
-module.exports.findByUsernameAndPassword = ({username, password}) =>
-    user_model.findOne({username, password});
+module.exports.findByUsernameAndPassword = ({userName, password}) =>
+    user_model.findOne({userName, password});
 
 
-module.exports.findByUsername = ({username}) =>
-    user_model.findOne({username});
+module.exports.findByUsername = ({userName}) =>
+    user_model.findOne({userName});
