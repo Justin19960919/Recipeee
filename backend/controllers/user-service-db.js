@@ -26,7 +26,7 @@ module.exports = (app) => {
 
     const findUserByUserName = (req, res) => {
         const userName = req.params.userName;
-        user_model.findOne({userName: userName})
+        user_model.findOne({userName})
             .then(foundUsr => res.status(200).json(foundUsr));
     }
 
@@ -34,7 +34,7 @@ module.exports = (app) => {
     const updateUserInfo = (req, res) => {
         const userId = req.params.id;
         const userInfo = req.body;
-        user_dao.updateUserInfo(userId, userInfo)
+        user_dao.updateUserInfo(userId, userInfo);
         res.sendStatus(200);
     }
 
@@ -44,6 +44,39 @@ module.exports = (app) => {
         user_dao.deleteUser(userId);
         res.sendStatus(200);
     }
+
+    const login = (req, res) => {
+        user_dao.findByUsernameAndPassword(req.body)
+            .then(user => {
+                if(user) {
+                    req.session['profile'] = user;
+                    res.json(user);
+                    return;
+                }
+                res.sendStatus(403);
+            })
+    }
+
+    const register = (req, res) => {
+        user_dao.findByUsername(req.body)
+            .then(user => {
+                if(user) {
+                    res.sendStatus(404);
+                    return;
+                }
+                user_dao.createNewUser(req.body)
+                    .then(user => {
+                        req.session['profile'] = user;
+                        res.json(user)
+                    });
+            })
+    }
+
+    const profile = (req, res) =>
+        res.json(req.session['profile']);
+
+    const logout = (req, res) =>
+        res.send(req.session.destroy());
 
 
     /////////// APIS ///////////
@@ -62,6 +95,10 @@ module.exports = (app) => {
     // delete
     app.delete("/rest/users/:id", deleteUser);
 
+    app.post('/rest/login', login);
+    app.post('/rest/register', register);
+    app.post('/rest/profile', profile);
+    app.post('/rest/logout', logout);
 };
 
 

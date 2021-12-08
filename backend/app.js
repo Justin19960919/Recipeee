@@ -7,6 +7,12 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
+const session = require('express-session');
+app.use(session({
+  resave: false, saveUninitialized: true,
+  secret: 'shhh, dont tell anyone'
+}));
+
 // require secrets: process.env.___ to get secrets
 require("dotenv").config()
 

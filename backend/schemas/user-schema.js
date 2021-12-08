@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
 const user_schema = new mongoose.Schema({
-    _id: String,
     name: {
         type: String,
         required: [true, 'Please provide first name'],
@@ -13,7 +12,9 @@ const user_schema = new mongoose.Schema({
         type: String,
         required: [true, "Please provide user name"],
         trim: true,
-        maxLength: 20
+        maxLength: 20,
+
+        unique: true,
     },
     email: {
         type: String,
@@ -22,9 +23,7 @@ const user_schema = new mongoose.Schema({
         match: [
           /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
           'Please provide a valid email',
-        ],
-
-        unique: true,
+        ]
     },
     password: {
         type: String,
@@ -34,7 +33,7 @@ const user_schema = new mongoose.Schema({
     },
     type: {
         type: String,
-        enum: ['user', 'admin', 'author'],
+        enum: ['user', 'admin', 'author', 'paiduser'],
         default: "user"
     }
 }, { collection: "users" });

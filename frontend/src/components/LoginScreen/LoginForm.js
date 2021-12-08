@@ -9,7 +9,6 @@ const LoginForm = () => {
         fetch(`${API_URL}/login`, {
             method: 'POST',
             body: JSON.stringify(user),
-            credentials: 'include',
             headers: {
                 'content-type': 'application/json'
             }
@@ -25,8 +24,8 @@ const LoginForm = () => {
             <br/>
             <div className="mt-20">
                 <input
-                    value={user.username}
-                    onChange={(e) => setUser({...user, username: e.target.value})}
+                    value={user.userName}
+                    onChange={(e) => setUser({...user, userName: e.target.value})}
                     placeholder="Username"
                        className="form-control "/></div>
             <input

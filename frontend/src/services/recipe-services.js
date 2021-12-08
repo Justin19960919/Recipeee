@@ -1,4 +1,4 @@
-const recipeServiceAPI = "http://localhost:3001/rest/recipes";
+const recipeServiceAPI = "http://localhost:3001/api/recipes";
 
 
 const searchAllRecipes = () =>
