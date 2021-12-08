@@ -82,21 +82,21 @@ module.exports = (app) => {
     /////////// APIS ///////////
 
     //create
-    app.post("/api/recipes", createNewRecipe);
+    app.post("/rest/recipes", createNewRecipe);
 
     // read
-    app.get('/api/recipes', findAllRecipes);
-    app.get('/api/recipes/:id', findRecipeById);
-    app.get('/api/recipes/findRecipe/:recipeName', findRecipeByRecipeName);
-    app.get('/api/recipes/searchRecipes/:recipeName', searchRecipesByName);
-    app.get('/api/recipes/searchRecipesByKeyword/:keyword', searchRecipesByKeyword);
-    app.get('/api/recipes/searchRecipesByAuthor/:authorId', searchRecipesByAuthorId);
-    app.get('/api/recipes/searchTopRecipesByLikes/:number', searchTopRecipesByLike);
-    app.get('/api/recipes/searchTopRecipesByStars/:number', searchTopRecipesByStar);
+    app.get('/rest/recipes', findAllRecipes);
+    app.get('/rest/recipes/:id', findRecipeById);
+    app.get('/rest/recipes/findRecipe/:recipeName', findRecipeByRecipeName);
+    app.get('/rest/recipes/searchRecipes/:recipeName', searchRecipesByName);
+    app.get('/rest/recipes/searchRecipesByKeyword/:keyword', searchRecipesByKeyword);
+    app.get('/rest/recipes/searchRecipesByAuthor/:authorId', searchRecipesByAuthorId);
+    app.get('/rest/recipes/searchTopRecipesByLikes/:number', searchTopRecipesByLike);
+    app.get('/rest/recipes/searchTopRecipesByStars/:number', searchTopRecipesByStar);
 
     // update
-    app.put("/api/recipes/:id", updateRecipeInfo);
+    app.put("/rest/recipes/:id", updateRecipeInfo);
 
     // delete
-    app.delete("/api/recipes/:id", deleteRecipe);
+    app.delete("/rest/recipes/:id", deleteRecipe);
 };

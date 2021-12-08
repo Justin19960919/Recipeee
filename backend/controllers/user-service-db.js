@@ -82,23 +82,23 @@ module.exports = (app) => {
     /////////// APIS ///////////
 
     //create
-    app.post("/api/users", createNewUser);
+    app.post("/rest/users", createNewUser);
 
     // read
-    app.get('/api/users', findAllUsers);
-    app.get('/api/users/:id', findUserById);
-    app.get('/api/users/findUser/:username', findUserByUserName);
+    app.get('/rest/users', findAllUsers);
+    app.get('/rest/users/:id', findUserById);
+    app.get('/rest/users/findUser/:username', findUserByUserName);
 
     // update
-    app.put("/api/users/:id", updateUserInfo);
+    app.put("/rest/users/:id", updateUserInfo);
 
     // delete
-    app.delete("/api/users/:id", deleteUser);
+    app.delete("/rest/users/:id", deleteUser);
 
-    app.post('/api/login', login);
-    app.post('/api/register', register);
-    app.post('/api/profile', profile);
-    app.post('/api/logout', logout);
+    app.post('/rest/login', login);
+    app.post('/rest/register', register);
+    app.post('/rest/profile', profile);
+    app.post('/rest/logout', logout);
 };
 
 

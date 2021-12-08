@@ -6,5 +6,5 @@ module.exports = (app) => {
         author_dao.findAllAuthors()
             .then(authors => res.json(authors));
     }
-    app.get('/api/authors', findAllAuthors);
+    app.get('/rest/authors', findAllAuthors);
 };

@@ -61,18 +61,18 @@ module.exports = (app) => {
     /////////// APIS ///////////
 
     //create
-    app.post("/api/reviews", createNewReview);
+    app.post("/rest/reviews", createNewReview);
 
     // read
-    app.get('/api/reviews', findAllReviews);
-    app.get('/api/reviews/:id', findReviewById);
-    app.get('/api/reviews/searchReviewsByAuthorId/:authorId', searchReviewsByAuthorId);
-    app.get('/api/reviews/searchReviewsByRecipeId/:recipeId', searchReviewsByRecipeId);
-    app.get('/api/reviews/searchReviewsByRating/:rating', searchReviewsByRating);
+    app.get('/rest/reviews', findAllReviews);
+    app.get('/rest/reviews/:id', findReviewById);
+    app.get('/rest/reviews/searchReviewsByAuthorId/:authorId', searchReviewsByAuthorId);
+    app.get('/rest/reviews/searchReviewsByRecipeId/:recipeId', searchReviewsByRecipeId);
+    app.get('/rest/reviews/searchReviewsByRating/:rating', searchReviewsByRating);
 
     // update
-    app.put("/api/reviews/:id", updateReviewInfo);
+    app.put("/rest/reviews/:id", updateReviewInfo);
 
     // delete
-    app.delete("/api/reviews/:id", deleteReview);
+    app.delete("/rest/reviews/:id", deleteReview);
 };
