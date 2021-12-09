@@ -29,9 +29,12 @@ span {
   padding: 0;
   width: 100%;
 }
+
 .detail-title {
   text-align: left;
+  color: #3399ff;
 }
+
 .descript {
   text-align: left;
 }

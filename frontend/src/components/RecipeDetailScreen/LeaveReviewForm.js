@@ -3,7 +3,7 @@ import $ from "jquery";
 
 import "./index.css";
 import "./stars.css";
-import reviewService from "../../services/review-services";
+import { createNewReview } from "../../services/review-services";
 
 
 const LeaveReviewForm = ({ setCurReviews, recipeId, authorId }) => {
@@ -26,7 +26,7 @@ const LeaveReviewForm = ({ setCurReviews, recipeId, authorId }) => {
     };
     console.log("new created review is: ", newReview);
 
-    reviewService.createNewReview(newReview)
+    createNewReview(newReview)
       .then(newReview => setCurReviews(prevState => [...prevState, newReview]));
   };
 
