@@ -1,7 +1,7 @@
 const reviewServiceAPI = "http://localhost:3001/rest/reviews";
 
 // create
-const createNewReview = (newReview) => {
+const createNewReview = (newReview) =>
   fetch(`${reviewServiceAPI}`, {
     method: "POST",
     body: JSON.stringify(newReview),
@@ -9,26 +9,26 @@ const createNewReview = (newReview) => {
       "content-type": "application/json"
     }
   }).then(response => response.json());
-}
+
 
 // read
 const findReviewById = (reviewId) =>
-    fetch(`${reviewServiceAPI}/${reviewId}`)
+  fetch(`${reviewServiceAPI}/${reviewId}`)
     .then(review => review.json());
 
 
 const searchReviewsByAuthorId = (authorId) =>
-    fetch(`${reviewServiceAPI}/searchReviewsByAuthorId/${authorId}`)
+  fetch(`${reviewServiceAPI}/searchReviewsByAuthorId/${authorId}`)
     .then(reviews => reviews.json());
 
 
 const searchReviewsByRecipeId = (recipeId) =>
-    fetch(`${reviewServiceAPI}/searchReviewsByRecipeId/${recipeId}`)
+  fetch(`${reviewServiceAPI}/searchReviewsByRecipeId/${recipeId}`)
     .then(reviews => reviews.json());
 
 
-const searchReviewsByRating = (rating) =>   
-    fetch(`${reviewServiceAPI}/searchReviewsByRating/${rating}`)
+const searchReviewsByRating = (rating) =>
+  fetch(`${reviewServiceAPI}/searchReviewsByRating/${rating}`)
     .then(reviews => reviews.json());
 
 // update
@@ -40,11 +40,11 @@ const updateReview = (reviewId, newReview) => {
       "content-type": "application/json"
     }
   })
-  .then(reviews => reviews.json());
+    .then(reviews => reviews.json());
 }
 
 // delete
-const deleteReview = (reviewId, newReview) => {
+const deleteReview = (reviewId) => {
   fetch(`${reviewServiceAPI}/${reviewId}`, {
     method: "DELETE",
   })

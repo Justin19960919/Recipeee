@@ -39,10 +39,7 @@ const App = () => {
           <RecipeSearchScreen />
         </Route>
 
-        {/* <Route path="/recipe-detail/:id">
-          <RecipeDetailScreen />
-        </Route> */}
-        <Route path="/recipe-detail">
+        <Route path="/recipe-detail/:id">
           <RecipeDetailScreen />
         </Route>
 

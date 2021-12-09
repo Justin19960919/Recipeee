@@ -8,7 +8,8 @@ const searchAllRecipes = () =>
 
 const searchRecipeById = (recipeId) =>
   fetch(`${recipeServiceAPI}/${recipeId}`)
-    .then(recipe => recipe.json());
+    .then(recipe => recipe.json()
+    );
 
 // find recipe by searching for the whole recipe name
 const searchRecipeByRecipeName = (recipeName) =>

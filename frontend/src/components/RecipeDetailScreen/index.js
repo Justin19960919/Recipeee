@@ -92,8 +92,7 @@ const RecipeDetailScreen = () => {
   return (
     <>
       <Navigation />
-      {/* {JSON.stringify(recipeDetail)} */}
-      {/* <RecipeDetail recipeDetail={recipeDetail} /> */}
+      <RecipeDetail recipeDetail={recipeDetail} />
       <LeaveReviewForm
         setCurReviews={setRecipeReviews}
         recipeId={curRecipeId}
@@ -103,9 +102,10 @@ const RecipeDetailScreen = () => {
         <div className="recipeReviews">
           {recipeReviews.map((review) => (
             <RecipeReview
+              key={review._id}
               review={review}
               setReview={setRecipeReviews}
-              key={review._id} />
+            />
           ))}
         </div>
       }

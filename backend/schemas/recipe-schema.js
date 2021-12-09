@@ -32,6 +32,6 @@ const recipe_schema = new mongoose.Schema({
         type: Number,
         default: 0
     }
-}, {collection: "recipes"});
+}, { collection: "recipes" });
 
 module.exports = recipe_schema;
