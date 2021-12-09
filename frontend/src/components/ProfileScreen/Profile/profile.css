@@ -1,0 +1,37 @@
+
+.wd-font-25{
+    font-size: 25px;
+}
+.form-control.override{
+    padding:2px;
+    width:98%;
+
+}
+.btn-primary.override-bs{
+    border-style: solid;
+    border-color: rgb(110,118,125);
+}
+.btn-primary.close{
+    border-style: none;
+}
+.wd-font-22{
+    font-size: 22px;
+}
+.wd-border{
+    border-style: solid;
+    border-color: rgb(110,118,125);
+    border-width:1px;
+}
+.wd-arrow{
+    position: relative;
+    left:4%;
+}
+
+.wd-textarea{
+    border-style: none;
+    width:98%;
+}
+.wd-dob{
+    background-color:darkgrey;
+    color: white;
+}
