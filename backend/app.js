@@ -56,6 +56,7 @@ require('./controllers/recipe-service-db')(app);
 require('./controllers/author-service-db')(app);
 require('./controllers/user-service-db')(app);
 require('./controllers/review-service-db')(app);
+require('./controllers/weather-service')(app);
 
 app.listen(PORT, () => {
   console.log(`Backend server is running on port ${PORT}`)
