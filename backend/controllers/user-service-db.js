@@ -4,12 +4,12 @@ const {user_model} = require("../models/all_models");
 
 module.exports = (app) => {
 
-    // create
-    const createNewUser = (req, res) => {
-        const newUser = req.body;
-        user_dao.createNewUser(newUser);
-        res.sendStatus(200);
-    }
+    // create (don't allow direct calls to this function)
+    // const createNewUser = (req, res) => {
+    //     const newUser = req.body;
+    //     user_dao.createNewUser(newUser);
+    //     res.sendStatus(200);
+    // }
 
     // read
     const findAllUsers = (req, res) => {
@@ -24,11 +24,11 @@ module.exports = (app) => {
     }
 
 
-    const findUserByUserName = (req, res) => {
-        const userName = req.params.userName;
-        user_model.findOne({userName})
-            .then(foundUsr => res.status(200).json(foundUsr));
-    }
+    // const findUserByUserName = (req, res) => {
+    //     const userName = req.params.userName;
+    //     user_model.findOne({userName})
+    //         .then(foundUsr => res.status(200).json(foundUsr));
+    // }
 
     // update
     const updateUserInfo = (req, res) => {
@@ -82,12 +82,12 @@ module.exports = (app) => {
     /////////// APIS ///////////
 
     //create
-    app.post("/rest/users", createNewUser);
+    // app.post("/rest/users", createNewUser);
 
     // read
     app.get('/rest/users', findAllUsers);
     app.get('/rest/users/:id', findUserById);
-    app.get('/rest/users/findUser/:userName', findUserByUserName);
+    // app.get('/rest/users/findUser/:userName', findUserByUserName);
 
     // update
     app.put("/rest/users/:id", updateUserInfo);
