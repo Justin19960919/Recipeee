@@ -54,7 +54,7 @@ module.exports = (app) => {
     // read
     app.get('/rest/recomms', findAllRecommendations);
     app.get('/rest/recomms/:id', findRecommendationById);
-    app.get('/rest/recomms/searchRecommendationByRecipeId/:type', searchRecommendationByType());
+    app.get('/rest/recomms/searchRecommendationByRecipeId/:type', searchRecommendationByType);
 
     // update
     app.put("/rest/recomms/:id", updateRecommendationInfo);
