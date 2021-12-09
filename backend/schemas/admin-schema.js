@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
+// TODO: remove this part
 const admin_schema = new mongoose.Schema({
-    _id: String,
+    // _id: String,
     Username: String,
     Name: String,
     Password: String,
