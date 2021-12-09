@@ -39,13 +39,16 @@ const App = () => {
           <RecipeSearchScreen />
         </Route>
 
-        <Route path="/recipe-detail/:id">
+        {/* <Route path="/recipe-detail/:id">
+          <RecipeDetailScreen />
+        </Route> */}
+        <Route path="/recipe-detail">
           <RecipeDetailScreen />
         </Route>
 
-        <Route path="/weather">
+        {/* <Route path="/weather">
           <WeatherComponent/>
-        </Route>
+        </Route> */}
 
       </BrowserRouter>
     </>

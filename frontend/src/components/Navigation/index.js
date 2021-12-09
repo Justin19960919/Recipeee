@@ -15,11 +15,6 @@ const Navigation = () => {
         <div className="collapse navbar-collapse submenu" id="navbarText">
           <ul className="navbar-nav me-auto mb-lg-0">
             <li className="nav-item">
-              <Link to="/about" className="nav-link">
-                About
-              </Link>
-            </li>
-            <li className="nav-item">
               <Link to="/recipe-search/ " className="nav-link">
                 Search <i class="fa fa-search"></i>
               </Link>
