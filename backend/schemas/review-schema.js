@@ -4,7 +4,7 @@ const review_schema = new mongoose.Schema({
     // _id: Number,
     RecipeId: Number,
     AuthorId: Number,
-    UserId: String,
+    UserId: mongoose.Schema.Types.ObjectId,
     Rating: Number,
     Review: String,
     DateSubmitted: Date,
