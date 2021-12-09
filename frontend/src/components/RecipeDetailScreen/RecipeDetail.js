@@ -1,6 +1,5 @@
 import React from "react";
 import "./index.css";
-import RecipeSlideShow from "../RecipeSlideShow";
 
 
 const RecipeDetail = ({ recipeDetail }) => {
@@ -18,7 +17,6 @@ const RecipeDetail = ({ recipeDetail }) => {
     })
     return lists
   }
-
   function print2(list1){
     list1 = listout(list1)
     let lists = list1.map(function(value){
@@ -26,35 +24,34 @@ const RecipeDetail = ({ recipeDetail }) => {
     })
     return lists
   }
-  // listout(recipeDetail.RecipeIngredientQuantities)
   return (
-    <div className="recipeDetail-container">
-      <h2>{recipeDetail.Name}</h2>
-      <p className="category-word"><span>Category: {recipeDetail.RecipeCategory}</span><span>Calories: {recipeDetail.Calories}</span></p>
-      
-      <div className="auther-title">
-        <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-person" viewBox="0 0 16 16">
-          <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
-        </svg>
-        <div className="auther-title-detail">
-          <h6>{recipeDetail.AuthorId}</h6>
+    <div className="recipe-detail">
+      <div className="author-container">
+        <div className="author-detail">
+          <h2 className="author-detail-title">{recipeDetail.Name}</h2>
+          <p className="category">{recipeDetail.RecipeCategory}/{recipeDetail.Keywords}</p>
           <h6>{recipeDetail.DatePublished.substring(0,10)}</h6>
-          <h6>#{recipeDetail.Keywords}</h6>
+          <h6>Author: {recipeDetail.AuthorId}</h6>
+          <div className="summary-detail">
+            <p className="summary-detail-conponent edge"><span className="summary-detail-conponent-number">{recipeDetail.RecipeIngredientParts.length}</span><span>Ingredients</span></p>
+            <p className="summary-detail-conponent border-side"><span className="summary-detail-conponent-number">{recipeDetail.Calories}</span><span>Calories</span></p>
+            <div class="justify-content-center">
+              <div class="content text-center">
+                  <div class="ratings"> <span class="product-rating">{recipeDetail.AggregatedRating}</span><span>/5</span>
+                      <div class="stars"> <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+                  </div>
+              </div>
+          </div>
+          </div>
         </div>
-        <div className="like-star-container">
-          <button type="button" class="btn ">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-          </svg>
-            {recipeDetail.LikeNum}
-          </button>
-          <button type="button" class="btn ">Rating: {recipeDetail.AggregatedRating}</button>
-          <button type="button" class="btn ">Reviews: {recipeDetail.ReviewCount}</button>
-        </div>
+        <div className="img-container">
+          <img src={recipeDetail.Images.substring(1,recipeDetail.Images.length-1)}
+            className="recipedetail-img"
+          />
+        </div> 
       </div>
-      <div className="img-container">
-        <RecipeSlideShow props={recipeDetail.Images}/>
-      </div> 
+      
+      {/* <p>Reviews: {recipeDetail.ReviewCount}</p> */}
       <div className="recipeDetail-content-container">
         <div className="desctription-container">
           <h4>Description</h4><p>{recipeDetail.Description}</p>
@@ -73,6 +70,7 @@ const RecipeDetail = ({ recipeDetail }) => {
         </div>
       </div>
     </div>
+    
   );
 }
 
