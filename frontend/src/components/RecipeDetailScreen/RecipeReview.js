@@ -40,7 +40,7 @@ const RecipeReview = ({ review, setReview }) => {
         <div className="recipereview-title">
           <img
             className="defaultProfile"
-            src="./pic/profile.jpg"
+            src="/pic/profile.jpg"
             alt="defaultProfile"
           />
           <div className="reviewer-detail">

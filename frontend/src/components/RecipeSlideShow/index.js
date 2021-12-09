@@ -5,22 +5,22 @@ const RecipeSlideShow = () => {
 
   const recommendedRecipes = [
     {
-      Image: "./pic/risotto.jpg",
+      Image: "/pic/risotto.jpg",
       Label: "Risotto",
       Active: "active"
     },
     {
-      Image: "./pic/salmon.jpg",
+      Image: "/pic/salmon.jpg",
       Label: "Salmon",
       Active: ""
     },
     {
-      Image: "./pic/steak.jpg",
+      Image: "/pic/steak.jpg",
       Label: "Steak",
       Active: ""
     },
     {
-      Image: "./pic/veggies.jpg",
+      Image: "/pic/veggies.jpg",
       Label: "Veggies",
       Active: ""
     },
