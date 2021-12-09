@@ -1,15 +1,11 @@
 // Detail screen
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./index.css";
-
-
 import Navigation from "../Navigation";
 import Footer from "../Footer";
 import RecipeDetail from "./RecipeDetail";
 import RecipeReview from "./RecipeReview";
 import LeaveReviewForm from "./LeaveReviewForm";
-
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import recipeService from "../../services/recipe-services";
 import reviewService from "../../services/review-services";
@@ -58,9 +54,9 @@ const RecipeDetailScreen = () => {
       <RecipeDetail recipeDetail={recipeDetail} />
       <LeaveReviewForm
         setCurReviews={setRecipeReviews}
+        recipeId={curRecipeId}
+        authorId={recipeDetail.AuthorId}
       />
-
-
       {
         recipeReviews.map(review =>
           <RecipeReview review={review} key={review._id} />

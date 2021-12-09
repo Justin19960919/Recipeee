@@ -9,6 +9,7 @@ const RegisterForm = () => {
     const [user, setUser] = useState({});
     const history = useHistory();
     const register = () => {
+        console.log("clicked register button");
         fetch(`${API_URL}/register`, {
             method: 'POST',
             body: JSON.stringify(user),

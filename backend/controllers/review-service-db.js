@@ -5,8 +5,8 @@ module.exports = (app) => {
     // create
     const createNewReview = (req, res) => {
         const newReview = req.body;
-        review_dao.createNewReview(newReview);
-        res.sendStatus(200);
+        review_dao.createNewReview(newReview)
+        .then(newReview => res.status(200).json(newReview));
     }
 
     // read

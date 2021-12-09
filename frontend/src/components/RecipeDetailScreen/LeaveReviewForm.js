@@ -1,14 +1,31 @@
 import React, { useState } from "react";
-//import reviewService from "../../services/review-services";
+import reviewService from "../../services/review-services";
 
-const LeaveReviewForm = ({ setCurReviews }) => {
+const LeaveReviewForm = ({ setCurReviews, recipeId, authorId }) => {
 
   const [comment, setComment] = useState("");
 
   const submitReviewHandler = () => {
-    console.log("Leaving review!");
+    console.log("Adding Review!");
     // call create review from review-service
     // add to local state here
+
+    const currentUser = 1;
+    const newReview = {
+      RecipeId: recipeId,
+      AuthorId: authorId,
+      UserId: currentUser,
+      Rating: null,
+      Review: comment,
+      DateSubmitted: new Date(),
+      DateModified: new Date()
+    };
+
+    console.log("new created review is: ", newReview);
+    // create new review via service
+    // reviewService.createNewReview(newReview)
+    // .then(response => response.json())
+    // .then(newReview => setCurReviews(prevState => [newReview, ...prevState]));
   }
 
   return (

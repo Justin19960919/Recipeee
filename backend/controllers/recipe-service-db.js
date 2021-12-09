@@ -6,8 +6,8 @@ module.exports = (app) => {
     // create
     const createNewRecipe = (req, res) => {
         const newRecipe = req.body;
-        recipe_dao.createNewRecipe(newRecipe);
-        res.sendStatus(200);
+        recipe_dao.createNewRecipe(newRecipe)
+        .then(newRecipe => res.status(200).json(newRecipe));
     }
 
     // read

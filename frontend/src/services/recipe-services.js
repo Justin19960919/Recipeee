@@ -1,4 +1,4 @@
-const recipeServiceAPI = "http://localhost:3001/api/recipes";
+const recipeServiceAPI = "http://localhost:3001/rest/recipes";
 
 
 const searchAllRecipes = () =>
@@ -53,9 +53,8 @@ const createNewRecipe = (newRecipe) => {
       "content-type": "application/json"
     }
   }).then(response => response.json());
-
-
 }
+
 const updateRecipeInfo = (updatedRecipe) => {
   fetch(`${recipeServiceAPI}/recipes/${updatedRecipe._id}`, {
     method: "PUT",

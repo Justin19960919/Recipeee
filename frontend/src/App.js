@@ -16,7 +16,7 @@ import RegisterScreen from "./components/RegisterScreen";
 import LoginScreen from "./components/LoginScreen";
 import RecipeSearchScreen from "./components/RecipeSearchScreen";
 import RecipeDetailScreen from "./components/RecipeDetailScreen";
-import UserRecipeScreen from "./components/UserRecipeScreen";
+import WeatherComponent from "./components/WeatherComponent.js";
 
 
 const App = () => {
@@ -43,8 +43,8 @@ const App = () => {
           <RecipeDetailScreen />
         </Route>
 
-        <Route path="/my-recipes">
-          <UserRecipeScreen />
+        <Route path="/weather">
+          <WeatherComponent/>
         </Route>
 
       </BrowserRouter>

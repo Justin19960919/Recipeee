@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const like_schema = new mongoose.Schema({
-    _id: String,
+    // _id: String,
     RecipeId: Number,
     Username: String
 }, {collection: "likes"});

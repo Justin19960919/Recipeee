@@ -1,10 +1,9 @@
 const mongoose = require('mongoose');
 
 const review_schema = new mongoose.Schema({
-    _id: Number,
     RecipeId: Number,
     AuthorId: Number,
-    UserId: String, // shouldn't this be ObjectId?
+    UserId: mongoose.Schema.Types.ObjectId,
     Rating: Number,
     Review: String,
     DateSubmitted: Date,

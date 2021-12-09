@@ -3,8 +3,7 @@ const {recipe_model} = require("../all_models.js");
 
 // CREATE
 module.exports.createNewRecipe = (recipe) => {
-    recipe_model.create(recipe)
-        .catch(err => console.log(err));
+    recipe_model.create(recipe);
 }
 
 module.exports.findAllRecipes = () => recipe_model.find();

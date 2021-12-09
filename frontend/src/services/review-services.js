@@ -1,5 +1,15 @@
-const reviewServiceAPI = "http://localhost:3001/api/reviews";
+const reviewServiceAPI = "http://localhost:3001/rest/reviews";
 
+// create
+const createNewReview = (newReview) => {
+  fetch(`${reviewServiceAPI}`, {
+    method: "POST",
+    body: JSON.stringify(newReview),
+    headers: {
+      "content-type": "application/json"
+    }
+  }).then(response => response.json());
+}
 
 // read
 const findReviewById = (reviewId) =>
@@ -41,6 +51,7 @@ const deleteReview = (reviewId, newReview) => {
 }
 
 module.exports = {
+  createNewReview,
   findReviewById,
   searchReviewsByAuthorId,
   searchReviewsByRecipeId,

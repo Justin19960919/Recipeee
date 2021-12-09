@@ -56,6 +56,10 @@ require('./controllers/recipe-service-db')(app);
 require('./controllers/author-service-db')(app);
 require('./controllers/user-service-db')(app);
 require('./controllers/review-service-db')(app);
+require('./controllers/follow-service-db')(app);
+require('./controllers/like-service-db')(app);
+require('./controllers/star-service-db')(app);
+require('./controllers/recomm-service-db')(app);
 require('./controllers/weather-service')(app);
 
 app.listen(PORT, () => {

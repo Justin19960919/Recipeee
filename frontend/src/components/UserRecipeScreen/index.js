@@ -1,12 +1,34 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import Navigation from "../Navigation";
 import Footer from "../Footer";
 import RecipeItem from "../RecipeList/RecipeItem";
+import RecipeForm from "./RecipeForm";
+
+import recipeService from "../../services/recipe-services";
 
 const UserRecipeScreen = () => {
+  const [userRecipes, setUserRecipes] = useState([]);
+
+  const testUserId = 1538;
+  const fetchAllUserRecipes = () => {
+    recipeService.searchRecipesByAuthorId(testUserId)
+      .then(response => setUserRecipes(response))
+  }
+  useEffect(fetchAllUserRecipes, []);
+
   return (
     <>
-      <h1>This is all the recipes for the user</h1>
+      <Navigation />
+      <RecipeForm
+        addUserRecipe={setUserRecipes}
+        userId={testUserId}
+      />
+      {
+        userRecipes.map(userRecipe =>
+          <RecipeItem recipe={userRecipe} key={userRecipe._id}/>
+        )
+      }
+      <Footer />
     </>
   )
 }
