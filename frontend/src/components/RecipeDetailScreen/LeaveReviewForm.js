@@ -3,38 +3,31 @@ import $ from "jquery";
 
 import "./index.css";
 import "./stars.css";
+import reviewService from "../../services/review-services";
 
-//import reviewService from "../../services/review-services";
 
 const LeaveReviewForm = ({ setCurReviews, recipeId, authorId }) => {
 
   const [comment, setComment] = useState("");
 
-  // const submitReviewHandler = () => {
-  //   console.log("Adding Review!");
-  // call create review from review-service
-  // add to local state here
-
-  // const currentUser = 1;
-  // const newReview = {
-  //   RecipeId: recipeId,
-  //   AuthorId: authorId,
-  //   UserId: currentUser,
-  //   Rating: null,
-  //   Review: comment,
-  //   DateSubmitted: new Date(),
-  //   DateModified: new Date()
-  // };
-
-  // console.log("new created review is: ", newReview);
-  // create new review via service
-  // reviewService.createNewReview(newReview)
-  // .then(response => response.json())
-  // .then(newReview => setCurReviews(prevState => [newReview, ...prevState]));
-
   const submitReviewHandler = () => {
+    // console.log(`User has left comment: ${comment}, with rating: ${rating}`);
     let rating = $("input[type='radio']:checked").val();
-    console.log(`User has left comment: ${comment}, with rating: ${rating}`);
+    // currently is hardcoded
+    const currentUser = "6199587ade14a999450fff17";
+    const newReview = {
+      RecipeId: recipeId,
+      AuthorId: authorId,
+      UserId: currentUser,
+      Rating: parseFloat(rating),
+      Review: comment,
+      DateSubmitted: new Date(),
+      DateModified: new Date()
+    };
+    console.log("new created review is: ", newReview);
+
+    reviewService.createNewReview(newReview)
+      .then(newReview => setCurReviews(prevState => [...prevState, newReview]));
   };
 
   const renderStars = () => {
