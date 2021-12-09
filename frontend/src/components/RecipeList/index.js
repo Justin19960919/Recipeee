@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 
 import RecipeItem from "./RecipeItem";
-import recipeService from "../../services/recipe-services";
+import { searchRecipeByName } from "../../services/recipe-services";
 import "./index.css";
 
 
@@ -28,7 +28,7 @@ const RecipeList = () => {
     const cleanedInput = cleanSearchInput(searchInput);
     if (cleanedInput.length > 0) {
       history.push(`/recipe-search/${searchInput}`, { fromPopup: true });
-      recipeService.searchRecipeByName(cleanedInput)
+      searchRecipeByName(cleanedInput)
         .then(results => setSearchResults(results));
     }
   }

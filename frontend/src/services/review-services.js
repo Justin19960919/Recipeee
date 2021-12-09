@@ -1,7 +1,10 @@
-const reviewServiceAPI = "http://localhost:3001/rest/reviews";
+//const reviewServiceAPI = "http://localhost:3001/rest/reviews";
+import { backendUrl } from "./backendUrl";
+const reviewServiceAPI = `${backendUrl}/rest/reviews`;
+
 
 // create
-const createNewReview = (newReview) =>
+export const createNewReview = (newReview) =>
   fetch(`${reviewServiceAPI}`, {
     method: "POST",
     body: JSON.stringify(newReview),
@@ -12,27 +15,27 @@ const createNewReview = (newReview) =>
 
 
 // read
-const findReviewById = (reviewId) =>
+export const findReviewById = (reviewId) =>
   fetch(`${reviewServiceAPI}/${reviewId}`)
     .then(review => review.json());
 
 
-const searchReviewsByAuthorId = (authorId) =>
+export const searchReviewsByAuthorId = (authorId) =>
   fetch(`${reviewServiceAPI}/searchReviewsByAuthorId/${authorId}`)
     .then(reviews => reviews.json());
 
 
-const searchReviewsByRecipeId = (recipeId) =>
+export const searchReviewsByRecipeId = (recipeId) =>
   fetch(`${reviewServiceAPI}/searchReviewsByRecipeId/${recipeId}`)
     .then(reviews => reviews.json());
 
 
-const searchReviewsByRating = (rating) =>
+export const searchReviewsByRating = (rating) =>
   fetch(`${reviewServiceAPI}/searchReviewsByRating/${rating}`)
     .then(reviews => reviews.json());
 
 // update
-const updateReview = (reviewId, newReview) => {
+export const updateReview = (reviewId, newReview) => {
   fetch(`${reviewServiceAPI}/${reviewId}`, {
     method: "PUT",
     body: JSON.stringify(newReview),
@@ -44,23 +47,18 @@ const updateReview = (reviewId, newReview) => {
 }
 
 // delete
-const deleteReview = (reviewId) => {
+export const deleteReview = (reviewId) => {
   fetch(`${reviewServiceAPI}/${reviewId}`, {
     method: "DELETE",
   })
 }
 
-module.exports = {
-  createNewReview,
-  findReviewById,
-  searchReviewsByAuthorId,
-  searchReviewsByRecipeId,
-  searchReviewsByRating,
-  updateReview,
-  deleteReview
-}
-
-
-
-
-
+// module.exports = {
+//   createNewReview,
+//   findReviewById,
+//   searchReviewsByAuthorId,
+//   searchReviewsByRecipeId,
+//   searchReviewsByRating,
+//   updateReview,
+//   deleteReview
+// }

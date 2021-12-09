@@ -97,7 +97,7 @@ const RecipeDetail = ({ recipeDetail }) => {
           </div>
         </div>
         <div className="img-container">
-          {console.log(imgs)}
+          {/* {console.log(imgs)} */}
           {
             recipeDetail.Images !== undefined &&
             <img

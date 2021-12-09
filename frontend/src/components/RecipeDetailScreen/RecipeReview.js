@@ -1,5 +1,5 @@
 import "./index.css";
-import reviewService from "../../services/review-services";
+import { createNewReview, updateReview, deleteReview } from "../../services/review-services";
 
 
 const RecipeReview = ({ review, setReview }) => {
@@ -20,15 +20,15 @@ const RecipeReview = ({ review, setReview }) => {
 
 
   // call db, and filter in local state
-  const deleteReview = (reviewId) => {
+  const deleteUserReview = (reviewId) => {
     // access db and delete
-    reviewService.deleteReview(reviewId);
+    deleteReview(reviewId);
     // filter for front end 
     setReview(prevState => prevState.filter(existingReview => existingReview._id !== reviewId));
   }
 
-  const updateReview = (reviewId, updatedReview) => {
-    reviewService.updateReview(reviewId, updatedReview)
+  const updateUserReview = (reviewId, updatedReview) => {
+    updateReview(reviewId, updatedReview)
   }
 
 

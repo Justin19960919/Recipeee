@@ -1,5 +1,5 @@
 import { useState } from "react";
-import recipeService from "../../services/recipe-services";
+import { createNewRecipe, updateRecipeInfo, deleteRecipe } from "../../services/recipe-services";
 
 const RecipeForm = ({ addUserRecipe, userId }) => {
   const emptyRecipe = {
@@ -72,7 +72,7 @@ const RecipeForm = ({ addUserRecipe, userId }) => {
 
   const createRecipeHandler = () => {
     console.log("create new reicipe");
-    // recipeService.createNewRecipe(newRecipe)
+    // createNewRecipe(newRecipe)
     // .then(newRecipe => newRecipe.json())
     // .then
     //
