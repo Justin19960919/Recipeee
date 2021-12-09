@@ -26,11 +26,27 @@ const RecipeDetail = ({ recipeDetail }) => {
   }
 
   const formatDate = (date) => {
-    return date !== null ? date.substring(0, 10) : "";
+    return date !== null ? date.substr(0, 10) : "";
+  }
+
+  const getImageArray = (imageString) => {
+    if (imageString.startsWith("c")) {
+      let stripC = imageString.substr(3);
+      console.log(stripC);
+      let stripCArr = stripC.split('" ,');
+      console.log(stripCArr);
+      let stringArr = stripCArr.map(url => url + `"`);
+      let last = stringArr[stringArr.length - 1];
+      stringArr[stringArr.length - 1] = last.substr(0, last.length - 3);
+      return stringArr;
+    } else {
+      return imageString;
+    }
   }
 
 
   return (
+
     <div className="recipe-detail">
       <div className="author-container">
         <div className="author-detail">
@@ -77,6 +93,7 @@ const RecipeDetail = ({ recipeDetail }) => {
         </div>
       </div>
     </div>
+
 
   );
 }

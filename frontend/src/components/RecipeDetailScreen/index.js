@@ -67,8 +67,8 @@ const RecipeDetailScreen = () => {
     DateModified: "2005-05-29T22:58:29Z",
   };
   const defaultReviews = [review1, review2];
-  const [recipeReviews, setRecipeReviews] = useState(defaultReviews);
-  const [recipeDetail, setRecipeDetail] = useState(defaultDetail);
+  const [recipeReviews, setRecipeReviews] = useState([]);
+  const [recipeDetail, setRecipeDetail] = useState({});
 
 
   // get recipe detail
@@ -84,8 +84,8 @@ const RecipeDetailScreen = () => {
   }
 
   // call once, when component loads
-  // useEffect(getRecipeDetail, []);
-  // useEffect(getRecipeReviews, []);
+  useEffect(getRecipeDetail, []);
+  useEffect(getRecipeReviews, []);
 
 
 
@@ -93,17 +93,19 @@ const RecipeDetailScreen = () => {
     <>
       <Navigation />
       {/* {JSON.stringify(recipeDetail)} */}
-      <RecipeDetail recipeDetail={recipeDetail} />
+      {/* <RecipeDetail recipeDetail={recipeDetail} /> */}
       <LeaveReviewForm
         setCurReviews={setRecipeReviews}
         recipeId={curRecipeId}
         authorId={recipeDetail.AuthorId}
       />
-      {/* {JSON.stringify(recipeReviews)} */}
       {
         <div className="recipeReviews">
           {recipeReviews.map((review) => (
-            <RecipeReview review={review} key={review._id} />
+            <RecipeReview
+              review={review}
+              setReview={setRecipeReviews}
+              key={review._id} />
           ))}
         </div>
       }
