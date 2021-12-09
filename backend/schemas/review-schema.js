@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 const review_schema = new mongoose.Schema({
-    // _id: Number,
     RecipeId: Number,
     AuthorId: Number,
     UserId: mongoose.Schema.Types.ObjectId,

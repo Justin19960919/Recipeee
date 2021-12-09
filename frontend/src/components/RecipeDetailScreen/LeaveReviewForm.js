@@ -1,15 +1,33 @@
 import React, { useState } from "react";
 import $ from "jquery";
+
 import "./index.css";
 import "./stars.css";
-//import reviewService from "../../services/review-services";
+import reviewService from "../../services/review-services";
 
-const LeaveReviewForm = ({ setCurReviews }) => {
+
+const LeaveReviewForm = ({ setCurReviews, recipeId, authorId }) => {
+
   const [comment, setComment] = useState("");
 
   const submitReviewHandler = () => {
+    // console.log(`User has left comment: ${comment}, with rating: ${rating}`);
     let rating = $("input[type='radio']:checked").val();
-    console.log(`User has left comment: ${comment}, with rating: ${rating}`);
+    // currently is hardcoded
+    const currentUser = "6199587ade14a999450fff17";
+    const newReview = {
+      RecipeId: recipeId,
+      AuthorId: authorId,
+      UserId: currentUser,
+      Rating: parseFloat(rating),
+      Review: comment,
+      DateSubmitted: new Date(),
+      DateModified: new Date()
+    };
+    console.log("new created review is: ", newReview);
+
+    reviewService.createNewReview(newReview)
+      .then(newReview => setCurReviews(prevState => [...prevState, newReview]));
   };
 
   const renderStars = () => {
@@ -167,9 +185,10 @@ const LeaveReviewForm = ({ setCurReviews }) => {
         <button onClick={submitReviewHandler} className="comment-button">
           Submit
         </button>
+
       </div>
     </div>
-  );
+  )
 };
 
 export default LeaveReviewForm;

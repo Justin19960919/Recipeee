@@ -5,8 +5,11 @@ module.exports = (app) => {
     // create
     const createNewReview = (req, res) => {
         const newReview = req.body;
-        review_dao.createNewReview(newReview);
-        res.sendStatus(200);
+        // console.log(`backend got new review: ${JSON.stringify(newReview)}`);
+        review_dao.createNewReview(newReview)
+            .then(createdReview => res.json(createdReview))
+            .catch(err => console.log(`Error: ${err} occurred!`));
+
     }
 
     // read
@@ -34,7 +37,7 @@ module.exports = (app) => {
         review_dao.searchReviewsByRecipeId(recipeId)
             .then(reviews => res.status(200).json(reviews));
     }
-    
+
     const searchReviewsByRating = (req, res) => {
         const rating = req.params.rating;
         // console.log("rating: ", rating);

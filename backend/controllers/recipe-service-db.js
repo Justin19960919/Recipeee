@@ -1,25 +1,26 @@
 const recipe_dao = require('../models/dao/recipe-dao');
-const {recipe_model} = require("../models/all_models");
+const { recipe_model } = require("../models/all_models");
 
 module.exports = (app) => {
 
     // create
     const createNewRecipe = (req, res) => {
         const newRecipe = req.body;
-        recipe_dao.createNewRecipe(newRecipe);
-        res.sendStatus(200);
+        recipe_dao.createNewRecipe(newRecipe)
+            .then(newRecipe => res.status(200).json(newRecipe));
     }
 
     // read
     const findAllRecipes = (req, res) => {
         recipe_dao.findAllRecipes()
             .then(recipes =>
-               res.json(recipes)
+                res.json(recipes)
             );
     }
 
     const findRecipeById = (req, res) => {
         const recipeId = req.params.id;
+        // console.log(`recipeid is : ${recipeId}, type: ${typeof (recipeId)}`);
         recipe_dao.findRecipeById(recipeId)
             .then(recipe => res.json(recipe));
     }
@@ -37,7 +38,7 @@ module.exports = (app) => {
         recipe_dao.searchRecipesByName(recipeName)
             .then(recipes => {
                 res.status(200).json(recipes)
-                }
+            }
             );
 
     }

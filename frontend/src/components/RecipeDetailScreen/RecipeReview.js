@@ -1,32 +1,58 @@
 import "./index.css";
+import reviewService from "../../services/review-services";
 
-const RecipeReview = ({ review }) => {
-  function generateStar(num) {
+
+const RecipeReview = ({ review, setReview }) => {
+
+  const generateStar = (num) => {
+    let iterateArr = [...Array(Math.round(num)).keys()];
     return (
       <div className="star">
-        {Array.from(Array(num)).map((x, index) => (
-          <i class="fa fa-star" />
-        ))}
+        {iterateArr.map(item => <i class="fa fa-star" />)}
       </div>
-    );
+    )
+  };
+
+  const formatDate = (datee) => {
+    let dateee = datee + "";
+    return dateee.substr(0, 10);
   }
 
+
+  // call db, and filter in local state
+  const deleteReview = (reviewId) => {
+    // access db and delete
+    reviewService.deleteReview(reviewId);
+    // filter for front end 
+    setReview(prevState => prevState.filter(existingReview => existingReview._id !== reviewId));
+  }
+
+  const updateReview = (reviewId, updatedReview) => {
+    reviewService.updateReview(reviewId, updatedReview)
+  }
+
+
+
   return (
-    <div className="recipereview-container">
-      <div className="recipereview-title">
-        <img
-          className="defaultProfile"
-          src="./pic/defaultProfile.jpg"
-          alt="defaultProfile"
-        />
-        <div className="reviewer-detail">
-          <span>{review.AuthorId}</span>
-          <span>{generateStar(review.Rating)}</span>
-          <span>{review.DateSubmitted.substring(0, 10)}</span>
-          <p className="recipereview-reviews">{review.Review}</p>
+    <>
+
+      <div className="recipereview-container">
+        <div className="recipereview-title">
+          <img
+            className="defaultProfile"
+            src="./pic/profile.jpg"
+            alt="defaultProfile"
+          />
+          <div className="reviewer-detail">
+            <span>{review.AuthorId}</span>
+            <span>{generateStar(review.Rating)}</span>
+            <span>{formatDate(review.DateSubmitted)}</span>
+            <p className="recipereview-reviews">{review.Review}</p>
+          </div>
         </div>
       </div>
-    </div>
+    </>
+
   );
 };
 

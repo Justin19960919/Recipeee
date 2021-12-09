@@ -60,6 +60,7 @@ require('./controllers/follow-service-db')(app);
 require('./controllers/like-service-db')(app);
 require('./controllers/star-service-db')(app);
 require('./controllers/recomm-service-db')(app);
+require('./controllers/weather-service')(app);
 
 app.listen(PORT, () => {
   console.log(`Backend server is running on port ${PORT}`)

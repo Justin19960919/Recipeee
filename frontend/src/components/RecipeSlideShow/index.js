@@ -2,7 +2,7 @@
 import "./recipeslideshow.css";
 
 const RecipeSlideShow = () => {
-  
+
   const recommendedRecipes = [
     {
       Image: "./pic/risotto.jpg",
@@ -29,12 +29,12 @@ const RecipeSlideShow = () => {
 
   return (
     <div id="carouselExampleCaptions" className="carousel slide base" data-bs-ride="carousel">
-      
+
       <div className="carousel-inner">
         {
           recommendedRecipes.map(recipe =>
             <div className={`carousel-item ${recipe.Active}`}>
-              <img src={recipe.Image} className="d-block w-50 h-10rem mx-auto slides" alt="recommended recipe"/>
+              <img src={recipe.Image} className="d-block w-50 h-10rem mx-auto slides" alt="recommended recipe" />
               <div className="carousel-caption d-none d-md-block car-container">
                 <h5 className="white-layer">{recipe.Label}</h5>
               </div>

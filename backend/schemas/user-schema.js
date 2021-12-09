@@ -13,7 +13,6 @@ const user_schema = new mongoose.Schema({
         required: [true, "Please provide user name"],
         trim: true,
         maxLength: 20,
-
         unique: true,
     },
     email: {
