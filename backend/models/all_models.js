@@ -9,6 +9,7 @@ const review_schema = require('../schemas/review-schema');
 const follow_schema = require('../schemas/follow-schema');
 const like_schema = require('../schemas/like-schema');
 const star_schema = require('../schemas/star-schema');
+const recomm_schema = require('../schemas/recommendation-schema');
 
 
 // define models
@@ -19,6 +20,7 @@ const review_model = mongoose.model('ReviewModel', review_schema);
 const follow_model = mongoose.model('FollowModel', follow_schema);
 const like_model = mongoose.model('LikeModel', like_schema);
 const star_model = mongoose.model('StarModel', star_schema);
+const recomm_model = mongoose.model('RecommModel', recomm_schema);
 
 
 
@@ -29,7 +31,8 @@ module.exports = {
   review_model,
   follow_model,
   like_model,
-  star_model
+  star_model,
+  recomm_model
 }
 
 
