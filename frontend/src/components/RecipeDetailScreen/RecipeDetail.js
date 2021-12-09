@@ -65,7 +65,7 @@ const RecipeDetail = ({ recipeDetail }) => {
       return stringArr.slice(0, stringArr.length - 1);
 
     } else {
-      return [imageString.substring(1, recipeDetail.Images.length - 2)];
+      return [imageString.substring(1, recipeDetail.Images.length - 1)];
     }
   }
 
@@ -97,7 +97,7 @@ const RecipeDetail = ({ recipeDetail }) => {
           </div>
         </div>
         <div className="img-container">
-
+          {console.log(imgs)}
           {
             recipeDetail.Images !== undefined &&
             <img
