@@ -4,14 +4,14 @@ import Footer from "../Footer";
 import RecipeItem from "../RecipeList/RecipeItem";
 import RecipeForm from "./RecipeForm";
 
-import recipeService from "../../services/recipe-services";
+import { searchRecipesByAuthorId } from "../../services/recipe-services";
 
 const UserRecipeScreen = () => {
   const [userRecipes, setUserRecipes] = useState([]);
 
   const testUserId = 1538;
   const fetchAllUserRecipes = () => {
-    recipeService.searchRecipesByAuthorId(testUserId)
+    searchRecipesByAuthorId(testUserId)
       .then(response => setUserRecipes(response))
   }
   useEffect(fetchAllUserRecipes, []);
@@ -25,7 +25,7 @@ const UserRecipeScreen = () => {
       />
       {
         userRecipes.map(userRecipe =>
-          <RecipeItem recipe={userRecipe} key={userRecipe._id}/>
+          <RecipeItem recipe={userRecipe} key={userRecipe._id} />
         )
       }
       <Footer />
