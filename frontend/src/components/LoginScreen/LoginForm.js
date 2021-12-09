@@ -1,19 +1,28 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+// stylesheets
 import '../../index.css';
 import './login.css'
-import { API_URL } from "../consts";
+// services
+import { loginUser } from "../../services/user-services";
+
+
 const LoginForm = () => {
     const [user, setUser] = useState({});
     const history = useHistory();
+    // const login = () => {
+    //     fetch(`${API_URL}/login`, {
+    //         method: 'POST',
+    //         body: JSON.stringify(user),
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         }
+    //     }).then(status => {
+    //         history.push('/profile')
+    //     });
+    // }
     const login = () => {
-        fetch(`${API_URL}/login`, {
-            method: 'POST',
-            body: JSON.stringify(user),
-            headers: {
-                'content-type': 'application/json'
-            }
-        }).then(status => {
+        loginUser(user).then(status => {
             history.push('/profile')
         });
     }
