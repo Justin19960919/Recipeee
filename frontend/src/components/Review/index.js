@@ -2,28 +2,40 @@ import "./review.css";
 
 const Review = () =>{
 
+    const reviews = [
+        {
+            Image:"url",
+            position: "left",
+        }
+    ]
+
+
+
     return (
         <div className="review">
             <div className="container first">
-                <img className="review-image" src="./pic/6.jpg" alt="food"/>
+                <img className="review-image" src="./pic/lasagnia.jpeg" alt="food"/>
                 <div className="comment-container">
-                    <h5 className="title">Amy</h5>
-                    <p className="comment text-truncate">Why do we use it? It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                    <h4 className="review-title">Mexican Lasagna</h4>
+                    <p className="comment text-truncate">"Here's what one recipe reviewer had to say: "My husband and I love, love, love this recipe! We make it for just us to eat throughout the week! Thank you!"</p>
+                    <h6 className="author-name">Giovanni</h6>
                 </div>
                 
             </div>
             <div className="container second">
                 <div className="comment-container">
-                    <h5 className="title">Amy</h5>
-                    <p className="comment text-truncate">Why do we use it? It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                    <h4 className="review-title">Lemon Yogurt Cake</h4>
+                    <p className="comment text-truncate">"This cake was fabulous — very moist with wonderful and not overwhelming lemon flavor. I also love how easy and quick it is to make, plus nearly everyone will have these ingredients on hand."</p>
+                    <h6 className="author-name">Stefano</h6>
                 </div>
-                <img className="review-image" src="./pic/6.jpg" alt="food"/>
+                <img className="review-image" src="./pic/poundcake.jpeg" alt="food"/>
             </div>
             <div className="container third">
-                <img className="review-image" src="./pic/6.jpg" alt="food"/>
+                <img className="review-image" src="./pic/chicken.jpeg" alt="food"/>
                 <div className="comment-container">
-                    <h5 className="title">Amy</h5>
-                    <p className="comment text-truncate">Why do we use it? It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                    <h4 className="review-title">Roman-Style Chicken</h4>
+                    <p className="comment text-truncate">"This is really great! I keep trying to find new recipes for chicken — this one is definitely five-star."</p>
+                    <h6 className="author-name">----- Alessandro</h6>
                 </div>
             </div>
         </div>

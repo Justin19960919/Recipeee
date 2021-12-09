@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap');
 .review{
     padding: 0 10%;
 }
@@ -24,10 +25,24 @@
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
+    font-size: 1.5rem;
+}
+.review-title{
+    font-family: 'Caveat', cursive;
+    color:#4d5329;
+}
+.author-name,.comment{
+    font-family: 'Caveat', cursive;
+    /* color:#e4a3a3; */
+    color:#99a555;
 }
 .text-truncate{
     display: -webkit-box !important;
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
     white-space: normal;
-  }
+}
+.author-name{
+    text-align:end;
+    font-size: 1.5rem;
+}

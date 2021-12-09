@@ -1,0 +1,19 @@
+.register-screen{
+    min-height: 400px;
+}
+.register-title{
+    color: #296131;
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 2rem ;
+}
+.social-media-container {
+    margin: 2rem 0;
+    text-align: center;
+}
+.register-button:hover{
+    background-color: #1b7e4b;
+}
+.login-link a:hover{
+    color:#1b7e4b;
+}
