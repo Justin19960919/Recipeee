@@ -5,6 +5,7 @@ import "./index.css";
 const RecipeItem = ({ recipe }) => {
 
   const formatDate = (date) => {
+    console.log(date, typeof(date));
     return date.split("T")[0];
   }
 

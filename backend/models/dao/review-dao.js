@@ -1,9 +1,8 @@
-const {review_model} = require("../all_models.js");
+const { review_model } = require("../all_models.js");
 
 // CREATE
 module.exports.createNewReview = (review) => {
-    review_model.create(review)
-        .catch(err => console.log(err));
+    return review_model.create(review);
 }
 
 module.exports.findAllReviews = () => review_model.find();
@@ -13,26 +12,26 @@ module.exports.findReviewById = (reviewId) => {
 }
 
 module.exports.searchReviewsByAuthorId = (authorId) => {
-    return review_model.find({AuthorId : authorId});
+    return review_model.find({ AuthorId: authorId });
 }
 
 module.exports.searchReviewsByRecipeId = (recipeId) => {
-    return review_model.find({RecipeId : recipeId});
+    return review_model.find({ RecipeId: recipeId });
 }
 
 module.exports.searchReviewsByRating = (rating) => {
-    return review_model.find({Rating : rating});
+    return review_model.find({ Rating: rating });
 }
 
 // UPDATE
 module.exports.updateReviewInfo = (reviewID, review) => {
     console.log(`review id is: ${reviewID}, updated review info: ${review}`);
-    review_model.updateOne({_id: reviewID}, {$set: review})
+    review_model.updateOne({ _id: reviewID }, { $set: review })
         .catch(err => console.log(err));
 }
 
 
 // DELETE
 module.exports.deleteReview = (id) => {
-    review_model.findByIdAndDelete({_id: id});
+    review_model.findByIdAndDelete({ _id: id });
 }

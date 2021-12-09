@@ -7,6 +7,12 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
+const session = require('express-session');
+app.use(session({
+  resave: false, saveUninitialized: true,
+  secret: 'shhh, dont tell anyone'
+}));
+
 // require secrets: process.env.___ to get secrets
 require("dotenv").config()
 
@@ -50,6 +56,11 @@ require('./controllers/recipe-service-db')(app);
 require('./controllers/author-service-db')(app);
 require('./controllers/user-service-db')(app);
 require('./controllers/review-service-db')(app);
+require('./controllers/follow-service-db')(app);
+require('./controllers/like-service-db')(app);
+require('./controllers/star-service-db')(app);
+require('./controllers/recomm-service-db')(app);
+require('./controllers/weather-service')(app);
 
 app.listen(PORT, () => {
   console.log(`Backend server is running on port ${PORT}`)

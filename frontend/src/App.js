@@ -16,12 +16,17 @@ import RegisterScreen from "./components/RegisterScreen";
 import LoginScreen from "./components/LoginScreen";
 import RecipeSearchScreen from "./components/RecipeSearchScreen";
 import RecipeDetailScreen from "./components/RecipeDetailScreen";
+
 import UserRecipeScreen from "./components/UserRecipeScreen";
 import ProfileScreen from "./components/ProfileScreen";
 import PrivacyPolicy from "./components/PrivatePolicyScreen";
 import {Provider} from "react-redux";
 import {combineReducers, createStore} from "redux";
 import profile from "./reducers/profile";
+
+import WeatherComponent from "./components/WeatherComponent.js";
+
+
 
 const App = () => {
 
@@ -55,9 +60,9 @@ const App = () => {
           <RecipeDetailScreen />
         </Route>
 
-        <Route path="/my-recipes">
-          <UserRecipeScreen />
-        </Route>
+        {/* <Route path="/weather">
+          <WeatherComponent/>
+        </Route> */}
 
       </BrowserRouter>
         </Provider>
