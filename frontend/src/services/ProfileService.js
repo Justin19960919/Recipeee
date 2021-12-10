@@ -19,6 +19,7 @@ export const updateCurrentProfile = (dispatch, profile) =>
     fetch(`${PROFILE_API}/users/${profile._id}`, {
         method: 'PUT',
         body: JSON.stringify(profile),
+        credentials: 'include',
         headers: {
             'content-type': 'application/json'
         }

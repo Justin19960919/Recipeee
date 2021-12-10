@@ -1,8 +1,22 @@
 import "./navigation.css";
 import { Link } from "react-router-dom";
+import {useEffect, useState} from "react";
+import {API_URL} from "../consts";
+import {getUserProfile, logoutUser} from "../../services/user-services";
 
 
 const Navigation = () => {
+  const [user, setUser] = useState(null);
+  const getProfile = () => {
+    getUserProfile().then(res => res.json())
+      .then(user => {
+        setUser(user);
+      }).catch(() => {
+      setUser(null);
+    });
+  }
+  useEffect(getProfile);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark navbar-color">
       <div className="container-fluid">
@@ -23,17 +37,41 @@ const Navigation = () => {
 
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
 
-            <li className="nav-item">
-              <Link to="/login" className="nav-link">
-                Login
-              </Link>
-            </li>
+            {(() => {
+              console.log(user);
+              if (user !== null) {
+                return (
+                    <>
+                    <li className="nav-item">
+                      <Link to="/profile" className="nav-link active" aria-current="page">
+                        Profile
+                      </Link>
+                    </li>
+                      <li className="nav-item ">
+                        <Link to="/login" onClick={logoutUser} className="nav-link">
+                          Logout
+                        </Link>
+                      </li>
+                    </>
+                )
+              } else {
+                return (
+                    <>
+                      <li className="nav-item">
+                        <Link to="/login" className="nav-link">
+                          Login
+                        </Link>
+                      </li>
 
-            <li className="nav-item ">
-              <Link to="/register" className="nav-link active" aria-current="page">
-                Register
-              </Link>
-            </li>
+                      <li className="nav-item ">
+                        <Link to="/register" className="nav-link active" aria-current="page">
+                          Register
+                        </Link>
+                      </li>
+                    </>
+                )
+              }
+            })()}
 
           </ul>
           {/* <span className="navbar-text">

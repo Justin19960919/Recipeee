@@ -37,14 +37,14 @@ const user_schema = new mongoose.Schema({
     }
 }, { collection: "users" });
 
-user_schema.pre('save', async function () {
-    const salt = await bcrypt.genSalt(10)
-    this.password = await bcrypt.hash(this.password, salt)
-})
-
-user_schema.methods.comparePassword = async function (canditatePassword) {
-    const isMatch = await bcrypt.compare(canditatePassword, this.password)
-    return isMatch
-}
+// user_schema.pre('save', async function () {
+//     const salt = await bcrypt.genSalt(10)
+//     this.password = await bcrypt.hash(this.password, salt)
+// })
+//
+// user_schema.methods.comparePassword = async function (canditatePassword) {
+//     const isMatch = await bcrypt.compare(canditatePassword, this.password)
+//     return isMatch
+// }
 
 module.exports = user_schema;

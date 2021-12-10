@@ -67,7 +67,7 @@ module.exports = (app) => {
                 user_dao.createNewUser(req.body)
                     .then(user => {
                         req.session['profile'] = user;
-                        res.json(user)
+                        res.json(user);
                     });
             })
     }

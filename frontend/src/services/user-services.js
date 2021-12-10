@@ -1,4 +1,5 @@
 import { backendUrl } from "./backendUrl.js";
+import {API_URL} from "../components/consts";
 const userServiceAPI = `${backendUrl}/rest`;
 const followServiceAPI = `${backendUrl}/rest/follows`;
 
@@ -7,6 +8,7 @@ export const registerUser = (user) =>
   fetch(`${userServiceAPI}/register`, {
     method: 'POST',
     body: JSON.stringify(user),
+    credentials: 'include',
     headers: {
       'content-type': 'application/json',
     }
@@ -17,6 +19,7 @@ export const loginUser = (user) =>
   fetch(`${userServiceAPI}/login`, {
     method: 'POST',
     body: JSON.stringify(user),
+    credentials: 'include',
     headers: {
       'content-type': 'application/json'
     }
@@ -24,14 +27,18 @@ export const loginUser = (user) =>
 
 // logout
 export const logoutUser = () =>
-  fetch(`${userServiceAPI}/logout`, {
-    method: 'POST'
-  })
+    fetch(`${userServiceAPI}/logout`, {
+        method: 'POST',
+        credentials: 'include'
+    });
 
 
 // profile 
 export const getUserProfile = () =>
-  fetch(`${userServiceAPI}/profile`)
+    fetch(`${userServiceAPI}/profile`, {
+        method: 'POST',
+        credentials: 'include'
+    })
 
 
 ///////// admin /////////
