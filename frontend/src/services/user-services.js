@@ -1,5 +1,4 @@
 import { backendUrl } from "./backendUrl.js";
-import {API_URL} from "../components/consts";
 const userServiceAPI = `${backendUrl}/rest`;
 const followServiceAPI = `${backendUrl}/rest/follows`;
 
@@ -27,18 +26,18 @@ export const loginUser = (user) =>
 
 // logout
 export const logoutUser = () =>
-    fetch(`${userServiceAPI}/logout`, {
-        method: 'POST',
-        credentials: 'include'
-    });
+  fetch(`${userServiceAPI}/logout`, {
+    method: 'POST',
+    credentials: 'include'
+  });
 
 
 // profile 
 export const getUserProfile = () =>
-    fetch(`${userServiceAPI}/profile`, {
-        method: 'POST',
-        credentials: 'include'
-    })
+  fetch(`${userServiceAPI}/profile`, {
+    method: 'POST',
+    credentials: 'include'
+  })
 
 
 ///////// admin /////////

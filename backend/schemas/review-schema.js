@@ -8,6 +8,6 @@ const review_schema = new mongoose.Schema({
     Review: String,
     DateSubmitted: Date,
     DateModified: Date,
-}, {collection: "reviews"});
+}, { collection: "reviews" });
 
 module.exports = review_schema;

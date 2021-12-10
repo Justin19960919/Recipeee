@@ -5,7 +5,7 @@ import "./index.css";
 const RecipeItem = ({ recipe }) => {
 
   const formatDate = (date) => {
-    console.log(date, typeof(date));
+    // console.log(date, typeof(date));
     return date.split("T")[0];
   }
 
@@ -22,8 +22,8 @@ const RecipeItem = ({ recipe }) => {
 
         <h5 className="detail-title">
           <Link
-              className="detail-title"
-              to={`/recipe-detail/${recipe._id}`}
+            className="detail-title"
+            to={`/recipe-detail/${recipe._id}`}
           >
             {recipe.Name}
           </Link>

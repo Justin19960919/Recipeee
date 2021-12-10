@@ -1,33 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+
 import $ from "jquery";
 
 import "./index.css";
 import "./stars.css";
+
 import { createNewReview } from "../../services/review-services";
 
 
-const LeaveReviewForm = ({ setCurReviews, recipeId, authorId }) => {
-
+const LeaveReviewForm = ({ setCurReviews, recipeId, authorId, user }) => {
+  const history = useHistory();
   const [comment, setComment] = useState("");
 
   const submitReviewHandler = () => {
-    // console.log(`User has left comment: ${comment}, with rating: ${rating}`);
     let rating = $("input[type='radio']:checked").val();
-    // currently is hardcoded
-    const currentUser = "6199587ade14a999450fff17";
-    const newReview = {
-      RecipeId: recipeId,
-      AuthorId: authorId,
-      UserId: currentUser,
-      Rating: parseFloat(rating),
-      Review: comment,
-      DateSubmitted: new Date(),
-      DateModified: new Date()
-    };
-    console.log("new created review is: ", newReview);
 
-    createNewReview(newReview)
-      .then(newReview => setCurReviews(prevState => [...prevState, newReview]));
+    if (user !== null) {
+      const currentUserId = user._id;
+      const newReview = {
+        RecipeId: recipeId,
+        AuthorId: authorId,
+        UserId: currentUserId,
+        Rating: parseFloat(rating),
+        Review: comment,
+        DateSubmitted: new Date(),
+        DateModified: new Date()
+      };
+      // console.log("new created review is: ", newReview);
+
+      createNewReview(newReview)
+        .then(newReview => setCurReviews(prevState => [newReview, ...prevState]));
+    } else {
+      // redirectg to login?
+      console.log("user is not logged in..");
+      history.push("/login");
+    }
   };
 
   const renderStars = () => {

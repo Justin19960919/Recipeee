@@ -59,6 +59,7 @@ const RecipeList = () => {
             <li key={searchResult._id}>
               <RecipeItem
                 recipe={searchResult}
+                key={searchResult._id}
               />
             </li>
           )
