@@ -29,6 +29,7 @@ module.exports = (app) => {
         follow_dao.searchFollowsByUsername(userName)
             .then(follows => res.status(200).json(follows));
     }
+
     const searchFollowsByFollowName = (req, res) => {
         const followName = req.params.followName;
         follow_dao.searchFollowsByFollowName(followName)

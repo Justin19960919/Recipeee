@@ -29,6 +29,8 @@ module.exports = (app) => {
         like_dao.searchLikesByRecipeId(recipeId)
             .then(likes => res.status(200).json(likes));
     }
+
+    // call and display on profile page
     const searchLikesByUsername = (req, res) => {
         const userName = req.params.userName;
         console.log('userName: ', userName);

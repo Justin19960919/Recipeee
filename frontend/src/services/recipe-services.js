@@ -1,6 +1,7 @@
 import { backendUrl } from "./backendUrl";
 const recipeServiceAPI = `${backendUrl}/rest/recipes`;
-
+const likeServiceAPI = `${backendUrl}/rest/likes`;
+const starServiceAPI = `${backendUrl}/rest/stars`;
 
 
 export const searchAllRecipes = () =>
@@ -74,16 +75,29 @@ export const deleteRecipe = (id) =>
       method: "DELETE"
     });
 
-// module.exports = {
-//   createNewRecipe,
-//   updateRecipeInfo,
-//   deleteRecipe,
-//   searchAllRecipes,
-//   searchRecipeById,
-//   searchRecipeByRecipeName,
-//   searchRecipeByName,
-//   searchRecipesByKeyWord,
-//   searchRecipesByAuthorId,
-//   searchTopRecipesByLike,
-//   searchTopRecipesByStar
-// }
+
+// like a recipe
+// RecipeId: Number,
+// Username: String
+export const likeRecipe = (newLike) => {
+  fetch(`${likeServiceAPI}`, {
+    method: "POST",
+    body: JSON.stringify(newLike),
+    headers: {
+      "content-type": "application/json"
+    }
+  })
+}
+
+// star a recipe
+// RecipeId: Number,
+// Username: String
+export const starRecipe = (newStar) => {
+  fetch(`${starServiceAPI}`, {
+    method: "POST",
+    body: JSON.stringify(newStar),
+    headers: {
+      "content-type": "application/json"
+    }
+  })
+}

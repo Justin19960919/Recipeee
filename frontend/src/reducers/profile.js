@@ -1,10 +1,9 @@
-const user ={
+const user = {
     name: "Alice",
     userName: "alice123",
     type: "user",
-
-
 }
+
 
 const profile = (state = user, action) => {
     switch (action.type) {
