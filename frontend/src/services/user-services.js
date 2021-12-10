@@ -1,5 +1,6 @@
 import { backendUrl } from "./backendUrl.js";
 const userServiceAPI = `${backendUrl}/rest`;
+const followServiceAPI = `${backendUrl}/rest/follows`;
 
 // register
 export const registerUser = (user) =>
@@ -59,5 +60,26 @@ export const findUserById = (userId) =>
 
 export const findAllUsers = () =>
   fetch(`${userServiceAPI}/users`)
+
+
+
+///////// follow /////////
+/*
+newFollow: {
+  Username: String,
+  FollowName: String
+}
+*/
+// store to db, if succeeded, sned back status
+export const followOtherUsers = (newFollow) =>
+  fetch(`${followServiceAPI}`, {
+    method: 'POST',
+    body: JSON.stringify(newFollow),
+    headers: {
+      'content-type': 'application/json',
+    }
+  })
+    .then(status => status === 200 ? true : false);
+
 
 
