@@ -12,8 +12,8 @@ const Navigation = () => {
       .then(user => {
         setUser(user);
       }).catch(() => {
-      setUser(null);
-    });
+        setUser(null);
+      });
   }
   useEffect(getProfile);
 
