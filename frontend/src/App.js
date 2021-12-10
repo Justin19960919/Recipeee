@@ -18,7 +18,12 @@ import RecipeSearchScreen from "./components/RecipeSearchScreen";
 import RecipeDetailScreen from "./components/RecipeDetailScreen";
 import ProfileScreen from "./components/ProfileScreen";
 import PrivacyPolicy from "./components/PrivatePolicyScreen";
+
+
+// redux
 import { Provider } from "react-redux";
+
+// reducers
 import { combineReducers, createStore } from "redux";
 import profile from "./reducers/profile";
 
@@ -58,6 +63,10 @@ const App = () => {
 
           <Route path="/recipe-detail/:id">
             <RecipeDetailScreen />
+          </Route>
+
+          <Route path="/profile/:id">
+            <ProfileScreen />
           </Route>
 
           {/* <Route path="/weather">

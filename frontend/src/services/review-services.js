@@ -53,12 +53,3 @@ export const deleteReview = (reviewId) => {
   })
 }
 
-// module.exports = {
-//   createNewReview,
-//   findReviewById,
-//   searchReviewsByAuthorId,
-//   searchReviewsByRecipeId,
-//   searchReviewsByRating,
-//   updateReview,
-//   deleteReview
-// }

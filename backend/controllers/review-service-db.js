@@ -56,6 +56,7 @@ module.exports = (app) => {
     // delete
     const deleteReview = (req, res) => {
         const reviewId = req.params.id;
+        // console.log("got delete request to delete the review of id: " + reviewId);
         review_dao.deleteReview(reviewId);
         res.sendStatus(200);
     }

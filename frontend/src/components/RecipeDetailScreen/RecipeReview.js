@@ -1,11 +1,15 @@
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./index.css";
-import { createNewReview, updateReview, deleteReview } from "../../services/review-services";
+import { updateReview, deleteReview } from "../../services/review-services";
+import { findUserById } from "../../services/user-services";
 
-
-const RecipeReview = ({ review, setReview }) => {
+const RecipeReview = ({ review, setReview, user }) => {
+  const [reviewer, setReviewer] = useState({});
+  const [authorizeDelete, setAuthorizeDelete] = useState(true);
 
   const generateStar = (num) => {
-    let iterateArr = [...Array(Math.round(num)).keys()];
+    let iterateArr = [...Array(Math.floor(num)).keys()];
     return (
       <div className="star">
         {iterateArr.map(item => <i class="fa fa-star" />)}
@@ -20,22 +24,43 @@ const RecipeReview = ({ review, setReview }) => {
 
 
   // call db, and filter in local state
-  const deleteUserReview = (reviewId) => {
-    // access db and delete
-    deleteReview(reviewId);
-    // filter for front end 
-    setReview(prevState => prevState.filter(existingReview => existingReview._id !== reviewId));
+  const deleteUserReview = (reviewId, reviewer) => {
+
+    if (reviewer && reviewer.userName !== user.userName) {
+      console.log("You are not authorized to delete this review");
+      setAuthorizeDelete(false);
+      return;
+    } else {
+      // access db and delete
+      deleteReview(reviewId);
+      // filter for front end 
+      setReview(prevState => prevState.filter(existingReview => existingReview._id !== reviewId));
+    }
   }
 
   const updateUserReview = (reviewId, updatedReview) => {
     updateReview(reviewId, updatedReview)
   }
 
+  const getReviewer = (userId) => {
+    return findUserById(userId)
+      .then(response => response.json())
+      .then(user => user !== null && setReviewer(user));
+  }
 
+
+  useEffect(() => getReviewer(review.UserId), []);
+  /*
+  TODO:
+  format error message  
+  */
 
   return (
     <>
-
+      {
+        authorizeDelete === false &&
+        <p>You are not authorized to delete this review</p>
+      }
       <div className="recipereview-container">
         <div className="recipereview-title">
           <img
@@ -44,7 +69,25 @@ const RecipeReview = ({ review, setReview }) => {
             alt="defaultProfile"
           />
           <div className="reviewer-detail">
-            <span>{review.AuthorId}</span>
+
+            <i
+              onClick={() => deleteUserReview(review._id, reviewer)}
+              className="fas fa-times fa-pull-right">
+            </i>
+
+            <span>
+              {review.UserId &&
+                <Link to={`/profile/${review.UserId}`}>
+                  {reviewer["userName"] || "undefined"}
+                </Link>
+              }
+              {
+                !review.UserId &&
+                "Author: " + review.AuthorId
+              }
+            </span>
+
+
             <span>{generateStar(review.Rating)}</span>
             <span>{formatDate(review.DateSubmitted)}</span>
             <p className="recipereview-reviews">{review.Review}</p>
