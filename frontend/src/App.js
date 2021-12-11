@@ -57,7 +57,7 @@ const App = () => {
             <PrivacyPolicy />
           </Route>
 
-          <Route path="/recipe-search/:searchInput">
+          <Route path={["/recipe-search", "/recipe-search/:searchInput"]}>
             <RecipeSearchScreen />
           </Route>
 
