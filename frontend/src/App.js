@@ -17,6 +17,7 @@ import LoginScreen from "./components/LoginScreen";
 import RecipeSearchScreen from "./components/RecipeSearchScreen";
 import RecipeDetailScreen from "./components/RecipeDetailScreen";
 import ProfileScreen from "./components/ProfileScreen";
+import OtherProfile from "./components/ProfileScreen/OtherProfile";
 import PrivacyPolicy from "./components/PrivatePolicyScreen";
 
 
@@ -26,8 +27,6 @@ import { Provider } from "react-redux";
 // reducers
 import { combineReducers, createStore } from "redux";
 import profile from "./reducers/profile";
-
-// import WeatherComponent from "./components/WeatherComponent.js";
 
 
 
@@ -50,9 +49,15 @@ const App = () => {
           <Route path="/login" exact={true}>
             <LoginScreen />
           </Route>
+
           <Route path="/profile" exact={true}>
             <ProfileScreen />
           </Route>
+
+          <Route path="/profile/:profileId" exact={true}>
+            <OtherProfile />
+          </Route>
+
           <Route path="/privacy">
             <PrivacyPolicy />
           </Route>
@@ -64,14 +69,6 @@ const App = () => {
           <Route path="/recipe-detail/:id">
             <RecipeDetailScreen />
           </Route>
-
-          <Route path="/profile/:id">
-            <ProfileScreen />
-          </Route>
-
-          {/* <Route path="/weather">
-          <WeatherComponent/>
-        </Route> */}
 
         </BrowserRouter>
       </Provider>

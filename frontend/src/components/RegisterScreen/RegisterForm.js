@@ -6,7 +6,6 @@ import { useHistory } from "react-router-dom";
 // stylesheets
 import '../../index.css'
 import './register.css'
-// import {API_URL} from "../consts";
 
 // services
 import { registerUser } from "../../services/user-services";

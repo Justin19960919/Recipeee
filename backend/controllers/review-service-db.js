@@ -26,12 +26,13 @@ module.exports = (app) => {
             .then(review => res.json(review));
     }
 
-    const searchReviewsByAuthorId = (req, res) => {
-        const authorId = req.params.authorId;
-        console.log('authorid: ', authorId);
-        review_dao.searchReviewsByAuthorId(authorId)
-            .then(reviews => res.status(200).json(reviews));
-    }
+    // const searchReviewsByAuthorId = (req, res) => {
+    //     const authorId = req.params.authorId;
+    //     console.log('authorid: ', authorId);
+    //     review_dao.searchReviewsByAuthorId(authorId)
+    //         .then(reviews => res.status(200).json(reviews));
+    // }
+
     const searchReviewsByRecipeId = (req, res) => {
         const recipeId = req.params.recipeId;
         review_dao.searchReviewsByRecipeId(recipeId)
@@ -70,7 +71,7 @@ module.exports = (app) => {
     // read
     app.get('/rest/reviews', findAllReviews);
     app.get('/rest/reviews/:id', findReviewById);
-    app.get('/rest/reviews/searchReviewsByAuthorId/:authorId', searchReviewsByAuthorId);
+    // app.get('/rest/reviews/searchReviewsByAuthorId/:authorId', searchReviewsByAuthorId);
     app.get('/rest/reviews/searchReviewsByRecipeId/:recipeId', searchReviewsByRecipeId);
     app.get('/rest/reviews/searchReviewsByRating/:rating', searchReviewsByRating);
 

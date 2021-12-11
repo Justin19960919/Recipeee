@@ -1,7 +1,6 @@
-// import {PROFILE_API} from "../components/consts";
 import { backendUrl } from "./backendUrl.js";
-import {getUserProfile} from "./user-services";
-import {useHistory} from "react-router-dom";
+import { getUserProfile } from "./user-services";
+import { useHistory } from "react-router-dom";
 const PROFILE_API = `${backendUrl}/rest`;
 const likeServiceAPI = `${backendUrl}/rest/likes`;
 const starServiceAPI = `${backendUrl}/rest/stars`;
@@ -44,6 +43,6 @@ export const getUserLikes = (userName) =>
         .then(likes => likes.json())
 
 
-export const getUserStars = (userName) => 
+export const getUserStars = (userName) =>
     fetch(`${starServiceAPI}/searchStarsByAuthorId/${userName}`)
         .then(stars => stars.json())

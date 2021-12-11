@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./index.css";
 
@@ -16,7 +16,10 @@ const RecipeItem = ({ recipe }) => {
 
   return (
     <div className="details-container">
-      <img src={getImage(recipe.Images)} alt="recipe-image" />
+      <img
+        src={getImage(recipe.Images)}
+        alt="recipe-image"
+      />
 
       <div className="content-container">
 
