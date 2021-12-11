@@ -41,9 +41,12 @@ const Navigation = () => {
               if (user !== null) {
                 return (
                   <>
+                    {user.type === "admin" && <li className="nav-item mt-2"><i className="fas fa-user-tie"/></li>}
+                    {user.type === "user" && <li className="nav-item mt-2"><i className="fas fa-user"/></li>}
+                    {user.type === "paiduser" && <li className="nav-item mt-2"><i className="fas fa-crown"/></li>}
                     <li className="nav-item">
                       <Link to="/profile" className="nav-link active" aria-current="page">
-                        Profile
+                        {user.userName}
                       </Link>
                     </li>
                     <li className="nav-item ">

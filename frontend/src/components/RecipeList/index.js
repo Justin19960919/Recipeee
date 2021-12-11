@@ -12,7 +12,7 @@ const RecipeList = () => {
   const params = useParams();
   const history = useHistory();
   const [searchResults, setSearchResults] = useState([]);
-  const defaultSearch = params.searchInput === " " ? "Dessert" : params.searchInput;
+  const defaultSearch = (params.searchInput === " " || params.searchInput === undefined) ? "Dessert" : params.searchInput;
   const [searchInput, setSearchInput] = useState(defaultSearch);
 
   const searchInputHandler = (event) => {
