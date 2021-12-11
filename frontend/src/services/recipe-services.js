@@ -14,6 +14,7 @@ export const searchRecipeById = (recipeId) =>
     .then(recipe => recipe.json()
     );
 
+
 // find recipe by searching for the whole recipe name
 export const searchRecipeByRecipeName = (recipeName) =>
   fetch(`${recipeServiceAPI}/findRecipe/${recipeName}`)

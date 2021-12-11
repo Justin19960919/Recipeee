@@ -1,6 +1,6 @@
 import { backendUrl } from "./backendUrl.js";
 import { getUserProfile } from "./user-services";
-import { useHistory } from "react-router-dom";
+
 const PROFILE_API = `${backendUrl}/rest`;
 const likeServiceAPI = `${backendUrl}/rest/likes`;
 const starServiceAPI = `${backendUrl}/rest/stars`;

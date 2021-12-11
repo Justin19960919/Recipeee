@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import CardItem from "./CardItem";
 import { getUserStars } from "../../services/ProfileService";
 import { getUserProfile } from "../../services/user-services";
+import { searchRecipeById } from "../../services/recipe-services";
+
 import "./card.css";
 
 
@@ -53,14 +55,22 @@ const CardList = () => {
 
     // query from backend database for starred recipes
     // perform logic to see if length >= 4
-    if (user !== undefined) {
+    if (user !== null) {
+        console.log(`front end has detected user to be: ${user}`);
         getUserStars(user.userName)
             .then(
                 userStarredRecipes => {
                     if (userStarredRecipes.length >= 4) {
                         const cutOff = userStarredRecipes.slice(0, 4);
-                        setStarredRecipes(cutOff);
-                        setIsDefault(false);
+                        console.log(`Cut off starred recipes: ${JSON.stringify(cutOff)}`);
+                        const cutOffRecipes = cutOff.map(
+                            (item) => {
+                                return searchRecipeById(item.RecipeId)
+                                    .then(recipe => recipe);
+                            });
+                        console.log(`Cut off recipes: ${JSON.stringify(cutOffRecipes)}`)
+                        // setStarredRecipes(cutOff);
+                        // setIsDefault(false);
                     }
                 }
             );

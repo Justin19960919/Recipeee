@@ -20,7 +20,6 @@ module.exports = (app) => {
 
     const findRecipeById = (req, res) => {
         const recipeId = req.params.id;
-        // console.log(`recipeid is : ${recipeId}, type: ${typeof (recipeId)}`);
         recipe_dao.findRecipeById(recipeId)
             .then(recipe => res.json(recipe));
     }

@@ -14,11 +14,15 @@ const CardItem = ({ recipe, isDefault }) => {
 
     return (
         <div className="card ms-auto" key={recipe._id}>
-            <img className="card-img-top" src={recipe.Image} alt="starred recipe" />
+            <img
+                className="card-img-top"
+                src={(isDefault && recipe.Images) || (!isDefault && targetImage)}
+                alt="starred recipe"
+
+            />
             <div className="card-body">
                 <h5 className="card-title">
-                    {isDefault && recipe.Name}
-                    {!isDefault && targetImage}
+                    {recipe.Name}
                 </h5>
                 <p className="card-text text-truncate">
                     {recipe.Description}
