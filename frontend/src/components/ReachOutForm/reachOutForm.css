@@ -1,10 +1,9 @@
 .form-page{
   display: grid;
   grid-template-columns: 1fr 1fr;
-
 }
 .about-us{
-  padding: 5% 15%;
+  padding: 5% 10%;
   margin: auto;
 }
 .about-us .about-us-title,.about-us-content{
@@ -14,46 +13,62 @@
   max-height: 15rem;
 }
 .form{
-  width:70%;
+  width:80%;
+  max-width: 30rem;
   margin: 3rem auto;
   height: auto;
   border: #15643B 1px solid;
-  border-radius: 1%;
+  border-radius: 3%;
+  border: 0;
+  background-color: #ffffff;
+  box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
+
 .contact-form-header{
   margin-top: 2rem;
   font-size: 30px;
   text-align:center;
-  color: #15643B;
+  color: #414141;
 }
-
 .contact-form{
   width: 70%;
   margin: 0 auto 1rem;
-  font-family: 'PT Sans', sans-serif;
 }
 
 .contact-form input{
   padding: 15px;
   font-size: 20px;
-  border: 1px solid #15643B;
+  border-bottom: 1.5px solid #c8c8c8;
   margin-top: 0.5rem;
 }
 
 .contact-form textarea{
   padding: 15px;
   font-size: 20px;
-  border: 1px solid #15643B;
+  border-bottom: 1.5px solid #c8c8c8;
   margin-top: 0.5rem;
 }
 
 .submit-button{
-  margin: 10px auto;
-  background-color: #15643B;
-  border-color: #15643B;
+  margin: 14px auto;
+  width: 6rem;
+  background-color: #139652;
+  border: 0;
+  color: #ffffff;
   border-radius: 10px;
 }
 
 .submit-button:hover{
   background-color: #1a7948;
 }
+
+@media (max-width: 700px) {
+  .form-page {
+    display: flex;
+    flex-direction: column;
+  }
+  .about-us{
+    margin: 0 5%;
+  }
+}
+
