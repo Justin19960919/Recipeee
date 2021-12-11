@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import $ from "jquery";
@@ -17,22 +17,21 @@ const LeaveReviewForm = ({ setCurReviews, recipeId, authorId, user }) => {
     let rating = $("input[type='radio']:checked").val();
 
     if (user !== null) {
-      const currentUserId = user._id;
       const newReview = {
         RecipeId: recipeId,
-        AuthorId: authorId,
-        UserId: currentUserId,
+        UserId: user._id,
+        UserName: user.userName,
         Rating: parseFloat(rating),
         Review: comment,
         DateSubmitted: new Date(),
         DateModified: new Date()
       };
-      // console.log("new created review is: ", newReview);
-
+      console.log("new created review is: ", newReview);
       createNewReview(newReview)
         .then(newReview => setCurReviews(prevState => [newReview, ...prevState]));
+      setComment(""); // clear input field
     } else {
-      // redirectg to login?
+      // redirect to login?
       console.log("user is not logged in..");
       history.push("/login");
     }
