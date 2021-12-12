@@ -147,3 +147,12 @@
     padding: 0;
     margin: 0;
 }
+
+.detail-buttons button{
+    width: 5rem;
+    height: 2rem;
+    background-color: #28a745;
+    border-radius: 10%;
+    box-shadow: #b8b8b8;
+    margin: 0 1rem;
+}
