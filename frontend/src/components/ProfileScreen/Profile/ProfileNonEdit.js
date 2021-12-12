@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import './profile.css'
 import UserLikeList from "../UserLikeList";
+import UserFollowList from "../UserFollowList";
 
 const ProfileNonEdit =(props) => {
     const EditingMode = () => {
@@ -35,7 +36,9 @@ const ProfileNonEdit =(props) => {
                 <span className="fw-bold ms-2 wd-white-color "> {owner.followersCount}</span>  Followers
             </div>
 
+            {/*TODO: layout*/}
             <UserLikeList likes={props.likes}/>
+            <UserFollowList follows={props.follows}/>
         </>
     )
 }

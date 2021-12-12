@@ -15,11 +15,13 @@ const Profile = () => {
     const history = useHistory();
     const [profile, setProfile] = useState(owner);
     const [likes, setLikes] = useState([]);
+    const [follows, setFollows] = useState([]);
     const getProfile = () => {
         getUserProfile().then(res => res.json())
             .then(profile => {
                 setProfile(profile);
                 getUserLikes(profile.userName).then(likes => setLikes(likes));
+                getUserFollows(profile.userName).then(follows => setFollows(follows));
             }).catch(() => {
                 history.goBack();
             });
@@ -34,6 +36,7 @@ const Profile = () => {
                     setProfile={setProfile}
                     profile={profile}
                     likes={likes}
+                    follows={follows}
                     dispatch
                 /> :
                 <ProfileNonEdit
@@ -41,6 +44,7 @@ const Profile = () => {
                     setProfile={setProfile}
                     profile={profile}
                     likes={likes}
+                    follows={follows}
                 />
             }
         </div>
