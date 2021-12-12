@@ -73,6 +73,14 @@ const Navigation = () => {
                         Logout
                       </Link>
                     </li>
+                    {
+                      user.type === "admin" &&
+                      <li className="nav-item ">
+                        <Link to="/admin" className="nav-link">
+                          Admin
+                        </Link>
+                      </li>
+                    }
                   </>
                 )
               } else {

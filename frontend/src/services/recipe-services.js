@@ -90,6 +90,17 @@ export const likeRecipe = (newLike) => {
   })
 }
 
+
+export const updateRecipeLikes = (recipeId, updatedRecipe) => {
+  fetch(`${likeServiceAPI}/${recipeId}`, {
+    method: "POST",
+    body: JSON.stringify(updatedRecipe),
+    headers: {
+      "content-type": "application/json"
+    }
+  });
+}
+
 // star a recipe
 // RecipeId: Number,
 // Username: String
@@ -101,4 +112,15 @@ export const starRecipe = (newStar) => {
       "content-type": "application/json"
     }
   })
+}
+
+
+export const updateRecipeStars = (recipeId, updatedRecipe) => {
+  fetch(`${starServiceAPI}/${recipeId}`, {
+    method: "POST",
+    body: JSON.stringify(updatedRecipe),
+    headers: {
+      "content-type": "application/json"
+    }
+  });
 }

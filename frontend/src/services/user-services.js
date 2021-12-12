@@ -42,11 +42,12 @@ export const getUserProfile = () =>
 
 ///////// admin /////////
 
-export const deleteUser = (userId) =>
+export const deleteUser = (userId) => {
+  console.log("calling delete user front end service");
   fetch(`${userServiceAPI}/users/${userId}`, {
     method: 'DELETE'
   })
-
+}
 
 export const updateUser = (userId, updatedUserInfo) =>
   fetch(`${userServiceAPI}/users/${userId}`, {
@@ -66,7 +67,7 @@ export const findUserById = (userId) =>
 
 export const findAllUsers = () =>
   fetch(`${userServiceAPI}/users`)
-
+    .then(allUsers => allUsers.json());
 
 
 ///////// follow /////////
