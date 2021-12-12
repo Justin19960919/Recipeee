@@ -64,7 +64,11 @@ const CardList = () => {
                         const cutOff = userStarredRecipes.slice(0, 4);
                         cutOff.forEach((item) => {
                             searchRecipeById(item.RecipeId)
-                                .then(recipe => starredRecipesCollection.push(recipe))
+                                .then((recipe) => {
+                                    console.log(recipe);
+                                    starredRecipesCollection.push(recipe);
+                                    console.log(starredRecipesCollection.length);
+                                })
                         })
                         // setStarredRecipes(cutOff);
                         // setIsDefault(false);
@@ -72,8 +76,6 @@ const CardList = () => {
                 }
             );
     }
-
-    console.log(`fetched recipes: ${starredRecipesCollection.length}`);
 
 
     return (
