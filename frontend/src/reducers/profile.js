@@ -1,7 +1,12 @@
+
 const user = {
     name: "Alice",
     userName: "alice123",
     type: "user",
+    bannerPicture: "/pic/banner.jpg",
+    profilePicture:"/pic/profile.jpg",
+    email: "alice@gmail.com"
+
 }
 
 

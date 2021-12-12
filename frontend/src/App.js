@@ -27,48 +27,50 @@ import { Provider } from "react-redux";
 // reducers
 import { combineReducers, createStore } from "redux";
 import profile from "./reducers/profile";
+import follow from "./reducers/follow";
+
 
 
 
 const App = () => {
 
-  const reducers = combineReducers({ profile })
+  const reducers = combineReducers({ profile:profile, follow:follow })
   const store = createStore(reducers);
   return (
     <>
       <Provider store={store}>
         <BrowserRouter>
 
-          <Route path="/" exact={true}>
-            <HomeScreen />
-          </Route>
+          {/*<Route path="/" exact={true}>*/}
+          {/*  <HomeScreen />*/}
+          {/*</Route>*/}
 
-          <Route path="/register" exact={true}>
-            <RegisterScreen />
-          </Route>
-          <Route path="/login" exact={true}>
-            <LoginScreen />
-          </Route>
+          {/*<Route path="/register" exact={true}>*/}
+          {/*  <RegisterScreen />*/}
+          {/*</Route>*/}
+          {/*<Route path="/login" exact={true}>*/}
+          {/*  <LoginScreen />*/}
+          {/*</Route>*/}
 
           <Route path="/profile" exact={true}>
             <ProfileScreen />
           </Route>
 
-          <Route path="/profile/:profileId" exact={true}>
-            <OtherProfile />
-          </Route>
+          {/*<Route path="/profile/:profileId" exact={true}>*/}
+          {/*  <OtherProfile />*/}
+          {/*</Route>*/}
 
-          <Route path="/privacy">
-            <PrivacyPolicy />
-          </Route>
+          {/*<Route path="/privacy">*/}
+          {/*  <PrivacyPolicy />*/}
+          {/*</Route>*/}
 
-          <Route path={["/recipe-search", "/recipe-search/:searchInput"]}>
-            <RecipeSearchScreen />
-          </Route>
+          {/*<Route path={["/recipe-search", "/recipe-search/:searchInput"]}>*/}
+          {/*  <RecipeSearchScreen />*/}
+          {/*</Route>*/}
 
-          <Route path="/recipe-detail/:id">
-            <RecipeDetailScreen />
-          </Route>
+          {/*<Route path="/recipe-detail/:id">*/}
+          {/*  <RecipeDetailScreen />*/}
+          {/*</Route>*/}
 
         </BrowserRouter>
       </Provider>

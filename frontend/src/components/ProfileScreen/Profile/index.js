@@ -15,15 +15,15 @@ const Profile = () => {
 
     const history = useHistory();
     const [profile, setProfile] = useState(owner);
-    const getProfile = () => {
-        getUserProfile().then(res => res.json())
-            .then(profile => {
-                setProfile(profile);
-            }).catch(() => {
-                history.goBack();
-            });
-    }
-    useEffect(getProfile, [history]);
+    // const getProfile = () => {
+    //     getUserProfile().then(res => res.json())
+    //         .then(profile => {
+    //             setProfile(profile);
+    //         }).catch(() => {
+    //             history.goBack();
+    //         });
+    // }
+    // useEffect(getProfile, [history]);
 
     return (
         <div>
