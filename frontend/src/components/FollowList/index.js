@@ -4,26 +4,20 @@ import FollowListItem from "./FollowListItem";
 import {getUserFollows} from "../../services/ProfileService";
 
 
-const FollowList = () => {
-    const follow = useSelector((state)=> state.follow);
-    // const dispatch = useDispatch();
-    // useEffect(() => getUserFollows(dispatch), [])
-    // const [follow, setFollow] = useState([])
-    // useEffect(() => getUserFollows().then(follow => setFollow(follow)));
-
+const FollowList = ({follows}) => {
+    console.log(follows);
     return(
         <ul className="list-group mt-4">
             <li className="list-group-item wd-beige wd-black wd-border">
                 <strong>Following</strong>
             </li>
-            {
-                follow.map(follow => {
-                        return (
-                            <FollowListItem follow={follow}/>
-                        )
-                    }
-                )
-            }
+            {(() => {
+                if (follows !== undefined && follows.length > 0) {
+                    return follows.map(follow => {
+                        return(<FollowListItem follow={follow}/>);
+                    })
+                }
+            })()}
         </ul>
     )
 };
