@@ -1,4 +1,4 @@
-import "./navigation.css";
+import "./index.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getUserProfile, logoutUser } from "../../services/user-services";
@@ -41,9 +41,31 @@ const Navigation = () => {
               if (user !== null) {
                 return (
                   <>
+                    {
+                      user.type === "admin" &&
+                      <li className="nav-item mt-2">
+                        <i className="fas fa-user-tie admin-color" />
+                      </li>
+                    }
+                    {
+                      user.type === "user" &&
+                      <li className="nav-item mt-2">
+                        <i className="fas fa-user normal-user-color" />
+                      </li>
+                    }
+                    {
+                      user.type === "paiduser" &&
+                      <li className="nav-item mt-2">
+                        <i className="fas fa-crown paid-user-color" />
+                      </li>
+                    }
+
+
+
                     <li className="nav-item">
                       <Link to="/profile" className="nav-link active" aria-current="page">
-                        Profile
+                        {user.userName}
+
                       </Link>
                     </li>
                     <li className="nav-item ">

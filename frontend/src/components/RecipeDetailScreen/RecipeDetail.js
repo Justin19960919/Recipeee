@@ -1,6 +1,5 @@
 import React from "react";
 import "./index.css";
-import "bootstrap-icons/font/bootstrap-icons.css";
 
 const RecipeDetail = ({ recipeDetail }) => {
   function listout(details) {
@@ -12,7 +11,7 @@ const RecipeDetail = ({ recipeDetail }) => {
     return data;
   }
   function print1(list1, list2) {
-    if (list1 === undefined || list2 == undefined) {
+    if (list1 === undefined || list2 === undefined) {
       return [];
     }
     list1 = listout(list1);
@@ -67,25 +66,11 @@ const RecipeDetail = ({ recipeDetail }) => {
       stringArr[stringArr.length - 1] = last.substr(0, last.length - 3);
       return stringArr.slice(0, stringArr.length - 1);
     } else {
-      return [imageString.substring(1, recipeDetail.Images.length - 1)];
+      return [imageString.substring(1, imageString.length - 1)];
     }
   };
 
   const imgs = getImageArray(recipeDetail.Images);
-
-  const generateStar = (num) => {
-    let iterateArr = [...Array(Math.floor(num)).keys()];
-    console.log(`iterate arr: ${iterateArr}`);
-    // let isHalf = Number.isInteger(num);
-    return (
-      <div className="star">
-        {iterateArr.map((item) => (
-          <i className="fa fa-star" />
-        ))}
-        {/* {isHalf ? "" : <i className="fa fa-star-half" />} */}
-      </div>
-    );
-  };
 
   return (
     <div className="recipe-detail">
@@ -118,30 +103,23 @@ const RecipeDetail = ({ recipeDetail }) => {
             <div class="justify-content-center">
               <div class="content text-center">
                 <div class="ratings">
+                  {" "}
                   <span class="product-rating">
                     {recipeDetail.AggregatedRating}
                   </span>
                   <span>/5</span>
                   <div class="stars">
-                    {generateStar(recipeDetail.AggregatedRating)}
+                    {" "}
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-          <div className="detail-buttons">
-            <button className="save-button">
-              <i className="bi bi-bookmark-fill" />
-              save
-            </button>
-            <button className="like-button">
-              <i className="bi bi-hand-thumbs-up-fill" />
-              like
-            </button>
-          </div>
         </div>
-
         <div className="img-container">
           {/* {console.log(imgs)} */}
           {recipeDetail.Images !== undefined && (

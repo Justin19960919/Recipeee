@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+.navbar-color {
+  background-color: #15643b;
+  height: 80px;
+}
+.logo {
+  font-family: "Pacifico", cursive;
+  position: relative;
+  bottom: 6px;
+  left: 1rem;
+  font-size: 2rem;
+}
+.submenu {
+  background-color: #15643b;
+  width: 100%;
+}
+.container-fluid {
+  padding: 0;
+  z-index: 3;
+}
+.navbar-toggler {
+  margin-right: 1rem;
+}
+.nav-item {
+  margin: 0 auto 0 1rem;
+  font-size: 1.2rem;
+}
+
+.admin-color {
+  color: #2e4c6d;
+}
+
+.paid-user-color {
+  color: #ffce45;
+}
+
+.normal-user-color {
+  color: #d4ecdd;
+}
