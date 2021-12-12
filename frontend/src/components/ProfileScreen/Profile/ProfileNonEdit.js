@@ -1,5 +1,6 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import './profile.css'
+import UserLikeList from "../UserLikeList";
 
 const ProfileNonEdit =(props) => {
     const EditingMode = () => {
@@ -34,7 +35,7 @@ const ProfileNonEdit =(props) => {
                 <span className="fw-bold ms-2 wd-white-color "> {owner.followersCount}</span>  Followers
             </div>
 
-
+            <UserLikeList likes={props.likes}/>
         </>
     )
 }

@@ -1,0 +1,18 @@
+.bg-like-head{
+    background-color: #15643b;
+}
+.bg-like{
+    background-color: #e8f1b5;
+    text-align: left;
+}
+
+.like-head {
+    text-align: left;
+    color: white;
+    font-size: 1.3rem;
+}
+
+.like-name {
+    text-align: left;
+    font-size: 1.1rem;
+}
