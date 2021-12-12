@@ -65,6 +65,10 @@ export const findUserById = (userId) =>
 
 
 
+export const findUserByUserName = (userName) =>
+  fetch(`${userServiceAPI}/users/${userName}`)
+
+
 export const findAllUsers = () =>
   fetch(`${userServiceAPI}/users`)
     .then(allUsers => allUsers.json());

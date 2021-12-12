@@ -25,11 +25,11 @@ module.exports = (app) => {
   }
 
 
-  // const findUserByUserName = (req, res) => {
-  //     const userName = req.params.userName;
-  //     user_model.findOne({userName})
-  //         .then(foundUsr => res.status(200).json(foundUsr));
-  // }
+  const findUserByUserName = (req, res) => {
+      const userName = req.params.userName;
+      user_model.findOne({userName})
+          .then(foundUsr => res.status(200).json(foundUsr));
+  }
 
   // update
   const updateUserInfo = (req, res) => {
@@ -89,7 +89,7 @@ module.exports = (app) => {
   // read
   app.get('/rest/users', findAllUsers);
   app.get('/rest/users/:id', findUserById);
-  // app.get('/rest/users/findUser/:userName', findUserByUserName);
+  app.get('/rest/users/findUser/:userName', findUserByUserName);
 
   // update
   app.put("/rest/users/:id", updateUserInfo);
