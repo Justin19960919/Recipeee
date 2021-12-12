@@ -1,35 +1,42 @@
+import { Link } from "react-router-dom";
 import './card.css';
-import { getImageArray } from '../consts';
+import { getImageArray, parseStringToDate, getTimeDeltaFromNow } from '../consts';
 
 const CardItem = ({ recipe, isDefault }) => {
-
-    const getTimeDeltaFromNow = (prevDate) => {
-        const curDate = new Date();
-        const timeDelta = curDate - prevDate;
-        const diffDays = Math.floor(timeDelta / (1000 * 60 * 60 * 24));
-        return diffDays;
-    }
-    const targetImage = getImageArray(recipe.Images)[0];
-
-
     return (
         <div className="card ms-auto" key={recipe._id}>
             <img
                 className="card-img-top"
-                src={(isDefault && recipe.Images) || (!isDefault && targetImage)}
-                alt="starred recipe"
+                src={
+                    (isDefault && recipe.Images) ||
+                    (!isDefault && getImageArray(recipe.Images)[0])
+                }
+                alt="Star Recipe"
 
             />
             <div className="card-body">
                 <h5 className="card-title">
-                    {recipe.Name}
+
+                    {isDefault && recipe.Name}
+                    {!isDefault &&
+                        <Link to={`/recipe-detail/${recipe._id}`}>
+                            {recipe.Name}
+                        </Link>
+                    }
                 </h5>
                 <p className="card-text text-truncate">
                     {recipe.Description}
                 </p>
             </div>
             <div className="card-footer">
-                <small className="text-muted">{getTimeDeltaFromNow(recipe.DatePublished)} Days Ago</small>
+                <small className="text-muted">{
+                    recipe.DatePublished &&
+                    getTimeDeltaFromNow(
+                        parseStringToDate(recipe.DatePublished)
+                    )
+                }
+                    Days Ago
+                </small>
             </div>
         </div>
     );

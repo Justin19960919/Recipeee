@@ -20,6 +20,24 @@ export const getImageArray = (imageString) => {
     return stringArr.slice(0, stringArr.length - 1);
 
   } else {
-    return [imageString.substring(1, imageString.length - 1)];
+    // return [imageString.substring(1, imageString.length - 1)];
+    return [imageString];
   }
+}
+
+export const parseStringToDate = (timeString) => {
+  let date = timeString.split("T")[0];
+  let dateSplit = date.split("-");
+  let year = dateSplit[0];
+  let month = dateSplit[1];
+  let day = dateSplit[2];
+  return new Date(parseInt(year), parseInt(month), parseInt(day));
+}
+
+
+export const getTimeDeltaFromNow = (prevDate) => {
+  const curDate = new Date();
+  const timeDelta = curDate - prevDate;
+  const diffDays = Math.floor(timeDelta / (1000 * 60 * 60 * 24));
+  return diffDays;
 }
