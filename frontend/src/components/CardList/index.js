@@ -55,26 +55,25 @@ const CardList = () => {
 
     // query from backend database for starred recipes
     // perform logic to see if length >= 4
+    const starredRecipesCollection = [];
     if (user !== null) {
-        console.log(`front end has detected user to be: ${user}`);
         getUserStars(user.userName)
             .then(
                 userStarredRecipes => {
                     if (userStarredRecipes.length >= 4) {
                         const cutOff = userStarredRecipes.slice(0, 4);
-                        console.log(`Cut off starred recipes: ${JSON.stringify(cutOff)}`);
-                        const cutOffRecipes = cutOff.map(
-                            (item) => {
-                                return searchRecipeById(item.RecipeId)
-                                    .then(recipe => recipe);
-                            });
-                        console.log(`Cut off recipes: ${JSON.stringify(cutOffRecipes)}`)
+                        cutOff.forEach((item) => {
+                            searchRecipeById(item.RecipeId)
+                                .then(recipe => starredRecipesCollection.push(recipe))
+                        })
                         // setStarredRecipes(cutOff);
                         // setIsDefault(false);
                     }
                 }
             );
     }
+
+    console.log(`fetched recipes: ${starredRecipesCollection.length}`);
 
 
     return (

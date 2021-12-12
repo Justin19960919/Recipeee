@@ -50,12 +50,12 @@ const RecipeReview = ({ review, setReview, user }) => {
               ></i>
             )}
             <span>
-              {user && user._id !== review.UserId && (
+              {(user === undefined || (user && user._id !== review.UserId)) && (
                 <Link to={`/profile/${review.UserId}`}>
                   {review.UserName || "undefined"}
                 </Link>
               )}
-              {user && user._id === review.UserId && <p>{user.userName}</p>}
+              {user && user._id === review.UserId && <p>{user.userName} (Current user)</p>}
             </span>
 
             <span>{generateStar(review.Rating)}</span>
