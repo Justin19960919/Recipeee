@@ -8,8 +8,8 @@ const FollowList = ({follows}) => {
     console.log(follows);
     return(
         <ul className="list-group mt-4">
-            <li className="list-group-item wd-beige wd-black wd-border">
-                <strong>Following</strong>
+            <li className="list-group-item wd-beige wd-black wd-border text-start">
+                <span className="fw-bold fs-5">Following</span>
             </li>
             {(() => {
                 if (follows !== undefined && follows.length > 0) {

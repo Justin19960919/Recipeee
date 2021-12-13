@@ -44,7 +44,7 @@ const ProfileScreen = () => {
                 </div>
                 <div className="d-sm-none d-md-none d-lg-block col-lg-4 col-xl-4">
                     <FollowList follows={follows}/>
-                    {/*<LikeList likes={likes}/>*/}
+                    <LikeList likes={likes}/>
                 </div>
             </div>
         </>

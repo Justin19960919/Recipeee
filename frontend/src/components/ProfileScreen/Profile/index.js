@@ -8,9 +8,7 @@ import {useNavigate} from "react-router";
 import {getUserProfile} from "../../../services/user-services";
 
 const Profile = ({profile, setProfile}) => {
-    // const [profile, setProfile] = useState(owner);
     const [isEdit, setIsEdit] = useState(false);
-    // const dispatch = useDispatch();
 
     return (
         <div>
@@ -28,8 +26,6 @@ const Profile = ({profile, setProfile}) => {
                 />
             }
         </div>
-
-
     )
 }
 
