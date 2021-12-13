@@ -1,6 +1,4 @@
-import React, {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import RecipeItem from "../RecipeList/RecipeItem";
+import React from "react";
 import LikeListItem from "./LikeListItem";
 
 const LikeList = ({likes}) => {

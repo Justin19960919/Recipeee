@@ -1,9 +1,6 @@
 import React, {useEffect, useState} from "react";
-import {useDispatch} from "react-redux";
 import {Link} from "react-router-dom";
-import {findUserByUsername, getUserProfile} from "../../services/user-services";
-import {getUserFollows, getUserLikes} from "../../services/ProfileService";
-//import {unfollowAuthor} from "../../services/ProfileService";
+import {findUserByUsername} from "../../services/user-services";
 
 const FollowListItem = ({
                             follow = {

@@ -1,7 +1,5 @@
-import React, {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import React from "react";
 import FollowListItem from "./FollowListItem";
-import {getUserFollows} from "../../services/ProfileService";
 
 
 const FollowList = ({follows}) => {
