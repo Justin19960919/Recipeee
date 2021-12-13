@@ -1,26 +1,56 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./index.css";
+import { getImageArray } from "../consts";
 
 const RecipeItem = ({ recipe }) => {
-
+  // console.log(`recipe: ${recipe.Images}`);
   const formatDate = (date) => {
     // console.log(date, typeof(date));
     return date.split("T")[0];
   }
 
   const getImage = (images) => {
-    let firstImage = images.split(".jpg")[0] + ".jpg";
-    return firstImage.startsWith("c") ? firstImage.substr(3) : firstImage.substr(1)
+    if(images.startsWith("[")){
+      const afterParsing = images.substr(1, images.length - 2);
+      // console.log(`after parsing: ${afterParsing}`);
+      const parseArr = afterParsing.split(".jpg");
+      // console.log(' first img: ', parseArr[0] + `.jpg"`);
+      const firstImg = parseArr[0] + `.jpg`;
+      console.log(firstImg);
+      return firstImg.substr(1);
+    }
+    else if(images.startsWith("c")){
+      console.log("arr string");
+      return "";
+    }
+    else if(images === ""){
+      console.log("empty string");
+      return "";
+    }
+    else {
+      console.log("normal string");
+      return images.substr(1, images.length - 2);
+    }
   }
 
+  const img = getImage(recipe.Images);
   return (
     <div className="details-container">
-      <img
-        src={getImage(recipe.Images)}
-        alt="recipe-image"
-      />
-
+      {
+        img === "" &&
+        <img
+          src="/pic/ingredients.jpg"
+          alt="recipe-image"
+        />
+      }
+      {
+        img !== "" &&
+        <img
+          src={img}
+          alt="recipe-image"
+        />
+      }
       <div className="content-container">
 
         <h5 className="detail-title">

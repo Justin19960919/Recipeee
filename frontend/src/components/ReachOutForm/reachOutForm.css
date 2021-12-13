@@ -3,14 +3,19 @@
   grid-template-columns: 1fr 1fr;
 }
 .about-us{
-  padding: 5% 10%;
-  margin: auto;
+  padding: 5% 15%;
+  margin: 5rem auto;
 }
-.about-us .about-us-title,.about-us-content{
+.about-us-title{
+  text-align: center;
   color:black;
 }
 .about-us-content{
+  color:rgb(73, 73, 73);
+}
+.about-us-content{
   max-height: 15rem;
+  margin-top: 2rem;
 }
 .form{
   width:80%;
@@ -61,8 +66,35 @@
 .submit-button:hover{
   background-color: #1a7948;
 }
+.features{
+  display: flex;
+  margin-top: 5rem;
+  /* align-items: center; */
+  justify-content: center;
+}
+.feature{
+  display: flex;
+  flex-direction: column;
+  margin: 0 1rem
+}
+.feature-detail{
+  width: 8rem;
+  height: auto;
+  color: #139652;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+.feature-title{
+  color: #333333;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+}
 
-@media (max-width: 700px) {
+
+
+@media (max-width: 860px) {
   .form-page {
     display: flex;
     flex-direction: column;
