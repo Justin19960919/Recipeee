@@ -10,6 +10,8 @@ module.exports.findAllFollows = () => follow_model.find();
 
 module.exports.findFollowById = (followId) => follow_model.findById(followId);
 
+module.exports.findFollowByUsernameFollowName = ({userName, followName}) => follow_model.findOne({Username:userName, FollowName:followName});
+
 module.exports.searchFollowsByUsername = (userName) => follow_model.find({Username : userName});
 
 module.exports.searchFollowsByFollowName = (followName) => follow_model.find({FollowName : followName});
@@ -24,5 +26,5 @@ module.exports.updateFollowInfo = (followID, follow) => {
 
 // DELETE
 module.exports.deleteFollow = (id) => {
-    follow_model.findByIdAndDelete({_id: id});
+    follow_model.deleteOne({_id: id});
 }
