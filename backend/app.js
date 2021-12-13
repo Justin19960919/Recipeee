@@ -19,6 +19,7 @@ require("dotenv").config()
 // connect to db
 // mongoose.connect('(YOUR MONGODB URL)/Recipeee');
 const recipeDB = "recipeDB";
+// mongoose.connect(`${process.env.MONGODB_LOCAL_BASE_URL}/${recipeDB}`);
 mongoose.connect("mongodb+srv://Recipeee:Recipeee@recipeee.zbbfy.mongodb.net/Recipeee");
 
 
@@ -26,20 +27,20 @@ mongoose.connect("mongodb+srv://Recipeee:Recipeee@recipeee.zbbfy.mongodb.net/Rec
 // middleware
 //app.use(cors()); // allow cross site
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 //app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 // reference static assets in public folder
 app.use(express.static("./public"));
 
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "http://localhost:3000");
   res.header("Access-Control-Allow-Headers",
 
-      "Origin, X-Requested-With, Content-Type, Accept");
+    "Origin, X-Requested-With, Content-Type, Accept");
   res.header("Access-Control-Allow-Methods",
-      "GET, POST, PUT, DELETE, OPTIONS");
+    "GET, POST, PUT, DELETE, OPTIONS");
   res.header("Access-Control-Allow-Credentials", "true");
   next();
 });

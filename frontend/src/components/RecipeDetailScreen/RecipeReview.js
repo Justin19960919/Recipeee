@@ -1,9 +1,16 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./index.css";
-import { updateReview, deleteReview } from "../../services/review-services";
-// import { findUserById } from "../../services/user-services";
+import { deleteReview } from "../../services/review-services";
+import UpdateReviewForm from "./UpdateReviewForm";
+
 
 const RecipeReview = ({ review, setReview, user }) => {
+  // need update state
+  const [needUpdate, setNeedUpdate] = useState(false);
+  const [curReview, setCurReview] = useState(review);
+
+  // generate star functions
   const generateStar = (num) => {
     let iterateArr = [...Array(Math.floor(num)).keys()];
     return (
@@ -33,35 +40,53 @@ const RecipeReview = ({ review, setReview, user }) => {
   const hasDeletePrivilege =
     (user && user._id === review.UserId) || (user && user.type === "admin");
 
+
   return (
     <>
-      <div className="recipereview-container" key={review._id}>
+      <div className="recipereview-container" key={curReview._id}>
         <div className="recipereview-title">
           <img
             className="defaultProfile"
             src="/pic/profile.jpg"
             alt="defaultProfile"
           />
-          <div className="reviewer-detail">
-            {hasDeletePrivilege && (
-              <i
-                onClick={() => deleteUserReview(review._id)}
-                className="fas fa-times fa-pull-right"
-              ></i>
-            )}
-            <span>
-              {user && user._id !== review.UserId && (
-                <Link to={`/profile/${review.UserId}`}>
-                  {review.UserName || "undefined"}
-                </Link>
-              )}
-              {user && user._id === review.UserId && <p>{user.userName}</p>}
-            </span>
 
-            <span>{generateStar(review.Rating)}</span>
-            <span>{formatDate(review.DateSubmitted)}</span>
-            <p className="recipereview-reviews">{review.Review}</p>
-          </div>
+          {
+            !needUpdate &&
+            <div className="reviewer-detail">
+              {hasDeletePrivilege && (
+                <i
+                  onClick={() => deleteUserReview(curReview._id)}
+                  className="fas fa-times topRight"
+                ></i>
+              )}
+              <span>
+                {(user === undefined || (user && user._id !== curReview.UserId)) && (
+                  <Link to={`/profile/${curReview.UserId}`}>
+                    {curReview.UserName || "undefined"}
+                  </Link>
+                )}
+                {user && user._id === curReview.UserId && <p>{user.userName} (Current user)</p>}
+              </span>
+
+              <span>{generateStar(curReview.Rating)}</span>
+              <span>{formatDate(curReview.DateSubmitted)}</span>
+              <p className="recipereview-reviews">{curReview.Review}</p>
+              <i
+                class="fas fa-pen secondRight"
+                onClick={() => setNeedUpdate(true)}
+              >
+              </i>
+            </div>
+          }
+          {
+            needUpdate &&
+            <UpdateReviewForm
+              curReview={curReview}
+              setCurReview={setCurReview}
+              setNeedUpdate={setNeedUpdate}
+            />
+          }
         </div>
       </div>
     </>

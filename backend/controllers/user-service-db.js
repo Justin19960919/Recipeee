@@ -41,6 +41,7 @@ module.exports = (app) => {
 
   // delete
   const deleteUser = (req, res) => {
+    console.log("calling delete user back end service");
     const userId = req.params.id;
     user_dao.deleteUser(userId);
     res.sendStatus(200);

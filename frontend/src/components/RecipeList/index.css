@@ -1,5 +1,5 @@
 .search-container {
-  padding: 10% 20%;
+  padding: 10% 15%;
   min-height: 37rem;
 }
 .searchbar {
@@ -28,6 +28,8 @@ span {
 .content-container {
   padding: 0;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .detail-title {
@@ -40,16 +42,23 @@ span {
 }
 
 .author {
-  float: left;
+  text-align: left;
 }
 .date {
-  float: left;
+  text-align: left;
+}
+.details-icon{
+  margin-top: auto;
+}
+.details-icon span{
+  font-size: 1.5rem;
 }
 .fas {
-  margin-left: 0.8rem;
+  margin-left: 1rem;
 }
 i {
-  margin-right: 0.2rem;
+  margin-right: 0.5rem;
+  font-size: 1.5rem;
 }
 .fa-comment-alt {
   margin-right: 0.2rem;
@@ -63,14 +72,18 @@ i {
   color: rgb(7, 180, 248);
 }
 
+
 @media (max-width: 600px) {
-  .date {
-    display: inline-block;
+  .search-container {
+    padding: 10% 10%;
   }
-  .details-icon {
-    float: left;
+  .details-container{
+    flex-direction: column;
   }
-  .fa-star {
-    margin-left: 0;
+  .details-container img {
+    width: 80%;
+    height: auto;
+    margin: 0 auto 1rem auto;
+    border-radius: 5%;
   }
 }

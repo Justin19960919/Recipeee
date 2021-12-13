@@ -1,0 +1,32 @@
+/* user */
+.user-card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 #a7979733;
+  transition: 0.3s;
+  padding: 20px;
+  margin: 25px;
+}
+
+.user-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.useFlex {
+  display: flex;
+  flex-wrap: wrap;
+  flex-shrink: 2;
+  justify-content: space-evenly;
+}
+
+.admin-dashboard {
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.admin-text {
+  font-size: 30px;
+}
+
+.middle {
+  text-align: center;
+}

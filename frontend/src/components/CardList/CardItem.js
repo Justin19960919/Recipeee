@@ -1,34 +1,45 @@
+import { Link } from "react-router-dom";
 import './card.css';
-import { getImageArray } from '../consts';
+import { getImageArray, parseStringToDate, getTimeDeltaFromNow } from '../consts';
 
 const CardItem = ({ recipe, isDefault }) => {
+  return (
+    <div className="card ms-auto" key={recipe._id}>
+      <img
+        className="card-img-top"
+        src={
+          (isDefault && recipe.Images) ||
+          (!isDefault && getImageArray(recipe.Images)[0])
+        }
+        alt="Star Recipe"
 
-    const getTimeDeltaFromNow = (prevDate) => {
-        const curDate = new Date();
-        const timeDelta = curDate - prevDate;
-        const diffDays = Math.floor(timeDelta / (1000 * 60 * 60 * 24));
-        return diffDays;
-    }
-    const targetImage = getImageArray(recipe.Images)[0];
+      />
+      <div className="card-body">
+        <h5 className="card-title">
 
-
-    return (
-        <div className="card ms-auto" key={recipe._id}>
-            <img className="card-img-top" src={recipe.Image} alt="starred recipe" />
-            <div className="card-body">
-                <h5 className="card-title">
-                    {isDefault && recipe.Name}
-                    {!isDefault && targetImage}
-                </h5>
-                <p className="card-text text-truncate">
-                    {recipe.Description}
-                </p>
-            </div>
-            <div className="card-footer">
-                <small className="text-muted">{getTimeDeltaFromNow(recipe.DatePublished)} Days Ago</small>
-            </div>
-        </div>
-    );
+          {isDefault && recipe.Name}
+          {!isDefault &&
+            <Link to={`/recipe-detail/${recipe._id}`}>
+              {recipe.Name}
+            </Link>
+          }
+        </h5>
+        <p className="card-text text-truncate">
+          {recipe.Description}
+        </p>
+      </div>
+      <div className="card-footer">
+        <small className="text-muted">{
+          recipe.DatePublished &&
+          getTimeDeltaFromNow(
+            parseStringToDate(recipe.DatePublished)
+          )
+        }
+          Days Ago
+        </small>
+      </div>
+    </div>
+  );
 }
 
 

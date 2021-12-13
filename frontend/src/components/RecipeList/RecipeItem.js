@@ -33,9 +33,10 @@ const RecipeItem = ({ recipe }) => {
         </h5>
 
         <h6 className="descript">{recipe.Description}</h6>
-        <span className="author">by {recipe.AuthorId}</span><br />
+        <span className="author">by {recipe.AuthorId}</span>
 
-        <span className="date">{formatDate(recipe.DatePublished)}</span><br />
+        <span className="date">{formatDate(recipe.DatePublished)}</span>
+
         <div className="details-icon">
           <span>
             <i className="fas fa-star"></i>
@@ -50,6 +51,7 @@ const RecipeItem = ({ recipe }) => {
             {recipe.ReviewCount}
           </span>
         </div>
+
       </div>
     </div>
   )
