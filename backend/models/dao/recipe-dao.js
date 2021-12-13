@@ -17,7 +17,7 @@ module.exports.findRecipeByName = (recipeName) => {
 }
 
 module.exports.searchRecipesByName = (name) => {
-    return recipe_model.find({ Name: { $regex: name } });
+    return recipe_model.find({ Name: { $regex: new RegExp(name, "i") } });
 }
 
 module.exports.searchRecipesByKeyword = (keyword) => {
