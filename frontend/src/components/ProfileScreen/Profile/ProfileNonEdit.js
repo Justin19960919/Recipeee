@@ -21,8 +21,7 @@ const ProfileNonEdit =(props) => {
           <div className="fw-bold wd-font-25">{owner.name}</div>
           <div className="fw-bolder wd-font-25"> {owner.userName}</div>
           <div className="wd-black">{owner.email}</div>
-          </>
-
+      </>
     )
 }
 export default ProfileNonEdit;

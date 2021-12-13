@@ -22,7 +22,7 @@ const ProfileEdit = (props) => {
                        onChange={(e) => props.setProfile({...props.profile, name: e.target.value})}
                        className="form-control override-bs"/>
 
-        <div className="mt-4">User Name</div>
+            <div className="mt-4">User Name</div>
             <input value={props.profile.userName} onChange={(e) => this.props.setProfile(
                 {...props.profile, userName: e.target.value}
             )}
