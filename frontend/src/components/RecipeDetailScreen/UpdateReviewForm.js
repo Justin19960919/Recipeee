@@ -13,28 +13,25 @@ const UpdateReviewForm = ({ curReview, setCurReview, setNeedUpdate }) => {
 
   return (
     <div className="update-flex">
-
       <input
-        className="form-control form-control-md"
+        className="form-control form-control-md update-reviews-input"
         placeholder="Leave a comment"
         value={review.Review}
         onChange={(e) => setReview({ ...review, Review: e.target.value })}
         required
       />
-      <br />
       <input
-        className="form-control form-control-md"
+        className="form-control form-control-md rating-input"
         placeholder="Leave a rating"
         value={review.Rating}
         onChange={(e) => setReview({ ...review, Rating: e.target.value })}
         required
       />
-      <br />
       <button
         onClick={submitUpdateHandler}
-        className="btn btn-md btn-light"
+        className="btn btn-md update-submit"
       >
-        Submit
+        Update
       </button>
     </div>
   )

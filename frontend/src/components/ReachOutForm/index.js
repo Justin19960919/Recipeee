@@ -6,9 +6,25 @@ const ReachOutForm = () => {
       <div className="form-page">
         <div className="about-us">
           <h4 className="about-us-title">About Recipee</h4>
+          
           <p className="about-us-content">
           Recipee, a place where you find all your favorite recipes, and see how others succeed in cooking it! Out mission is to help impove life in the kitchen for millions of home cooks around the world
           </p>
+          <div className="features">
+            <span className="feature"> 
+              <span className="feature-detail">4.5+</span>
+              <span className="feature-title">App Rating</span>
+            </span>
+            <span className="feature"> 
+              <span className="feature-detail">1M+</span>
+              <span className="feature-title">Recipes</span>
+            </span>
+            <span className="feature"> 
+              <span className="feature-detail">10M</span>
+              <span className="feature-title">Users</span>
+            </span>
+            
+          </div>
         </div>
 
         <div className="form">

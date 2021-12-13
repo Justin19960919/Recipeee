@@ -12,15 +12,27 @@ const RecipeReview = ({ review, setReview, user }) => {
 
   // generate star functions
   const generateStar = (num) => {
-    let iterateArr = [...Array(Math.floor(num)).keys()];
-    return (
-      <div className="star">
-        {iterateArr.map((item) => (
-          <i class="fa fa-star" />
-        ))}
-      </div>
+    console.log(num, typeof(num));
+    const wrongTypes = [undefined, null, "NA"];
+    if (wrongTypes.includes(num)) {
+      // null check
+      return <p>No Stars</p>;
+    } else {
+      const newNum = parseFloat(num);
+      let iterateArr = [...Array(Math.floor(newNum)).keys()];
+      let isHalf = Number.isInteger(newNum);
+      return (
+        <div className="star">
+          {iterateArr.map((item) => (
+            <i className="fa fa-star" />
+          ))}
+          {isHalf ? "" : <i className="fa fa-star-half" />}
+        </div>
     );
+    }
   };
+
+
 
   const formatDate = (datee) => {
     let dateee = datee + "";

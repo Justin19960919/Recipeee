@@ -183,7 +183,7 @@ const RecipeDetail = ({ recipeDetail, user }) => {
 
             {/* like button  */}
             <button
-              className="btn"
+              className="icon-button"
               onClick={() => likeRecipeHandler()}
             >
               <span
@@ -193,10 +193,11 @@ const RecipeDetail = ({ recipeDetail, user }) => {
 
             {/* star button */}
             <button
-              className="btn"
-              onClick={() => starRecipeHandler()}
-            >
-              <span className={`bi bi-bookmark-fill ${(star && "fill") || (!star && "")}`}></span>
+              className="icon-button"
+              onClick={() => starRecipeHandler()}>
+              <span
+                className={`bi bi-bookmark-fill ${(star && "fill") || (!star && "")}`}>
+              </span>
             </button>
 
           </div>

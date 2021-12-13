@@ -44,22 +44,49 @@ export const formatDate = (datee) => {
 };
 
 
+// export const generateStar = (num) => {
+//   if (num === undefined || num === null) {
+//     // null check
+//     return <p>No Stars</p>;
+//   }
+//   let iterateArr = [...Array(Math.floor(num)).keys()];
+//   let isHalf = Number.isInteger(num);
+//   return (
+//     <div className="star">
+//       {iterateArr.map((item) => (
+//         <i class="fa fa-star" />
+//       ))}
+//       {isHalf ? "" : <i className="fa fa-star-half" />}
+//     </div>
+//   );
+// };
+
+
 export const generateStar = (num) => {
-  if (num === undefined || num === null) {
+  // console.log(num, typeof(num));
+  const wrongTypes = [undefined, null, "NA"];
+  if (wrongTypes.includes(num)) {
     // null check
     return <p>No Stars</p>;
+  } else {
+    const newNum = parseFloat(num);
+    let iterateArr = [...Array(Math.floor(newNum)).keys()];
+    let isHalf = Number.isInteger(newNum);
+    // console.log(isHalf);
+    // console.log(num.type);
+    // console.log(num);
+    return (
+      <div className="star">
+        {iterateArr.map((item) => (
+          <i className="fa fa-star" />
+        ))}
+        {isHalf ? "" : <i className="fa fa-star-half" />}
+      </div>
+    );
   }
-  let iterateArr = [...Array(Math.floor(num)).keys()];
-  let isHalf = Number.isInteger(num);
-  return (
-    <div className="star">
-      {iterateArr.map((item) => (
-        <i class="fa fa-star" />
-      ))}
-      {isHalf ? "" : <i className="fa fa-star-half" />}
-    </div>
-  );
 };
+
+
 
 export const constructRecipeImageObjects = (recipeImages) => {
   const recipeImageObjects = [];
