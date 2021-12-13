@@ -50,25 +50,26 @@ export const searchTopRecipesByStar = (number) =>
     .then(recipes => recipes.json());
 
 
-export const createNewRecipe = (newRecipe) => {
-  fetch(`${recipeServiceAPI}/recipes`, {
-    method: "POST",
-    body: JSON.stringify(newRecipe),
-    headers: {
-      "content-type": "application/json"
-    }
-  }).then(response => response.json());
-}
+// export const createNewRecipe = (newRecipe) => {
+//   fetch(`${recipeServiceAPI}/recipes`, {
+//     method: "POST",
+//     body: JSON.stringify(newRecipe),
+//     headers: {
+//       "content-type": "application/json"
+//     }
+//   }).then(response => response.json());
+// }
 
-export const updateRecipeInfo = (updatedRecipe) => {
-  fetch(`${recipeServiceAPI}/recipes/${updatedRecipe._id}`, {
-    method: "PUT",
-    body: JSON.stringify(updatedRecipe),
-    headers: {
-      "content-type": "application/json"
-    }
-  }).then(response => response.json());
-}
+// export const updateRecipeInfo = (updatedRecipe) => {
+//   fetch(`${recipeServiceAPI}/recipes/${updatedRecipe._id}`, {
+//     method: "PUT",
+//     body: JSON.stringify(updatedRecipe),
+//     headers: {
+//       "content-type": "application/json"
+//     }
+//   }).then(response => response.json());
+// }
+
 
 export const deleteRecipe = (id) =>
   fetch(`${recipeServiceAPI}/recipes/${id}`,
@@ -76,23 +77,40 @@ export const deleteRecipe = (id) =>
       method: "DELETE"
     });
 
+///////// check if star exists /////////
+export const checkStarExists = (userName, recipeId) =>
+  fetch(`${starServiceAPI}/searchStarByRecipeIdAndUserName/${userName}/${recipeId}`);
 
-// like a recipe
-// RecipeId: Number,
-// Username: String
-export const likeRecipe = (newLike) => {
+
+///////// check if like exists /////////
+export const checkLikeExists = (userName, recipeId) =>
+  fetch(`${likeServiceAPI}/searchLikeByRecipeIdAndUserName/${userName}/${recipeId}`);
+
+
+
+
+////////// like a recipe  //////////
+export const likeRecipe = (newLike) =>
   fetch(`${likeServiceAPI}`, {
     method: "POST",
     body: JSON.stringify(newLike),
     headers: {
       "content-type": "application/json"
     }
-  })
+  });
+
+
+export const unLikeRecipe = (likeId) => {
+  fetch(`${likeServiceAPI}/${likeId}`, {
+    method: "DELETE"
+  });
 }
 
 
-export const updateRecipeLikes = (recipeId, updatedRecipe) => {
-  fetch(`${likeServiceAPI}/${recipeId}`, {
+
+export const updateRecipeLikes = (updatedRecipe) => {
+  console.log(likeServiceAPI);
+  fetch(likeServiceAPI, {
     method: "POST",
     body: JSON.stringify(updatedRecipe),
     headers: {
@@ -101,22 +119,26 @@ export const updateRecipeLikes = (recipeId, updatedRecipe) => {
   });
 }
 
-// star a recipe
-// RecipeId: Number,
-// Username: String
-export const starRecipe = (newStar) => {
-  fetch(`${starServiceAPI}`, {
+
+////////// star a recipe  //////////
+export const starRecipe = (newStar) =>
+  fetch(starServiceAPI, {
     method: "POST",
     body: JSON.stringify(newStar),
     headers: {
       "content-type": "application/json"
     }
   })
+
+
+export const unStarRecipe = (starId) => {
+  fetch(`${starServiceAPI}/${starId}`, {
+    method: "DELETE"
+  });
 }
 
-
-export const updateRecipeStars = (recipeId, updatedRecipe) => {
-  fetch(`${starServiceAPI}/${recipeId}`, {
+export const updateRecipeStars = (updatedRecipe) => {
+  fetch(`${starServiceAPI}`, {
     method: "POST",
     body: JSON.stringify(updatedRecipe),
     headers: {

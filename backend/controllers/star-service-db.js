@@ -5,8 +5,9 @@ module.exports = (app) => {
     // create
     const createNewStar = (req, res) => {
         const newStar = req.body;
-        star_dao.createNewStar(newStar);
-        res.sendStatus(200);
+        star_dao.createNewStar(newStar)
+            .then(newStar => res.status(200).json(newStar))
+            .catch(err => console.log(err));
     }
 
     // read
@@ -36,6 +37,16 @@ module.exports = (app) => {
             .then(stars => res.status(200).json(stars));
     }
 
+    // search if likes exist by recipe id and username
+    // return null if doesn't exists
+    const searchStarByRecipeIdAndUserName = (req, res) => {
+        console.log("backend is calling search star by recipeId and username");
+        const userName = req.params.userName;
+        const recipeId = req.params.recipeId;
+        star_dao.searchStarByRecipeIdAndUserName(recipeId, userName)
+            .then(like => res.json(like));
+    }
+
     // update
     const updateStarInfo = (req, res) => {
         const starId = req.params.id;
@@ -62,7 +73,7 @@ module.exports = (app) => {
     app.get('/rest/stars/:id', findStarById);
     app.get('/rest/stars/searchStarsByRecipeId/:recipeId', searchStarsByRecipeId);
     app.get('/rest/stars/searchStarsByAuthorId/:userName', searchStarsByUsername);
-
+    app.get('/rest/stars/searchStarByRecipeIdAndUserName/:userName/:recipeId', searchStarByRecipeIdAndUserName);
     // update
     app.put("/rest/stars/:id", updateStarInfo);
 
