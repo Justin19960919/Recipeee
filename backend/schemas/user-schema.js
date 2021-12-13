@@ -4,30 +4,30 @@ const bcrypt = require('bcryptjs');
 const user_schema = new mongoose.Schema({
     name: {
         type: String,
-        required: [true, 'Please provide first name'],
+        // required: [true, 'Please provide first name'],
         trim: true,
         maxlength: 100
     },
     userName: {
         type: String,
-        required: [true, "Please provide user name"],
+        // required: [true, "Please provide user name"],
         trim: true,
         maxLength: 20,
         unique: true,
     },
     email: {
         type: String,
-        required: [true, 'Please provide email'],
+        // required: [true, 'Please provide email'],
         trim: true,
-        match: [
-          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-          'Please provide a valid email',
-        ]
+        // match: [
+        //   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+        //   'Please provide a valid email',
+        // ]
     },
     password: {
         type: String,
         trim: true,
-        required: [true, 'Please provide password'],
+        // required: [true, 'Please provide password'],
         minlength: 6,
     },
     type: {

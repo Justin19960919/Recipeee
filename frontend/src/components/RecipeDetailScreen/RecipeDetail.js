@@ -1,7 +1,6 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "./index.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-
 
 const RecipeDetail = ({ recipeDetail }) => {
   const listout = (details) => {
@@ -94,7 +93,7 @@ const RecipeDetail = ({ recipeDetail }) => {
       </div>
     );
   };
- 
+
   const recommendedRecipes = [
     {
       Image: "/pic/risotto.jpg",
@@ -117,7 +116,7 @@ const RecipeDetail = ({ recipeDetail }) => {
       Active: ""
     },
   ];
-  
+
   return (
     <div className="recipe-detail">
       <div className="author-container">
@@ -162,25 +161,25 @@ const RecipeDetail = ({ recipeDetail }) => {
           </div>
 
           <div className="icon">
-            <button 
-              className="btn" 
+            <button
+              className="btn"
               onClick={() => {
-                const newFill1 = fill1 === true? false: true;
+                const newFill1 = fill1 === true ? false : true;
                 setFilled1(newFill1);
-                }
+              }
               }
             >
-              <span 
+              <span
                 className={`bi bi-hand-thumbs-up-fill ${fill1 && "fill" || !fill1 && ""}`} >
               </span>
             </button>
-            <button 
-              className="btn" 
+            <button
+              className="btn"
               onClick={() => {
                 // console.log("make button fill");
-                const newFill2 = fill2 === true? false: true;
+                const newFill2 = fill2 === true ? false : true;
                 setFilled2(newFill2);
-                }
+              }
               }
             >
               <span className={`bi bi-bookmark-fill ${fill2 && "fill" || !fill2 && ""}`}></span>
@@ -192,12 +191,12 @@ const RecipeDetail = ({ recipeDetail }) => {
           <div id="carouselExampleCaptions" className="carousel slide base recipe-detail-carousel" data-bs-ride="carousel">
             <div className="carousel-inner">
               {recommendedRecipes.map(recipe =>
-                  <div className={`carousel-item ${recipe.Active}`} key={recipe._id}>
-                    <img src={recipe.Image} className="d-block mx-auto slides recipedetail-img" alt="recommended recipe" />
-                  </div>
-                )}
+                <div className={`carousel-item ${recipe.Active}`} key={recipe._id}>
+                  <img src={recipe.Image} className="d-block mx-auto slides recipedetail-img" alt="recommended recipe" />
+                </div>
+              )}
             </div>
-            
+
             <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
               <span className="carousel-control-prev-icon icon" ></span>
               <span className="visually-hidden">Previous</span>
