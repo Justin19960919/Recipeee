@@ -19,7 +19,7 @@ require("dotenv").config()
 // connect to db
 // mongoose.connect('(YOUR MONGODB URL)/Recipeee');
 const recipeDB = "recipeDB";
-mongoose.connect(`${process.env.MONGODB_LOCAL_BASE_URL}/${recipeDB}`);
+mongoose.connect("mongodb+srv://Recipeee:Recipeee@recipeee.zbbfy.mongodb.net/Recipeee");
 
 
 
