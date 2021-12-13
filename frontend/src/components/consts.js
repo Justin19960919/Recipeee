@@ -20,8 +20,8 @@ export const getImageArray = (imageString) => {
     return stringArr.slice(0, stringArr.length - 1);
 
   } else {
-    // return [imageString.substring(1, imageString.length - 1)];
-    return [imageString];
+    return [imageString.substring(1, imageString.length - 1)];
+    // return [imageString];
   }
 }
 

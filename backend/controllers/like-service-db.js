@@ -5,8 +5,9 @@ module.exports = (app) => {
     // create
     const createNewLike = (req, res) => {
         const newLike = req.body;
-        like_dao.createNewLike(newLike);
-        res.sendStatus(200);
+        like_dao.createNewLike(newLike)
+            .then(newLike => res.status(200).json(newLike))
+            .catch(err => console.log(err));
     }
 
     // read
@@ -37,6 +38,17 @@ module.exports = (app) => {
         like_dao.searchLikesByUsername(userName)
             .then(likes => res.status(200).json(likes));
     }
+    // search if likes exist by recipe id and username
+    // return null if doesn't exists
+    const searchLikeByRecipeIdAndUserName = (req, res) => {
+        console.log("backend is calling search like by recipeId and username");
+        const userName = req.params.userName;
+        const recipeId = req.params.recipeId;
+        like_dao.searchLikeByRecipeIdAndUserName(recipeId, userName)
+            .then(like => res.json(like));
+    }
+
+
 
     // update
     const updateLikeInfo = (req, res) => {
@@ -64,7 +76,7 @@ module.exports = (app) => {
     app.get('/rest/likes/:id', findLikeById);
     app.get('/rest/likes/searchLikesByRecipeId/:recipeId', searchLikesByRecipeId);
     app.get('/rest/likes/searchLikesByAuthorId/:userName', searchLikesByUsername);
-
+    app.get('/rest/likes/searchLikeByRecipeIdAndUserName/:userName/:recipeId', searchLikeByRecipeIdAndUserName);
     // update
     app.put("/rest/likes/:id", updateLikeInfo);
 

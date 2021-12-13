@@ -1,129 +1,141 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+
+// import stylesheets
 import "./index.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+// import helper functions
+import { getImageArray } from "../consts";
+import { print1, print2, formatDate, generateStar, constructRecipeImageObjects } from "./recipeDetailHelper.js";
+// import services
+import { checkStarExists, checkLikeExists, likeRecipe, unLikeRecipe, updateRecipeLikes, starRecipe, unStarRecipe, updateRecipeStars } from "../../services/recipe-services";
 
-const RecipeDetail = ({ recipeDetail }) => {
-  const listout = (details) => {
-    if (details === undefined) {
-      return [];
+
+
+const RecipeDetail = ({ recipeDetail, user }) => {
+  const history = useHistory();
+
+  const recipeImages = getImageArray(recipeDetail.Images);
+  // console.log(`images: ${recipeImages}`);
+  const recipeImageObjects = constructRecipeImageObjects(recipeImages);
+  const [likeObject, setLikeObject] = useState(null);
+  const [starObject, setStarObject] = useState(null);
+
+  const [like, setLike] = useState(false);
+  const [star, setStar] = useState(false);
+
+
+  const checkLikeExistsHelper = () => {
+
+    if (user !== undefined && user !== null) {
+      checkLikeExists(user.userName, recipeDetail._id)
+        .then(likeObjectResponse => likeObjectResponse.json())
+        .then(
+          likeObject => {
+            console.log("like object: ", likeObject);
+            if (likeObject != null) {
+              setLikeObject(likeObject);
+              setLike(true);
+            }
+          }
+        )
     }
-    let data = details.substring(3, details.length - 2);
-    data = data.split('", "');
-    return data;
   }
 
-  const print1 = (list1, list2) => {
-    if (list1 === undefined || list2 === undefined) {
-      return [];
+  const checkStarExistsHelper = () => {
+
+    if (user !== undefined && user !== null) {
+      checkStarExists(user.userName, recipeDetail._id)
+        .then(starObjectResponse => starObjectResponse.json())
+        .then(
+          starObject => {
+            console.log(starObject);
+            if (starObject != null) {
+              setStarObject(starObject);
+              setStar(true);
+            }
+          }
+        )
     }
-    list1 = listout(list1);
-    list2 = listout(list2);
-    let lists = list1.map(function (value, index) {
-      return (
-        <li>
-          {value} :<span>{list2[index]}</span>
-        </li>
-      );
-    });
-    return lists;
   }
 
-  const print2 = (list1) => {
-    if (list1 === undefined) {
-      return [];
-    }
-    list1 = listout(list1);
-    let lists = list1.map(function (value) {
-      return <li>{value}</li>;
-    });
-    return lists;
-  }
 
-  const formatDate = (datee) => {
-    if (datee === undefined) {
-      return "";
-    }
 
-    let dateee = datee + "";
-    return dateee.substr(0, 10);
-  };
-
-  const getImageArray = (imageString) => {
-    if (imageString === undefined) {
-      return [];
-    }
-
-    if (imageString.startsWith("c")) {
-      let stripC = imageString.substr(3);
-      let stripCArr = stripC.split(".jpg");
-      let stringArr = stripCArr.map((url) => {
-        if (url.startsWith(`", `)) {
-          let stripHead = url.substr(4);
-          return stripHead + ".jpg";
-        } else {
-          return url + ".jpg";
-        }
-      });
-
-      let last = stringArr[stringArr.length - 1];
-      stringArr[stringArr.length - 1] = last.substr(0, last.length - 3);
-      return stringArr.slice(0, stringArr.length - 1);
+  const likeRecipeHandler = () => {
+    if (user === null) {
+      history.push("/login");
     } else {
-      return [imageString.substring(1, imageString.length - 1)];
+      // if pass, check status of user logged in or not
+      if (like === false) {
+        setLike(true);
+        // create new Like, and increment like in recipe
+        const newLike = {
+          RecipeId: recipeDetail._id,
+          Username: user.userName
+        };
+        const updatedRecipe = {
+          ...recipeDetail,
+          LikeNum: recipeDetail.LikeNum + 1
+        };
+
+        likeRecipe(newLike)
+          .then(newLike => newLike.json())
+          .then(newLikeObject => setLikeObject(newLikeObject));
+        updateRecipeLikes(updatedRecipe);
+      } else {
+        setLike(false);
+        // create new Like, and decrement like in recipe 
+        const updatedRecipe = {
+          ...recipeDetail,
+          LikeNum: recipeDetail.LikeNum - 1
+        };
+
+        unLikeRecipe(likeObject._id);
+        updateRecipeLikes(updatedRecipe);
+      }
     }
-  };
+  }
 
-  const imgs = getImageArray(recipeDetail.Images);
-  const [fill1, setFilled1] = useState(false);
-  const [fill2, setFilled2] = useState(false);
-
-  const generateStar = (num) => {
-    console.log(num, typeof(num));
-    const wrongTypes = [undefined, null, "NA"];
-    if (wrongTypes.includes(num)) {
-      // null check
-      return <p>No Stars</p>;
+  const starRecipeHandler = () => {
+    if (user === null) {
+      history.push("/login");
     } else {
-      const newNum = parseFloat(num);
-      let iterateArr = [...Array(Math.floor(newNum)).keys()];
-      let isHalf = Number.isInteger(newNum);
-      // console.log(isHalf);
-      // console.log(num.type);
-      // console.log(num);
-      return (
-        <div className="star">
-          {iterateArr.map((item) => (
-            <i className="fa fa-star" />
-          ))}
-          {isHalf ? "" : <i className="fa fa-star-half" />}
-        </div>
-    );
+      // if pass, check status of user logged in or not
+      if (star === false) {
+        setStar(true);
+        // create new Like, and increment like in recipe
+        const newStar = {
+          RecipeId: recipeDetail._id,
+          Username: user.userName
+        };
+        const updatedRecipe = {
+          ...recipeDetail,
+          StarNum: recipeDetail.StarNum + 1
+        };
+
+        starRecipe(newStar)
+          .then(newStar => newStar.json())
+          .then(newStarObject => setStarObject(newStarObject));
+        updateRecipeStars(updatedRecipe);
+      } else {
+        setStar(false);;
+        // create new Like, and decrement like in recipe 
+        const updatedRecipe = {
+          ...recipeDetail,
+          StarNum: recipeDetail.StarNum - 1
+        };
+
+        unStarRecipe(starObject._id);
+        updateRecipeStars(updatedRecipe);
+      }
     }
-  };
+  }
 
-  const recommendedRecipes = [
-    {
-      Image: "/pic/risotto.jpg",
-      Label: "Risotto",
-      Active: "active"
-    },
-    {
-      Image: "/pic/salmon.jpg",
-      Label: "Salmon",
-      Active: ""
-    },
-    {
-      Image: "/pic/steak.jpg",
-      Label: "Steak",
-      Active: ""
-    },
-    {
-      Image: "/pic/veggies.jpg",
-      Label: "Veggies",
-      Active: ""
-    },
-  ];
+  // call once
+  useEffect(checkLikeExistsHelper, [recipeDetail._id, user]);
+  useEffect(checkStarExistsHelper, [recipeDetail._id, user]);
 
+  // render
   return (
     <div className="recipe-detail">
       <div className="author-container">
@@ -168,35 +180,34 @@ const RecipeDetail = ({ recipeDetail }) => {
           </div>
 
           <div className="icon">
+
+            {/* like button  */}
             <button
               className="icon-button"
-              onClick={() => {
-                const newFill1 = fill1 === true ? false : true;
-                setFilled1(newFill1);
-              }
-              }
+              onClick={() => likeRecipeHandler()}
             >
               <span
-                className={`bi bi-hand-thumbs-up-fill ${fill1 && "fill" || !fill1 && ""}`} >
+                className={`bi bi-hand-thumbs-up-fill ${(like && "fill") || (!like && "")}`} >
               </span>
             </button>
+
+            {/* star button */}
             <button
               className="icon-button"
-              onClick={() => {
-                const newFill2 = fill2 === true ? false : true;
-                setFilled2(newFill2);
-              }
-              }
-            >
-              <span className={`bi bi-bookmark-fill ${fill2 && "fill" || !fill2 && ""}`}></span>
+              onClick={() => starRecipeHandler()}>
+              <span
+                className={`bi bi-bookmark-fill ${(star && "fill") || (!star && "")}`}>
+              </span>
             </button>
+
           </div>
         </div>
 
+        {/* image carousel */}
         <div className="img-container">
           <div id="carouselExampleCaptions" className="carousel slide base recipe-detail-carousel" data-bs-ride="carousel">
             <div className="carousel-inner">
-              {recommendedRecipes.map(recipe =>
+              {recipeImageObjects.map(recipe =>
                 <div className={`carousel-item ${recipe.Active}`} key={recipe._id}>
                   <img src={recipe.Image} className="d-block mx-auto slides recipedetail-img" alt="recommended recipe" />
                 </div>
@@ -214,19 +225,9 @@ const RecipeDetail = ({ recipeDetail }) => {
             </button>
           </div>
 
-          {/* {console.log(imgs)}
-          {recipeDetail.Images !== undefined && (
-            <img
-              // src={recipeDetail.Images.substring(1, recipeDetail.Images.length - 1)}
-              src={imgs[0]}
-              className="recipedetail-img"
-              alt="img"
-            />
-          )} */}
         </div>
       </div>
 
-      {/* <p>Reviews: {recipeDetail.ReviewCount}</p> */}
       <div className="recipeDetail-content-container">
         <div className="desctription-container">
           <h4>Description</h4>

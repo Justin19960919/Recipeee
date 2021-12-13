@@ -61,7 +61,10 @@ const RecipeDetailScreen = () => {
   return (
     <>
       <Navigation />
-      <RecipeDetail recipeDetail={recipeDetail} />
+      <RecipeDetail
+        recipeDetail={recipeDetail}
+        user={user}
+      />
       <LeaveReviewForm
         setCurReviews={setRecipeReviews}
         recipeId={curRecipeId}
