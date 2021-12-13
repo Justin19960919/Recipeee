@@ -37,6 +37,10 @@ export const getUserFollows = (userName) =>
     fetch(`${followServiceAPI}/searchFollowsByAuthorId/${userName}`)
         .then(follows => follows.json());
 
+export const getExactFollow = ({userName, followName}) =>
+    fetch(`${followServiceAPI}/findOne/${userName}/${followName}`)
+        .then(follow => follow.json());
+
 
 export const getUserLikes = (userName) =>
     fetch(`${likeServiceAPI}/searchLikesByAuthorId/${userName}`)

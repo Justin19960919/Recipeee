@@ -23,9 +23,15 @@ module.exports = (app) => {
             .then(follow => res.json(follow));
     }
 
+    const findFollowByUsernameFollowName = (req, res) => {
+        const userName = req.params.userName;
+        const followName = req.params.followName;
+        follow_dao.findFollowByUsernameFollowName({userName, followName})
+            .then(follow => res.status(200).json(follow));
+    }
+
     const searchFollowsByUsername = (req, res) => {
         const userName = req.params.userName;
-        console.log('userName: ', userName);
         follow_dao.searchFollowsByUsername(userName)
             .then(follows => res.status(200).json(follows));
     }
@@ -60,8 +66,9 @@ module.exports = (app) => {
     // read
     app.get('/rest/follows', findAllFollows);
     app.get('/rest/follows/:id', findFollowById);
+    app.get('/rest/follows/findOne/:userName/:followName', findFollowByUsernameFollowName);
     app.get('/rest/follows/searchFollowsByAuthorId/:userName', searchFollowsByUsername);
-    app.get('/rest/follows/searchFollowsByRecipeId/:followName', searchFollowsByFollowName);
+    app.get('/rest/follows/searchFollowsByFollowName/:followName', searchFollowsByFollowName);
 
     // update
     app.put("/rest/follows/:id", updateFollowInfo);

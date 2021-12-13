@@ -95,5 +95,11 @@ export const followOtherUsers = (newFollow) =>
   })
     .then(status => status === 200 ? true : false);
 
+export const unFollowOtherUsers = (followId) =>
+    fetch(`${followServiceAPI}/${followId}`,
+        {
+            method: "DELETE"
+        });
+
 
 
