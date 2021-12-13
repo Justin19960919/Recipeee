@@ -7,9 +7,7 @@ const ReachOutForm = () => {
         <div className="about-us">
           <h4 className="about-us-title">About Recipee</h4>
           <p className="about-us-content">
-            Contrary to popular belief, Lorem Ipsum is not simply random text.
-            It has roots in a piece of classical Latin literature from 45 BC,
-            making it over 2000 years old. Richard McClintock
+          Recipee, a place where you find all your favorite recipes, and see how others succeed in cooking it! Out mission is to help impove life in the kitchen for millions of home cooks around the world
           </p>
         </div>
 

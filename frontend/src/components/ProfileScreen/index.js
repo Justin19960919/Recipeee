@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import Navigation from "../Navigation";
 import Profile from "./Profile";
 import FollowList from "../FollowList";
 import LikeList from "../LikeList";
-import {useHistory} from "react-router-dom";
-import {getUserProfile} from "../../services/user-services";
-import {useSelector} from "react-redux";
-import {getUserFollows, getUserLikes} from "../../services/ProfileService";
+import { useHistory } from "react-router-dom";
+import { getUserProfile } from "../../services/user-services";
+import { useSelector } from "react-redux";
+import { getUserFollows, getUserLikes } from "../../services/ProfileService";
 
 
 const ProfileScreen = () => {
@@ -23,8 +23,8 @@ const ProfileScreen = () => {
                 getUserLikes(profile.userName).then(likes => setLikes(likes));
                 getUserFollows(profile.userName).then(follows => setFollows(follows));
             }).catch(() => {
-            history.goBack();
-        });
+                history.goBack();
+            });
     }
     useEffect(getProfile, [history]);
 
@@ -33,17 +33,17 @@ const ProfileScreen = () => {
             <Navigation />
             <div className="row mt-2">
                 <div className="col-3">
-                    <FollowList follows={follows}/>
+                    <FollowList follows={follows} />
                 </div>
                 <div className="col-6"
-                     style={{"position": "relative"}}>
+                    style={{ "position": "relative" }}>
                     <Profile
                         setProfile={setProfile}
                         profile={profile}
                     />
                 </div>
                 <div className="col-3">
-                    <LikeList likes={likes}/>
+                    <LikeList likes={likes} />
                 </div>
             </div>
         </>

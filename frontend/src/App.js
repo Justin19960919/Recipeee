@@ -29,13 +29,9 @@ import { combineReducers, createStore } from "redux";
 import profile from "./reducers/profile";
 import follow from "./reducers/follow";
 
-
-
-
-
 const App = () => {
 
-  const reducers = combineReducers({ profile:profile, follow:follow })
+  const reducers = combineReducers({ profile: profile, follow: follow })
   const store = createStore(reducers);
   return (
     <>
@@ -76,10 +72,6 @@ const App = () => {
           <Route path="/admin">
             <Admin />
           </Route>
-
-
-
-
         </BrowserRouter>
       </Provider>
     </>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./index.css";
-import { updateReview, deleteReview } from "../../services/review-services";
+import { deleteReview } from "../../services/review-services";
 import UpdateReviewForm from "./UpdateReviewForm";
 
 
