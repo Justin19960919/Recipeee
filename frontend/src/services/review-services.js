@@ -15,6 +15,11 @@ export const createNewReview = (newReview) =>
 
 
 // read
+export const findAllReviews = () =>
+  fetch(`${reviewServiceAPI}`)
+    .then(reviews => reviews.json());
+
+
 export const findReviewById = (reviewId) =>
   fetch(`${reviewServiceAPI}/${reviewId}`)
     .then(review => review.json());

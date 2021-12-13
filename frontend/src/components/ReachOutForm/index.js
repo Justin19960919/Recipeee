@@ -5,7 +5,7 @@ const ReachOutForm = () => {
     <div>
       <div className="form-page">
         <div className="about-us">
-          <h4 className="about-us-title">About Recipeee</h4>
+          <h4 className="about-us-title">About Recipee</h4>
           <p className="about-us-content">
             Contrary to popular belief, Lorem Ipsum is not simply random text.
             It has roots in a piece of classical Latin literature from 45 BC,

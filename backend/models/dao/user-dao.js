@@ -1,4 +1,4 @@
-const {user_model} = require("../all_models.js");
+const { user_model } = require("../all_models.js");
 
 // CREATE
 module.exports.createNewUser = (user) =>
@@ -15,19 +15,25 @@ module.exports.findUserById = (userId) => {
 // UPDATE
 module.exports.updateUserInfo = (userID, user) => {
     console.log(`user id is: ${userID}, updated user info: ${user}`);
-    return user_model.updateOne({_id: userID}, {$set: user})
+    return user_model.updateOne({ _id: userID }, { $set: user })
         .catch(err => console.log(err));
 }
 
 
 // DELETE
-module.exports.deleteUser = (id) =>
-    user_model.findByIdAndDelete({_id: id});
+module.exports.deleteUser = (id) => {
+    console.log("dao deleting user..");
+    return user_model.findByIdAndDelete(id, (err) => {
+        if (err) {
+            console.log(err);
+        }
+        console.log("sucessful deletion of user");
+    });
+}
+
+module.exports.findByUsernameAndPassword = ({ userName, password }) =>
+    user_model.findOne({ userName, password });
 
 
-module.exports.findByUsernameAndPassword = ({userName, password}) =>
-    user_model.findOne({userName, password});
-
-
-module.exports.findByUsername = ({userName}) =>
-    user_model.findOne({userName});
+module.exports.findByUsername = ({ userName }) =>
+    user_model.findOne({ userName });
