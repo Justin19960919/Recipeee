@@ -12,7 +12,7 @@ const CardItem = ({ recipe, isDefault }) => {
 
   return (
     <div className="card ms-auto" key={recipe._id}>
-      <img className="card-img-top" src={recipe.Image} alt="starred recipe" />
+      <img className="card-img-top" src={recipe.Images} alt="starred recipe" />
       <div className="card-body">
         <h5 className="card-title">
           {isDefault && recipe.Name}

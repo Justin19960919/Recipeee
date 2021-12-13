@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import "./index.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
+
 
 const RecipeDetail = ({ recipeDetail }) => {
-  function listout(details) {
+  const listout = (details) => {
     if (details === undefined) {
       return [];
     }
@@ -10,7 +12,8 @@ const RecipeDetail = ({ recipeDetail }) => {
     data = data.split('", "');
     return data;
   }
-  function print1(list1, list2) {
+
+  const print1 = (list1, list2) => {
     if (list1 === undefined || list2 === undefined) {
       return [];
     }
@@ -25,7 +28,8 @@ const RecipeDetail = ({ recipeDetail }) => {
     });
     return lists;
   }
-  function print2(list1) {
+
+  const print2 = (list1) => {
     if (list1 === undefined) {
       return [];
     }
@@ -71,7 +75,49 @@ const RecipeDetail = ({ recipeDetail }) => {
   };
 
   const imgs = getImageArray(recipeDetail.Images);
+  const [fill1, setFilled1] = useState(false);
+  const [fill2, setFilled2] = useState(false);
 
+  const generateStar = (num) => {
+    if (num == undefined) {
+      // null check
+      return <p>No Stars</p>;
+    }
+    let iterateArr = [...Array(Math.floor(num)).keys()];
+    let isHalf = Number.isInteger(num);
+    return (
+      <div className="star">
+        {iterateArr.map((item) => (
+          <i class="fa fa-star" />
+        ))}
+        {isHalf ? "" : <i className="fa fa-star-half" />}
+      </div>
+    );
+  };
+ 
+  const recommendedRecipes = [
+    {
+      Image: "/pic/risotto.jpg",
+      Label: "Risotto",
+      Active: "active"
+    },
+    {
+      Image: "/pic/salmon.jpg",
+      Label: "Salmon",
+      Active: ""
+    },
+    {
+      Image: "/pic/steak.jpg",
+      Label: "Steak",
+      Active: ""
+    },
+    {
+      Image: "/pic/veggies.jpg",
+      Label: "Veggies",
+      Active: ""
+    },
+  ];
+  
   return (
     <div className="recipe-detail">
       <div className="author-container">
@@ -103,25 +149,67 @@ const RecipeDetail = ({ recipeDetail }) => {
             <div class="justify-content-center">
               <div class="content text-center">
                 <div class="ratings">
-                  {" "}
                   <span class="product-rating">
                     {recipeDetail.AggregatedRating}
                   </span>
                   <span>/5</span>
                   <div class="stars">
-                    {" "}
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
+                    {generateStar(recipeDetail.AggregatedRating)}
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
+          <div className="icon">
+            <button 
+              className="btn" 
+              onClick={() => {
+                const newFill1 = fill1 === true? false: true;
+                setFilled1(newFill1);
+                }
+              }
+            >
+              <span 
+                className={`bi bi-hand-thumbs-up-fill ${fill1 && "fill" || !fill1 && ""}`} >
+              </span>
+            </button>
+            <button 
+              className="btn" 
+              onClick={() => {
+                // console.log("make button fill");
+                const newFill2 = fill2 === true? false: true;
+                setFilled2(newFill2);
+                }
+              }
+            >
+              <span className={`bi bi-bookmark-fill ${fill2 && "fill" || !fill2 && ""}`}></span>
+            </button>
+          </div>
         </div>
+
         <div className="img-container">
-          {/* {console.log(imgs)} */}
+          <div id="carouselExampleCaptions" className="carousel slide base recipe-detail-carousel" data-bs-ride="carousel">
+            <div className="carousel-inner">
+              {recommendedRecipes.map(recipe =>
+                  <div className={`carousel-item ${recipe.Active}`} key={recipe._id}>
+                    <img src={recipe.Image} className="d-block mx-auto slides recipedetail-img" alt="recommended recipe" />
+                  </div>
+                )}
+            </div>
+            
+            <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+              <span className="carousel-control-prev-icon icon" ></span>
+              <span className="visually-hidden">Previous</span>
+            </button>
+
+            <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+              <span className="carousel-control-next-icon icon" ></span>
+              <span className="visually-hidden">Next</span>
+            </button>
+          </div>
+
+          {/* {console.log(imgs)}
           {recipeDetail.Images !== undefined && (
             <img
               // src={recipeDetail.Images.substring(1, recipeDetail.Images.length - 1)}
@@ -129,7 +217,7 @@ const RecipeDetail = ({ recipeDetail }) => {
               className="recipedetail-img"
               alt="img"
             />
-          )}
+          )} */}
         </div>
       </div>
 
