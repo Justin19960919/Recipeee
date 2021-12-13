@@ -1,5 +1,5 @@
 export const getImageArray = (imageString) => {
-  if (imageString === undefined) {
+  if (imageString === undefined || imageString === "") {
     return [];
   }
 
