@@ -5,7 +5,6 @@ import {findUserById, getUserProfile} from "../../../services/user-services";
 import {getUserFollows, getUserLikes} from "../../../services/ProfileService";
 import Navigation from "../../Navigation";
 import FollowList from "../../FollowList";
-import Profile from "../Profile";
 import LikeList from "../../LikeList";
 
 
