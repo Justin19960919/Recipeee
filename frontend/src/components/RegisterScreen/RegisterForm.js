@@ -4,13 +4,8 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
 // stylesheets
-<<<<<<< HEAD
-import '../../index.css'
-import './register.css'
-=======
 import "../../index.css";
 import "./register.css";
->>>>>>> main
 
 // services
 import { registerUser } from "../../services/user-services";
