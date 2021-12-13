@@ -63,6 +63,9 @@ export const updateUser = (userId, updatedUserInfo) =>
 export const findUserById = (userId) =>
   fetch(`${userServiceAPI}/users/${userId}`)
 
+export const findUserByUsername = (userName) =>
+    fetch(`${userServiceAPI}/users/findUser/${userName}`)
+
 
 
 export const findUserByUserName = (userName) =>

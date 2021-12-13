@@ -7,23 +7,8 @@ import {useHistory} from "react-router-dom";
 import {useNavigate} from "react-router";
 import {getUserProfile} from "../../../services/user-services";
 
-const Profile = () => {
-    const owner = useSelector((state) => state.profile)
-    // const [profile, setProfile] = useState(owner);
+const Profile = ({profile, setProfile}) => {
     const [isEdit, setIsEdit] = useState(false);
-    // const dispatch = useDispatch();
-
-    const history = useHistory();
-    const [profile, setProfile] = useState(owner);
-    const getProfile = () => {
-        getUserProfile().then(res => res.json())
-            .then(profile => {
-                setProfile(profile);
-            }).catch(() => {
-                history.goBack();
-            });
-    }
-    useEffect(getProfile, [history]);
 
     return (
         <div>
@@ -41,8 +26,6 @@ const Profile = () => {
                 />
             }
         </div>
-
-
     )
 }
 
