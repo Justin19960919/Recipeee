@@ -4,7 +4,7 @@ import LikeListItem from "./LikeListItem";
 const LikeList = ({likes}) => {
     return(
         <ul className="list-group mt-4">
-            <li className="list-group-item wd-beige wd-black text-start">
+            <li className="list-group-item wd-beige wd-black wd-border text-start">
                 <span className="fw-bold fs-5">What I like</span>
             </li>
             {(() => {

@@ -32,18 +32,17 @@ const ProfileScreen = () => {
         <>
             <Navigation />
             <div className="row mt-2">
-                <div className="col-2 col-md-2 col-lg-1 col-xl-2">
-
+                <div className="col-3">
+                    <FollowList follows={follows}/>
                 </div>
-                <div className="col-10 col-md-10 col-lg-7 col-xl-6"
+                <div className="col-6"
                      style={{"position": "relative"}}>
                     <Profile
                         setProfile={setProfile}
                         profile={profile}
                     />
                 </div>
-                <div className="d-sm-none d-md-none d-lg-block col-lg-4 col-xl-4">
-                    <FollowList follows={follows}/>
+                <div className="col-3">
                     <LikeList likes={likes}/>
                 </div>
             </div>
