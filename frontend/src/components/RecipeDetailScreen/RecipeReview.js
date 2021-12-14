@@ -49,7 +49,7 @@ const RecipeReview = ({ review, setReview, user }) => {
     );
   };
 
-  const hasDeletePrivilege =
+  const hasUpdatePrivilege =
     (user && user._id === review.UserId) || (user && user.type === "admin");
 
 
@@ -66,7 +66,7 @@ const RecipeReview = ({ review, setReview, user }) => {
           {
             !needUpdate &&
             <div className="reviewer-detail">
-              {hasDeletePrivilege && (
+              {hasUpdatePrivilege && (
                 <i
                   onClick={() => deleteUserReview(curReview._id)}
                   className="fas fa-times topRight"
@@ -84,11 +84,15 @@ const RecipeReview = ({ review, setReview, user }) => {
               <span>{generateStar(curReview.Rating)}</span>
               <span>{formatDate(curReview.DateSubmitted)}</span>
               <p className="recipereview-reviews">{curReview.Review}</p>
-              <i
-                class="fas fa-pen secondRight"
-                onClick={() => setNeedUpdate(true)}
-              >
-              </i>
+              
+              {
+                hasUpdatePrivilege && (
+                <i
+                  class="fas fa-pen secondRight"
+                  onClick={() => setNeedUpdate(true)}>
+                </i>
+                )
+              }
             </div>
           }
           {
