@@ -3,7 +3,7 @@ const app = express();
 
 // setup
 const PORT = process.env.PORT || 3001;
-const cors = require("cors");
+// const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
@@ -20,8 +20,7 @@ require("dotenv").config()
 // mongoose.connect('(YOUR MONGODB URL)/Recipeee');
 const recipeDB = "recipeDB";
 // mongoose.connect(`${process.env.MONGODB_LOCAL_BASE_URL}/${recipeDB}`);
-mongoose.connect("mongodb+srv://Recipeee:Recipeee@recipeee.zbbfy.mongodb.net/Recipeee");
-
+mongoose.connect(process.env.MONGODB_REMOTE_URL);
 
 
 // middleware
@@ -47,9 +46,9 @@ app.use(function (req, res, next) {
 
 
 // routes
-app.get("/", (req, res) => {
-  res.send("Hello world");
-})
+// app.get("/", (req, res) => {
+//   res.send("Hello world");
+// })
 
 
 

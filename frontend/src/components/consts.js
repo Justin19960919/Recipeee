@@ -1,9 +1,40 @@
 export const getImageArray = (imageString) => {
-  if (imageString === undefined || imageString === "") {
+  console.log("got image string: ", imageString);
+
+  const invalidImageStrings = [undefined, null, ""];
+  if (invalidImageStrings.includes(imageString)) {
+    console.log("will return empty array");
     return [];
   }
 
-  if (imageString.startsWith("c")) {
+  else if (imageString.startsWith("[")) {
+    // const afterParsing = imageString.substr(1, imageString.length - 2);
+    // const parseArr = afterParsing.split(".jpg");
+    // const firstImg = parseArr[0] + `.jpg`;
+    // console.log("starts with [: will return: ", [firstImg.substr(1)]);
+    // return [firstImg.substr(1)];
+    const res = imageString.split(`.jpg`);
+    const resArr = [];
+    res.forEach(item => {
+      // console.log("item: ", item);
+      let i = 0;
+      for (i = 0; i < item.length; i++) {
+        if (item[i] === "h") {
+          break;
+        }
+      }
+      const newItem = item.slice(i);
+      // console.log("new item: ", newItem);
+      const addedJpgItem = newItem + ".jpg";
+      if (addedJpgItem !== ".jpg") {
+        // console.log("added jpg: ", addedJpgItem);
+        resArr.push(addedJpgItem);
+      }
+    })
+    return resArr;
+  }
+
+  else if (imageString.startsWith("c")) {
     let stripC = imageString.substr(3);
     let stripCArr = stripC.split('.jpg');
     let stringArr = stripCArr.map((url) => {
@@ -17,11 +48,14 @@ export const getImageArray = (imageString) => {
 
     let last = stringArr[stringArr.length - 1];
     stringArr[stringArr.length - 1] = last.substr(0, last.length - 3);
+    console.log(`starts with c: will return ${stringArr.slice(0, stringArr.length)}`)
     return stringArr.slice(0, stringArr.length - 1);
 
-  } else {
+  }
+
+  else {
+    console.log(`normal: will return: ${[imageString.substring(1, imageString.length - 1)]}`)
     return [imageString.substring(1, imageString.length - 1)];
-    // return [imageString];
   }
 }
 
