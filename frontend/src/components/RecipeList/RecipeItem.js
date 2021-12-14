@@ -4,51 +4,45 @@ import "./index.css";
 import { getImageArray } from "../consts";
 
 const RecipeItem = ({ recipe }) => {
-  // console.log(`recipe: ${recipe.Images}`);
+  console.log("recipe: ", recipe.Images);
+  console.log("-------------");
   const formatDate = (date) => {
-    // console.log(date, typeof(date));
     return date.split("T")[0];
   }
 
-  const getImage = (images) => {
-    if(images.startsWith("[")){
-      const afterParsing = images.substr(1, images.length - 2);
-      // console.log(`after parsing: ${afterParsing}`);
-      const parseArr = afterParsing.split(".jpg");
-      // console.log(' first img: ', parseArr[0] + `.jpg"`);
-      const firstImg = parseArr[0] + `.jpg`;
-      console.log(firstImg);
-      return firstImg.substr(1);
-    }
-    else if(images.startsWith("c")){
-      console.log("arr string");
-      return "";
-    }
-    else if(images === ""){
-      console.log("empty string");
-      return "";
-    }
-    else {
-      console.log("normal string");
-      return images.substr(1, images.length - 2);
-    }
-  }
+  // const getImage = (images) => {
+  //   if (images.startsWith("[")) {
+  //     const afterParsing = images.substr(1, images.length - 2);
+  //     const parseArr = afterParsing.split(".jpg");
+  //     const firstImg = parseArr[0] + `.jpg`;
+  //     return firstImg.substr(1);
+  //   }
+  //   else if (images.startsWith("c")) {
+  //     return "";
+  //   }
+  //   else if (images === "") {
+  //     return "";
+  //   }
+  //   else {
+  //     return images.substr(1, images.length - 2);
+  //   }
+  // }
 
-  const img = getImage(recipe.Images);
+  const imgArray = getImageArray(recipe.Images);
   return (
     <div className="details-container">
       {
-        img === "" &&
+        imgArray.length === 0 &&
         <img
-          src="/pic/ingredients.jpg"
-          alt="recipe-image"
+          src="/pic/invalidPhoto.jpg"
+          alt="invalid"
         />
       }
       {
-        img !== "" &&
+        imgArray.length !== 0 &&
         <img
-          src={img}
-          alt="recipe-image"
+          src={imgArray[0]}
+          alt="recipe"
         />
       }
       <div className="content-container">

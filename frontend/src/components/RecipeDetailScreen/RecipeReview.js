@@ -12,7 +12,7 @@ const RecipeReview = ({ review, setReview, user }) => {
 
   // generate star functions
   const generateStar = (num) => {
-    console.log(num, typeof(num));
+    // console.log(num, typeof(num));
     const wrongTypes = [undefined, null, "NA"];
     if (wrongTypes.includes(num)) {
       // null check
@@ -28,7 +28,7 @@ const RecipeReview = ({ review, setReview, user }) => {
           ))}
           {isHalf ? "" : <i className="fa fa-star-half" />}
         </div>
-    );
+      );
     }
   };
 
