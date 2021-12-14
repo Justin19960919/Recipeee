@@ -33,5 +33,6 @@ module.exports.updateReviewInfo = (reviewID, review) => {
 
 // DELETE
 module.exports.deleteReview = (id) => {
-    review_model.findByIdAndDelete({ _id: id });
+    review_model.deleteOne({ _id: id })
+        .then(status => console.log(status));
 }
