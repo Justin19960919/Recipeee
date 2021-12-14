@@ -26,5 +26,6 @@ module.exports.updateFollowInfo = (followID, follow) => {
 
 // DELETE
 module.exports.deleteFollow = (id) => {
-    follow_model.deleteOne({_id: id});
+    follow_model.deleteOne({_id: id})
+        .then(status => console.log(status));
 }
