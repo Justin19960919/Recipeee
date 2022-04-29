@@ -1,7 +1,9 @@
 # Recipeee
 
+### Background
 This is a full stack web app utilizing the MERN stack. The backend runs a Express server, constructed with MVC architecture, which talks to a remote mongoDB Atlas server. The frontend runs a React.js server which communicates with the backend Express server via services (services folder) as the entry point. The mongoDB UML diagram can be found at: [UML Diagram](https://drive.google.com/file/d/1E2uUDYjA-yFQnmoD5o5SFGSfrTb9b1bv/view)
 
+### Installation
 To __download__ the project, simply git clone, or download the .zip file from github.
 Once downloaded to your local machine:
 
@@ -26,13 +28,23 @@ To import the .csv file into local mongoDB database:
 mongoimport -d [Database name] -c [Collections name] --type csv --file [locations of csv file] --headerline
 ```
 
+### Functionality
+
 This website that provides functionality:
-- A visitor can register to become an user (normal, paid, admin), once becoming an user, he can login or logout, and access the profile page.
-- A visitor / user can search for recipes from remote mongoDB server, and comment on recipes
-- An admin user can delete any review, a user can delete his/her own review, a user cannot delete other people's reviews
+- A visitor can register to become an user (NORMAL, PAID USER, ADMIN). Once becoming an user, he/she can login or logout, and access the profile page.
+- - A user can see all followed users, and all liked recipes in Profile page.
+- A visitor / user can search for recipes via a search bar, and see other ppl's comments, as well as leave comments.
+- An admin user can delete any review, a user can delete his/her own review, a user cannot delete other people's reviews.
 - A user can follow other users, and visit other user's profile page, displaying only public information. An admin can go to any profile, and see all information.
-- A user can star (save), like a recipe. The starred recipes will show up on the home page, if the user is logged in, otherwise default images are displayed.
-- A user can see all followed users, and all liked recipes in Profile page.
+- A user can star (save) or like a recipe. The starred recipes will show up on the home page if the user is logged in, otherwise default images are displayed. A total of 5 starred recipes by the user will show on the home page.
+
+
+Deploy Architecture
+
+
+
+
+
 
 
 
