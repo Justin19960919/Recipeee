@@ -1,6 +1,6 @@
 # Recipeee
 
-This is a full stack web app utilizing the MERN stack. The backend runs a node.js/express.js server, constructed with MVC architecture, which talks to a remote mongoDB Atlas server. The frontend runs a React.js server which communicates with backend node.js server via services (services folder) as entry point. The mongoDB UML diagram can be found at: [UML Diagram](https://drive.google.com/file/d/1E2uUDYjA-yFQnmoD5o5SFGSfrTb9b1bv/view)
+This is a full stack web app utilizing the MERN stack. The backend runs a Express server, constructed with MVC architecture, which talks to a remote mongoDB Atlas server. The frontend runs a React.js server which communicates with the backend Express server via services (services folder) as the entry point. The mongoDB UML diagram can be found at: [UML Diagram](https://drive.google.com/file/d/1E2uUDYjA-yFQnmoD5o5SFGSfrTb9b1bv/view)
 
 To __download__ the project, simply git clone, or download the .zip file from github.
 Once downloaded to your local machine:
